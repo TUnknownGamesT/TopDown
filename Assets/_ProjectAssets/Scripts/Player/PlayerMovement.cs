@@ -9,16 +9,16 @@ public class PlayerMovement : MonoBehaviour
 {
     public float speed;
     
-    private PlayerInput _playerMovement;
+    private PlayerInput _playerInput;
     private InputAction _moveAction;
     private CharacterController _characterController;
 
     private void Awake()
     {
         _characterController = GetComponent<CharacterController>();
-        _playerMovement = new();
-        _playerMovement.Enable();
-        _moveAction = _playerMovement.Player.Movement;
+        _playerInput = new();
+        _playerInput.Enable();
+        _moveAction = _playerInput.Player.Movement;
     }
 
     private void Update()
@@ -32,4 +32,6 @@ public class PlayerMovement : MonoBehaviour
         Vector2 direction = _moveAction.ReadValue<Vector2>();
         _characterController.Move(new Vector3(direction.x, 0, direction.y)*Time.deltaTime *speed);
     }
+
+   
 }
