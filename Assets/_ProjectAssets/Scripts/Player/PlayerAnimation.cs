@@ -12,6 +12,7 @@ public class PlayerAnimation : MonoBehaviour
     private PlayerInput _playerInput;
     private InputAction _inputAction;
 
+    public Gunn gun;
     private Vector3 _oldPosition;
     
     private static readonly int IsShooting = Animator.StringToHash("isShooting");
@@ -19,24 +20,26 @@ public class PlayerAnimation : MonoBehaviour
 
     private void Start()
     {
-        _playerInput = new PlayerInput();
-        _playerInput.Enable();
-        _playerInput.Player.Shooting.started += OnShoot;
-        _playerInput.Player.Shooting.canceled += StopShooting;
+        UserInputController._leftClick.performed  += OnShoot;
+        UserInputController._leftClick.canceled += StopShooting;
     }
     
     void Update() {
-        Vector3 direction = transform.position - _oldPosition;
-        float forwardTest = Vector3.Dot(-direction.normalized, transform.position.normalized);
-
-        if(forwardTest  > 0) {
+        Vector3 forward = transform.TransformDirection(Vector3.forward);
+        Vector3 difference = _oldPosition - transform.position;
+        float directionValue = Vector3.Dot(forward, difference);
+        if (directionValue < -0.001f)
+        {
             playerAnimator.SetFloat(LegsMovement, 1);
-        } else if (forwardTest < 0) {
+        }
+        else if (directionValue>0.001f)
+        {
             playerAnimator.SetFloat(LegsMovement, 0);
-        } else {
+        }
+        else
+        {
             playerAnimator.SetFloat(LegsMovement, 0.5f);
         }
-
         _oldPosition = transform.position;
     }
     
