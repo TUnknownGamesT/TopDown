@@ -46,7 +46,7 @@ public abstract class Gunn : MonoBehaviour
         timeSinceLasrShot += Time.deltaTime;
     }
 
-    private void Shoot(InputAction.CallbackContext obj)
+    protected void Shoot(InputAction.CallbackContext obj)
     {
 
         if(currentAmo>0&& CanShoot())
