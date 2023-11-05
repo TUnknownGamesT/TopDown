@@ -8,7 +8,7 @@ public class PlayerRotation : MonoBehaviour
 {
     public float distanceOfPoint;
 
-    Vector3 mousePosition = Vector3.zero;
+    public Vector3 mousePosition = Vector3.zero;
 
     
     void Update()

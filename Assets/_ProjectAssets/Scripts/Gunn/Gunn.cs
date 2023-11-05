@@ -9,6 +9,7 @@ public abstract class Gunn : MonoBehaviour
 
     [Header("Shooting")]
     public float damage;
+    public GameObject vfx;
     [Header("Reloading")]
     public float fireRate;
     public float reloadTime;
@@ -19,7 +20,9 @@ public abstract class Gunn : MonoBehaviour
     [Header("References")]
     public Transform bulletSpawnPoint;
     public GameObject bulletPrefab;
-    
+
+
+    public Event animation = new Event();
     
     private float timeSinceLasrShot;
 
@@ -50,7 +53,8 @@ public abstract class Gunn : MonoBehaviour
         {
             Rigidbody rb =  Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation).GetComponent<Rigidbody>();
             rb.AddRelativeForce(Vector3.forward * bulletSpeed, ForceMode.Impulse);
-
+            vfx.SetActive(false);
+            vfx.SetActive(true);
             currentAmo--;
             timeSinceLasrShot = 0;
         }

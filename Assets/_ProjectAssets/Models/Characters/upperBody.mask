@@ -1,0 +1,99 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!319 &31900000
+AvatarMask:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: upperBody
+  m_Mask: 01000000000000000000000001000000010000000000000000000000000000000000000000000000000000000000000000000000
+  m_Elements:
+  - m_Path: 
+    m_Weight: 1
+  - m_Path: Armature
+    m_Weight: 1
+  - m_Path: Armature/base
+    m_Weight: 1
+  - m_Path: Armature/base/body
+    m_Weight: 1
+  - m_Path: Armature/base/body/Head
+    m_Weight: 1
+  - m_Path: Armature/base/body/Head/Head_end
+    m_Weight: 1
+  - m_Path: Armature/base/body/lefthand2
+    m_Weight: 1
+  - m_Path: Armature/base/body/lefthand2/lefthand1
+    m_Weight: 1
+  - m_Path: Armature/base/body/lefthand2/lefthand1/lefthand1_end
+    m_Weight: 1
+  - m_Path: Armature/base/body/righthand2
+    m_Weight: 1
+  - m_Path: Armature/base/body/righthand2/righthand1
+    m_Weight: 1
+  - m_Path: Armature/base/body/righthand2/righthand1/righthand1_end
+    m_Weight: 1
+  - m_Path: Armature/base/leftleg1
+    m_Weight: 1
+  - m_Path: Armature/base/leftleg1/leftleg2
+    m_Weight: 1
+  - m_Path: Armature/base/leftleg1/leftleg2/leftleg2_end
+    m_Weight: 1
+  - m_Path: Armature/base/rightleg2
+    m_Weight: 1
+  - m_Path: Armature/base/rightleg2/rightleg1
+    m_Weight: 1
+  - m_Path: Armature/base/rightleg2/rightleg1/rightleg1_end
+    m_Weight: 1
+  - m_Path: Armature/elbowlefthand
+    m_Weight: 1
+  - m_Path: Armature/elbowlefthand/elbowlefthand_end
+    m_Weight: 1
+  - m_Path: Armature/elbowleftleg
+    m_Weight: 0
+  - m_Path: Armature/elbowleftleg/elbowleftleg_end
+    m_Weight: 1
+  - m_Path: Armature/elbowrighthand
+    m_Weight: 1
+  - m_Path: Armature/elbowrighthand/elbowrighthand_end
+    m_Weight: 1
+  - m_Path: Armature/elbowrightleg
+    m_Weight: 0
+  - m_Path: Armature/elbowrightleg/elbowrightleg_end
+    m_Weight: 1
+  - m_Path: Armature/lefthand
+    m_Weight: 1
+  - m_Path: Armature/lefthand/lefthand_end
+    m_Weight: 1
+  - m_Path: Armature/leftleg
+    m_Weight: 0
+  - m_Path: Armature/leftleg/leftleg_end
+    m_Weight: 1
+  - m_Path: Armature/righthand
+    m_Weight: 1
+  - m_Path: Armature/righthand/righthand_end
+    m_Weight: 1
+  - m_Path: Armature/rightleg
+    m_Weight: 0
+  - m_Path: Armature/rightleg/rightleg_end
+    m_Weight: 1
+  - m_Path: Body
+    m_Weight: 0
+  - m_Path: Head
+    m_Weight: 0
+  - m_Path: leftHand1
+    m_Weight: 0
+  - m_Path: leftHand2
+    m_Weight: 0
+  - m_Path: LeftLeg1
+    m_Weight: 0
+  - m_Path: LeftLeg2
+    m_Weight: 0
+  - m_Path: rightHand1
+    m_Weight: 0
+  - m_Path: rightHand2
+    m_Weight: 0
+  - m_Path: rightLeg1
+    m_Weight: 0
+  - m_Path: rightLeg2
+    m_Weight: 0
