@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80efef4e5200bdb45817fc5a3fb2c43f, type: 3}
+  m_Name: Mele
+  m_EditorClassIdentifier: 
+  armPrefab: {fileID: 4092372079851248125, guid: 4bdb4241ff5a2a142a9ad478fa62cc15,
+    type: 3}
+  enemyType: 2
+  timeBetweenShoots: 3
+  damage: 1
+  fireRate: 0
+  reloadTime: 0
+  magSize: 0
+  bulletSpeed: 0
+  currentAmo: 0
+  reloading: 0
+  bulletPrefab: {fileID: 1000011764500980, guid: bf6e65de4f70a4dcf99ceb68e999d287,
+    type: 3}

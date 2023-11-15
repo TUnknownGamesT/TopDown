@@ -53,8 +53,8 @@ public abstract class Gunn : MonoBehaviour
         {
             Rigidbody rb =  Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation).GetComponent<Rigidbody>();
             rb.AddRelativeForce(Vector3.forward * bulletSpeed, ForceMode.Impulse);
-            vfx.SetActive(false);
-            vfx.SetActive(true);
+          //  vfx.SetActive(false);
+          //  vfx.SetActive(true);
             currentAmo--;
             timeSinceLasrShot = 0;
         }

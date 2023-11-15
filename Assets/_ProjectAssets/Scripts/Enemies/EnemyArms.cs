@@ -13,46 +13,33 @@ public abstract class EnemyArms : MonoBehaviour
     public Constants.EnemyType enemyType;
 
 
-    [Header("Shooting")] 
-    private float timeBetweenShoots;
-    private float damage;
-    [Header("Reloading")]
-    private float fireRate;
+    [Header("Shooting")] protected float timeBetweenShoots;
+    protected int damage;
+    [Header("Reloading")] private float fireRate;
     private float reloadTime;
     private int magSize;
     private float bulletSpeed;
     private float currentAmo;
     private bool reloading;
-    [Header("References")]
-    private Transform bulletSpawnPoint;
+    [Header("References")] private Transform bulletSpawnPoint;
     private GameObject bulletPrefab;
-    
-    
+
+
     private float timeSinceLastShot;
-    private FieldOfView _fieldOfView;
+    protected FieldOfView _fieldOfView;
 
 
-    private bool CanShoot() => !reloading && timeSinceLastShot > 1f / (fireRate / 60f);
+    protected virtual bool CanShoot() => !reloading && timeSinceLastShot > 1f / (fireRate / 60f);
 
     private void Awake()
     {
         _fieldOfView = GetComponent<FieldOfView>();
     }
 
-    private void OnEnable()
-    {
-        FieldOfView.onPlayerInView += Shoot;
-    }
-    
-    private void OnDisable()
-    {
-        FieldOfView.onPlayerInView -= Shoot;
-    }
-    
-  
+
     protected void Start()
     {
-       InitStats(EnemyInitiator.instance.GetEnemyStats(enemyType));
+        InitStats(EnemyInitiator.instance.GetEnemyStats(enemyType));
     }
 
     protected void Update()
@@ -61,7 +48,7 @@ public abstract class EnemyArms : MonoBehaviour
     }
 
 
-    private void InitStats(EnemyType enemyType)
+    protected virtual void InitStats(EnemyType enemyType)
     {
         damage = enemyType.damage;
         fireRate = enemyType.fireRate;
@@ -70,46 +57,53 @@ public abstract class EnemyArms : MonoBehaviour
         bulletSpeed = enemyType.bulletSpeed;
         currentAmo = enemyType.magSize;
         timeBetweenShoots = enemyType.timeBetweenShoots;
-        
+
         bulletPrefab = enemyType.bulletPrefab;
-        GameObject armPrefab = Instantiate(enemyType.armPrefab, armSpawnPoint.position, armSpawnPoint.rotation,transform);
+        GameObject armPrefab =
+            Instantiate(enemyType.armPrefab, armSpawnPoint.position, armSpawnPoint.localRotation, transform);
         bulletSpawnPoint = armPrefab.transform.GetChild(0);
     }
-    
 
-    private void Shoot()
+
+    public virtual void Shoot()
     {
-
         UniTask.Void(async () =>
         {
-            if(currentAmo>0&& CanShoot())
+            try
             {
-                Debug.Log(bulletSpawnPoint.position);
-                Rigidbody rb =  Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation).GetComponent<Rigidbody>();
-                rb.AddRelativeForce(Vector3.forward * bulletSpeed, ForceMode.Impulse);
-
-                currentAmo--;
-                timeSinceLastShot = 0;
-            }
-            else if(currentAmo<=0)
-            {
-                if (!reloading)
+                if (currentAmo > 0 && CanShoot())
                 {
-                    reloading = true;
-                    Reload();
+                    Rigidbody rb = Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation)
+                        .GetComponent<Rigidbody>();
+                    rb.AddRelativeForce(Vector3.forward * bulletSpeed, ForceMode.Impulse);
+
+                    currentAmo--;
+                    timeSinceLastShot = 0;
+
+                    await UniTask.Delay(TimeSpan.FromSeconds(timeBetweenShoots));
+                }
+                else if (currentAmo <= 0)
+                {
+                    if (!reloading)
+                    {
+                        reloading = true;
+                        Reload();
+                    }
+                }
+
+                if (_fieldOfView.canSeePlayer)
+                {
+                    await UniTask.Delay(TimeSpan.FromSeconds(0.1f));
+                    Shoot();
                 }
             }
-            
-            await UniTask.Delay(TimeSpan.FromSeconds(timeBetweenShoots));
-            
-            if (_fieldOfView.canSeePlayer)
+            catch (Exception e)
             {
-                Shoot();
+                Debug.Log("Carpeala moticel nu te uita", this);
             }
         });
-        
     }
-    
+
     private void Reload()
     {
         UniTask.Void(async () =>
@@ -119,5 +113,4 @@ public abstract class EnemyArms : MonoBehaviour
             currentAmo = magSize;
         });
     }
-
 }
