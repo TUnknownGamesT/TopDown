@@ -26,4 +26,10 @@ public class PlayerHealth : MonoBehaviour
             onPlayerGetDamage?.Invoke(damageReceived);
         }
     }
+
+    public void TakeDamage(int damageReceived)
+    {
+        health -= damageReceived;
+        onPlayerGetDamage?.Invoke(damageReceived);
+    }
 }
