@@ -10,7 +10,7 @@ public class EnemyType : ScriptableObject
     public Constants.EnemyType enemyType;
     [Header("Shooting")]
     public float timeBetweenShoots;
-    public float damage;
+    public int damage;
     [Header("Reloading")]
     public float fireRate;
     public float reloadTime;
