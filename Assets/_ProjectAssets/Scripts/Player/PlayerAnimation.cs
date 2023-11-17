@@ -16,7 +16,8 @@ public class PlayerAnimation : MonoBehaviour
     private Vector3 _oldPosition;
     
     private static readonly int IsShooting = Animator.StringToHash("isShooting");
-    private static readonly int LegsMovement = Animator.StringToHash("legsMovement");
+    private static readonly int frontWalking = Animator.StringToHash("frontWalking");
+    private static readonly int sideWalking = Animator.StringToHash("sideWalking");
 
     private void Start()
     {
@@ -28,18 +29,11 @@ public class PlayerAnimation : MonoBehaviour
         Vector3 forward = transform.TransformDirection(Vector3.forward);
         Vector3 difference = _oldPosition - transform.position;
         float directionValue = Vector3.Dot(forward, difference);
-        if (directionValue < -0.001f)
-        {
-            playerAnimator.SetFloat(LegsMovement, 1);
-        }
-        else if (directionValue>0.001f)
-        {
-            playerAnimator.SetFloat(LegsMovement, 0);
-        }
-        else
-        {
-            playerAnimator.SetFloat(LegsMovement, 0.5f);
-        }
+        playerAnimator.SetFloat(frontWalking, directionValue*30);
+
+        Vector3 sideway = transform.TransformDirection(Vector3.left);
+        directionValue = Vector3.Dot(sideway, difference);
+        playerAnimator.SetFloat(sideWalking, directionValue*30);
         _oldPosition = transform.position;
     }
     
