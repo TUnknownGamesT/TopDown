@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 80efef4e5200bdb45817fc5a3fb2c43f, type: 3}
-  m_Name: Mele
+  m_Name: AKA
   m_EditorClassIdentifier: 
-  armPrefab: {fileID: 5790603118289793918, guid: 263cb010f42837c47bbcd90e4b3ab965,
+  armPrefab: {fileID: 5999916748589481914, guid: 20101c7b3b9b9ad42bf1685f09f2a4b0,
     type: 3}
-  enemyType: 2
-  timeBetweenShoots: 3
-  damage: 1
-  fireRate: 0
-  reloadTime: 0
-  magSize: 0
-  bulletSpeed: 0
-  currentAmo: 0
+  enemyType: 1
+  timeBetweenShoots: 0.5
+  damage: 2
+  fireRate: 40
+  reloadTime: 2
+  magSize: 10
+  bulletSpeed: 10
+  currentAmo: 10
   reloading: 0
-  bulletPrefab: {fileID: 1000011764500980, guid: bf6e65de4f70a4dcf99ceb68e999d287,
+  bulletPrefab: {fileID: 3944079180672879499, guid: 2d1c3b14a97db5249b8087a1cd98ca99,
     type: 3}

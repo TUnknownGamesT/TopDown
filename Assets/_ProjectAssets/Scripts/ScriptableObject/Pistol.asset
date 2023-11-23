@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80efef4e5200bdb45817fc5a3fb2c43f, type: 3}
   m_Name: Pistol
   m_EditorClassIdentifier: 
-  armPrefab: {fileID: 5999916748589481914, guid: 20101c7b3b9b9ad42bf1685f09f2a4b0,
+  armPrefab: {fileID: 1744276742550672861, guid: 462710743302cd345a81059209784454,
     type: 3}
   enemyType: 0
   timeBetweenShoots: 2
