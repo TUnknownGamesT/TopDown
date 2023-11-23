@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 
 public class EnemyInitiator : MonoBehaviour
@@ -22,9 +23,35 @@ public class EnemyInitiator : MonoBehaviour
     #endregion
 
     public List<EnemyType> enemyTypes;
+    public List<GameObject> enemyLootArms;
 
     public EnemyType GetEnemyStats(Constants.EnemyType enemy)
     {
         return enemyTypes.Find(x => x.enemyType == enemy);
     }
+
+    public void InstantiateArm(Constants.EnemyType enemy, Vector3 position)
+    {
+
+        switch (enemy)
+        {
+            case Constants.EnemyType.Pistol:
+            {
+                GameObject arm = enemyLootArms.Find(x => x.name == "Pistol");
+                Instantiate(arm, position, Quaternion.identity);
+                break;
+            }
+            case Constants.EnemyType.AKA47:
+            {
+                GameObject arm = enemyLootArms.Find(x => x.name == "AKA47");
+                Instantiate(arm, position, Quaternion.identity);
+                break;
+            }
+
+
+        }
+
+    }
+
+
 }

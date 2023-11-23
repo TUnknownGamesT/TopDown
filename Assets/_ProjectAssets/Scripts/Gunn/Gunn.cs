@@ -4,7 +4,7 @@ using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public abstract class Gunn : MonoBehaviour
+public abstract class Gunn : MonoBehaviour,IInteractable
 {
 
     [Header("Shooting")]
@@ -25,19 +25,12 @@ public abstract class Gunn : MonoBehaviour
     public Event animation = new Event();
     
     private float timeSinceLasrShot;
+    private MeshRenderer _renderer;
 
 
-    private bool CanShoot() => !reloading && timeSinceLasrShot > 1f / (fireRate / 60f);
-    
-    protected void OnDisable()
+    private void Awake()
     {
-        UserInputController._leftClick.performed -= Shoot;
-    }
-
-
-    protected void Start()
-    {
-        UserInputController._leftClick.performed += Shoot;
+        _renderer = GetComponent<MeshRenderer>();
     }
 
 
@@ -46,7 +39,9 @@ public abstract class Gunn : MonoBehaviour
         timeSinceLasrShot += Time.deltaTime;
     }
 
-    protected void Shoot(InputAction.CallbackContext obj)
+    private bool CanShoot() => !reloading && timeSinceLasrShot > 1f / (fireRate / 60f);
+    
+    public void Shoot()
     {
 
         if(currentAmo>0&& CanShoot())
@@ -76,5 +71,32 @@ public abstract class Gunn : MonoBehaviour
             reloading = false;
             currentAmo = magSize;
         });
+    }
+
+    public void Interact()
+    {
+        UnHighLight();
+        PlayerArmHandler.instance.ChangeArm(gameObject);
+    }
+
+    public void HighLight()
+    {
+        _renderer.material = Constants.instance.gunnHighLight;
+    }
+
+    public void UnHighLight()
+    {
+        _renderer.material = Constants.instance.gunnUnHighLight;
+    }
+
+
+    private void OnTriggerEnter(Collider other)
+    {
+        HighLight();
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        UnHighLight();
     }
 }

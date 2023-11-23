@@ -1,13 +1,30 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Constants : MonoBehaviour
 {
+   #region Singleton
+
+   public static Constants instance;
+
+   private void Awake()
+   {
+      instance = FindObjectOfType<Constants>();
+      
+      if (instance == null)
+      {
+         instance = this;
+      }
+   }
+
+   #endregion
+   
    public enum EnemyType
    {
       Pistol,
-      Ak47,
+      AKA47,
       Male
       
    }
@@ -15,5 +32,8 @@ public class Constants : MonoBehaviour
    public static int PistolEnemyHealth = 2;
    public static int Ak47EnemyHealth = 1;
    public static int MaleEnemyHealth = 1;
-   
+
+   public Material gunnHighLight;
+   public Material gunnUnHighLight;
+
 }

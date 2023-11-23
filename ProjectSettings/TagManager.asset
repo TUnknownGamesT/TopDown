@@ -10,6 +10,7 @@ TagManager:
   - World
   - NoMask
   - Bullet
+  - Gun
   layers:
   - Default
   - TransparentFX
