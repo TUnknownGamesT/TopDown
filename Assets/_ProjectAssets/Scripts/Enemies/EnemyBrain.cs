@@ -31,7 +31,6 @@ public class EnemyBrain : MonoBehaviour
     {
         _enemyRotation.PlayerOutOfView();
         _enemyMovement?.PlayerOutOfView();
-       
     }
     
     
@@ -39,5 +38,11 @@ public class EnemyBrain : MonoBehaviour
     {
         _fieldOfView.EnemyDeath();
        _enemyMovement?.EnemyDeath();
+       _enemyArms.DropArm();
+    }
+
+    private void Arm()
+    {
+       
     }
 }

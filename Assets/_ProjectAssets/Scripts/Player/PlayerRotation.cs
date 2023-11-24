@@ -8,6 +8,7 @@ public class PlayerRotation : MonoBehaviour
 {
     public float distanceOfPoint;
     public GameObject cube;
+    public Transform playerBody;
     
     public Vector3 mousePosition = Vector3.zero;
 
@@ -25,6 +26,6 @@ public class PlayerRotation : MonoBehaviour
         
         mousePosition.y = transform.position.y;
         cube.transform.position = mousePosition;
-        transform.LookAt(mousePosition);
+        playerBody.LookAt(mousePosition);
     }
 }

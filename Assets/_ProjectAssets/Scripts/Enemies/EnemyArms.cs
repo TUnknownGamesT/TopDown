@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.LowLevel;
 
 [RequireComponent(typeof(FieldOfView))]
@@ -23,6 +24,7 @@ public abstract class EnemyArms : MonoBehaviour
     private bool reloading;
     [Header("References")] private Transform bulletSpawnPoint;
     private GameObject bulletPrefab;
+    private GameObject armPrefab;
 
 
     private float timeSinceLastShot;
@@ -59,8 +61,7 @@ public abstract class EnemyArms : MonoBehaviour
         timeBetweenShoots = enemyType.timeBetweenShoots;
 
         bulletPrefab = enemyType.bulletPrefab;
-        GameObject armPrefab =
-            Instantiate(enemyType.armPrefab, armSpawnPoint.position, armSpawnPoint.localRotation, transform);
+        armPrefab = Instantiate(enemyType.armPrefab, armSpawnPoint.position, armSpawnPoint.localRotation, transform);
         bulletSpawnPoint = armPrefab.transform.GetChild(0);
     }
 
@@ -113,4 +114,10 @@ public abstract class EnemyArms : MonoBehaviour
             currentAmo = magSize;
         });
     }
+
+    public void DropArm()
+    {
+        EnemyInitiator.instance.InstantiateArm(enemyType,transform.position);
+    }
+    
 }
