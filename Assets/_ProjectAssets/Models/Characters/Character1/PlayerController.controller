@@ -46,7 +46,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -1370442103174727857, guid: 5ebba1deeba98114d966c879428840b8,
+  m_Motion: {fileID: 7837668605846087458, guid: 5f544c189c551894cb70ec8f6eb1efdd,
     type: 3}
   m_Tag: 
   m_SpeedParameter: 
@@ -75,7 +75,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -8754822296341043336, guid: 5ebba1deeba98114d966c879428840b8,
+  m_Motion: {fileID: 1887190617217038531, guid: 5f544c189c551894cb70ec8f6eb1efdd,
     type: 3}
   m_Tag: 
   m_SpeedParameter: 
@@ -96,37 +96,37 @@ AnimatorController:
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: isShooting
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: weaponHands
     m_Type: 3
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: Blend
     m_Type: 1
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: frontWalking
     m_Type: 1
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: sideWalking
     m_Type: 1
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: upperBody
@@ -322,7 +322,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -8754822296341043336, guid: 5ebba1deeba98114d966c879428840b8,
+  m_Motion: {fileID: -4463402355556457319, guid: 5f544c189c551894cb70ec8f6eb1efdd,
     type: 3}
   m_Tag: 
   m_SpeedParameter: 
@@ -350,7 +350,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -8471046871934834036, guid: 5ebba1deeba98114d966c879428840b8,
+  m_Motion: {fileID: 8639925574547272765, guid: 5f544c189c551894cb70ec8f6eb1efdd,
     type: 3}
   m_Tag: 
   m_SpeedParameter: 
@@ -391,7 +391,7 @@ BlendTree:
   m_Name: Blend Tree
   m_Childs:
   - serializedVersion: 2
-    m_Motion: {fileID: -3889830323219305035, guid: 5ebba1deeba98114d966c879428840b8,
+    m_Motion: {fileID: -1554995578183909852, guid: 5f544c189c551894cb70ec8f6eb1efdd,
       type: 3}
     m_Threshold: 0
     m_Position: {x: -1, y: 0}
@@ -400,7 +400,7 @@ BlendTree:
     m_DirectBlendParameter: Blend
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: -5252816984213320552, guid: 5ebba1deeba98114d966c879428840b8,
+    m_Motion: {fileID: -5252816984213320552, guid: 5f544c189c551894cb70ec8f6eb1efdd,
       type: 3}
     m_Threshold: 0.5
     m_Position: {x: 0, y: 0}
@@ -409,7 +409,7 @@ BlendTree:
     m_DirectBlendParameter: Blend
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: -3889830323219305035, guid: 5ebba1deeba98114d966c879428840b8,
+    m_Motion: {fileID: -1554995578183909852, guid: 5f544c189c551894cb70ec8f6eb1efdd,
       type: 3}
     m_Threshold: 1
     m_Position: {x: 1, y: 0}
@@ -418,7 +418,7 @@ BlendTree:
     m_DirectBlendParameter: Blend
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: 346530556210423931, guid: bb9aabd0b6938a1419e6c39c3d8ffc76,
+    m_Motion: {fileID: -3133252672415609716, guid: 5f544c189c551894cb70ec8f6eb1efdd,
       type: 3}
     m_Threshold: 1.5
     m_Position: {x: 0, y: -1}
@@ -427,7 +427,7 @@ BlendTree:
     m_DirectBlendParameter: Blend
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: 4895972647461059118, guid: bb9aabd0b6938a1419e6c39c3d8ffc76,
+    m_Motion: {fileID: -3133252672415609716, guid: 5f544c189c551894cb70ec8f6eb1efdd,
       type: 3}
     m_Threshold: 2
     m_Position: {x: 0, y: 1}
