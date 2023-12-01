@@ -7,6 +7,7 @@ using UnityEngine.InputSystem;
 public class PlayerRotation : MonoBehaviour
 {
     public float distanceOfPoint;
+    public Transform playerBody;
     public GameObject cube;
 
     public Vector3 mousePosition = Vector3.zero;
@@ -23,8 +24,8 @@ public class PlayerRotation : MonoBehaviour
         mousePosition.z = distanceOfPoint;
         mousePosition =  Camera.main.ScreenToWorldPoint(mousePosition);
         
-        mousePosition.y = transform.position.y;
+        mousePosition.y = playerBody.position.y;
         cube.transform.position = mousePosition;
-        transform.LookAt(mousePosition);
+        playerBody.LookAt(mousePosition);
     }
 }
