@@ -9,7 +9,7 @@ public abstract class Gunn : MonoBehaviour,IInteractable
 
     [Header("Shooting")]
     public float damage;
-    public GameObject vfx;
+    public ParticleSystem vfx;
     [Header("Reloading")]
     public float fireRate;
     public float reloadTime;
@@ -48,8 +48,7 @@ public abstract class Gunn : MonoBehaviour,IInteractable
         {
             Rigidbody rb =  Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation).GetComponent<Rigidbody>();
             rb.AddRelativeForce(Vector3.forward * bulletSpeed, ForceMode.Impulse);
-          //  vfx.SetActive(false);
-          //  vfx.SetActive(true);
+            vfx.Play();
             currentAmo--;
             timeSinceLasrShot = 0;
         }
