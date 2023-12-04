@@ -51,6 +51,7 @@ public abstract class Gunn : MonoBehaviour,IInteractable
             vfx.Play();
             currentAmo--;
             timeSinceLasrShot = 0;
+            CameraShake.ShakeCamera();
         }
         else if(currentAmo<=0)
         {
