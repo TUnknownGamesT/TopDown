@@ -27,13 +27,6 @@ public class PlayerArmHandler : MonoBehaviour
     private Transform grooundArmChecker;
     public Transform armSpawnPoint;
     public Gunn currentArm;
-    
-    [Header("Shaking")]
-    public CinemachineVirtualCamera virtualCamera;
-    public float shakeDuration = 0.3f;
-    public float shakeAmplitude = 1.2f;
-
-    private float shakeTimeRemain;
 
 
     [ContextMenu("Init PlayerArmHandler")]
@@ -74,37 +67,11 @@ public class PlayerArmHandler : MonoBehaviour
         UserInputController._leftClick.performed += Shoot;
     }
 
-
-    private void Update()
-    {
-        if(shakeTimeRemain >0)
-        {
-            shakeTimeRemain -= Time.deltaTime;
-            if (shakeTimeRemain <= 0)
-            {
-                CinemachineBasicMultiChannelPerlin cinemachineBasicMultiChannelPerlin =
-                    virtualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
-                cinemachineBasicMultiChannelPerlin.m_AmplitudeGain = 0;
-            }
-        }
-    }
-
-    void ShakeCamera()
-    {
-        CinemachineBasicMultiChannelPerlin cinemachineBasicMultiChannelPerlin =
-            virtualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
-        
-        cinemachineBasicMultiChannelPerlin.m_AmplitudeGain = shakeAmplitude;
-        shakeTimeRemain = shakeDuration;
-
-    }
-
     private void Shoot(InputAction.CallbackContext obj)
     {
         if (currentArm != null)
         {
             currentArm.Shoot();
-            ShakeCamera();
         }   
     }
 

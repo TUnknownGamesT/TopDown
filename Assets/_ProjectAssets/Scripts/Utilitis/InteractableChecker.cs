@@ -32,8 +32,8 @@ public class InteractableChecker : MonoBehaviour
     {
         if (other.gameObject.GetComponent<IInteractable>()!=null)
         {
+            Debug.Log("Interactable found");
             interactable = other.gameObject.GetComponent<IInteractable>();
         }
     }
-    
 }

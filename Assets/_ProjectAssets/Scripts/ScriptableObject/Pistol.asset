@@ -23,5 +23,5 @@ MonoBehaviour:
   bulletSpeed: 10
   currentAmo: 10
   reloading: 0
-  bulletPrefab: {fileID: 3944079180672879499, guid: 2d1c3b14a97db5249b8087a1cd98ca99,
+  bulletPrefab: {fileID: 4554020830683859374, guid: 9307afa9b3a1b244ebed89b1babc2b7f,
     type: 3}
