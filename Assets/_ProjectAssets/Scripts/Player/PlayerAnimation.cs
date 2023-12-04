@@ -9,6 +9,9 @@ public class PlayerAnimation : MonoBehaviour
 {
     [SerializeField]
     private Animator playerAnimator;
+    
+    [SerializeField]
+    private Transform _playerTransform;
 
     private PlayerInput _playerInput;
     private InputAction _inputAction;
@@ -50,15 +53,15 @@ public class PlayerAnimation : MonoBehaviour
     void Update()
     {
         
-        Vector3 newToOld = _oldPosition - transform.position;
+        Vector3 newToOld = _oldPosition - _playerTransform.position;
 
-        float directionValue = Vector3.Dot(transform.forward, newToOld);
+        float directionValue = Vector3.Dot(_playerTransform.forward, newToOld);
         playerAnimator.SetFloat(frontWalking, directionValue*_animationMultiplier);
         
-        directionValue = Vector3.Dot(transform.right, newToOld);
+        directionValue = Vector3.Dot(_playerTransform.right, newToOld);
         playerAnimator.SetFloat(sideWalking, directionValue*_animationMultiplier);
         
-        _oldPosition = transform.position;
+        _oldPosition = _playerTransform.position;
     }
     
     
