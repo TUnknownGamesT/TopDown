@@ -40,16 +40,20 @@ public class EnemyHealth : MonoBehaviour
         }
     }
 
+    public void TakeDmg(int damage)
+    {
+        health-=damage;
+        if (health <= 0)
+        {
+            _enemyBrain.Death();
+            Destroy(gameObject);
+        }
+    }
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Bullet"))
         {
-            health--;
-            if (health <= 0)
-            {
-                _enemyBrain.Death();
-                Destroy(gameObject);
-            }
+            TakeDmg(1);
         }
     }
 }

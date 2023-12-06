@@ -25,7 +25,7 @@ public class PlayerAnimation : MonoBehaviour
     private static readonly int frontWalking = Animator.StringToHash("frontWalking");
     private static readonly int sideWalking = Animator.StringToHash("sideWalking");
 
-    private Rigidbody[] rigidbodies;
+    public Rigidbody[] rigidbodies;
     
     private void Start()
     {
@@ -36,9 +36,8 @@ public class PlayerAnimation : MonoBehaviour
         UserInputController._leftClick.canceled += StopShooting;
     }
     
-    private void SetRagdollEnabled(bool isEnabled)
+    public void SetRagdollEnabled(bool isEnabled)
     {
-        
         foreach (var rb in rigidbodies)
         {
             rb.isKinematic = !isEnabled;
@@ -78,6 +77,20 @@ public class PlayerAnimation : MonoBehaviour
     public void Die()
     {
         SetRagdollEnabled(true);
+    }
+    
+    public void Explode()
+    {
+        gameObject.GetComponent<CapsuleCollider>().enabled = false;
+        playerAnimator.enabled = false;
+        
+        
+        foreach (var rb in rigidbodies)
+        {
+            rb.isKinematic = false;
+            rb.detectCollisions = true;
+        }
+        
     }
 
 }

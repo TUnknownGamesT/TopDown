@@ -15,7 +15,7 @@ public class EnemyWalking : MonoBehaviour
     private static readonly int frontWalking = Animator.StringToHash("frontWalking");
     private static readonly int sideWalking = Animator.StringToHash("sideWalking");
     
-    private Rigidbody[] rigidbodies;
+    public Rigidbody[] rigidbodies;
     // Start is called before the first frame update
     private void Start()
     {
@@ -23,20 +23,34 @@ public class EnemyWalking : MonoBehaviour
         SetRagdollEnabled(false);
     }
     
-    private void SetRagdollEnabled(bool isEnabled)
+    public void SetRagdollEnabled(bool isEnabled)
     {
+        if (isEnabled)
+        {
+            animator.enabled = false;
+        }
         
         foreach (var rb in rigidbodies)
         {
             rb.isKinematic = !isEnabled;
             rb.detectCollisions = isEnabled;
         }
-        if (isEnabled)
-        {
-            animator.enabled = false;
-        }
+        
     }
 
+    public void Explode()
+    {
+        gameObject.GetComponent<CapsuleCollider>().enabled = false;
+        animator.enabled = false;
+        
+        
+        foreach (var rb in rigidbodies)
+        {
+            rb.isKinematic = false;
+            rb.detectCollisions = true;
+        }
+        
+    }
     // Update is called once per frame
     void Update()
     {
