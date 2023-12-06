@@ -9,6 +9,9 @@ public class PlayerAnimation : MonoBehaviour
 {
     [SerializeField]
     private Animator playerAnimator;
+    
+    [SerializeField]
+    private Transform _playerTransform;
 
     private PlayerInput _playerInput;
     private InputAction _inputAction;
@@ -22,7 +25,7 @@ public class PlayerAnimation : MonoBehaviour
     private static readonly int frontWalking = Animator.StringToHash("frontWalking");
     private static readonly int sideWalking = Animator.StringToHash("sideWalking");
 
-    private Rigidbody[] rigidbodies;
+    public Rigidbody[] rigidbodies;
     
     private void Start()
     {
@@ -33,9 +36,8 @@ public class PlayerAnimation : MonoBehaviour
         UserInputController._leftClick.canceled += StopShooting;
     }
     
-    private void SetRagdollEnabled(bool isEnabled)
+    public void SetRagdollEnabled(bool isEnabled)
     {
-        
         foreach (var rb in rigidbodies)
         {
             rb.isKinematic = !isEnabled;
@@ -50,15 +52,15 @@ public class PlayerAnimation : MonoBehaviour
     void Update()
     {
         
-        Vector3 newToOld = _oldPosition - transform.position;
+        Vector3 newToOld = _oldPosition - _playerTransform.position;
 
-        float directionValue = Vector3.Dot(transform.forward, newToOld);
+        float directionValue = Vector3.Dot(_playerTransform.forward, newToOld);
         playerAnimator.SetFloat(frontWalking, directionValue*_animationMultiplier);
         
-        directionValue = Vector3.Dot(transform.right, newToOld);
+        directionValue = Vector3.Dot(_playerTransform.right, newToOld);
         playerAnimator.SetFloat(sideWalking, directionValue*_animationMultiplier);
         
-        _oldPosition = transform.position;
+        _oldPosition = _playerTransform.position;
     }
     
     
@@ -75,6 +77,20 @@ public class PlayerAnimation : MonoBehaviour
     public void Die()
     {
         SetRagdollEnabled(true);
+    }
+    
+    public void Explode()
+    {
+        gameObject.GetComponent<CapsuleCollider>().enabled = false;
+        playerAnimator.enabled = false;
+        
+        
+        foreach (var rb in rigidbodies)
+        {
+            rb.isKinematic = false;
+            rb.detectCollisions = true;
+        }
+        
     }
 
 }

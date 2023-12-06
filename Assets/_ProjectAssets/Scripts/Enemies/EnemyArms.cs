@@ -61,7 +61,7 @@ public abstract class EnemyArms : MonoBehaviour
         timeBetweenShoots = enemyType.timeBetweenShoots;
 
         bulletPrefab = enemyType.bulletPrefab;
-        armPrefab = Instantiate(enemyType.armPrefab, armSpawnPoint.position, armSpawnPoint.localRotation, transform);
+        armPrefab = Instantiate(enemyType.armPrefab, armSpawnPoint.position, armSpawnPoint.localRotation, armSpawnPoint.transform);
         bulletSpawnPoint = armPrefab.transform.GetChild(0);
     }
 

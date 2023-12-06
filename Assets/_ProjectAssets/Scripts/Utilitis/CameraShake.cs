@@ -43,4 +43,13 @@ public class CameraShake : MonoBehaviour
         shakeTimeRemain = shakeDuration;
 
     }
+
+    public static void ExplosionCameraShake()
+    {
+        CinemachineBasicMultiChannelPerlin cinemachineBasicMultiChannelPerlin =
+            virtualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+        
+        cinemachineBasicMultiChannelPerlin.m_AmplitudeGain = 8f;
+        shakeTimeRemain = 1f;
+    }
 }
