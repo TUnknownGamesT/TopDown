@@ -22,8 +22,7 @@ public class PlayerHealth : MonoBehaviour
         if (collision.gameObject.CompareTag("Bullet"))
         {
             int damageReceived = collision.gameObject.GetComponent<BulletBehaviour>().damage;
-            health -= damageReceived;
-            onPlayerGetDamage?.Invoke(damageReceived);
+            TakeDamage(damageReceived);
         }
     }
 
@@ -31,5 +30,19 @@ public class PlayerHealth : MonoBehaviour
     {
         health -= damageReceived;
         onPlayerGetDamage?.Invoke(damageReceived);
+        if (health<=0)
+        {
+            Die();
+        }
+    }
+
+    [ContextMenu("Die")]
+    private void Die()
+    {
+        GetComponent<PlayerAnimation>()?.Die();
+        GetComponent<PlayerMovement>()?.Die();
+        GetComponent<PlayerRotation>()?.Die();
+        GetComponent<PlayerArmHandler>()?.Die();
+        UIManager.instance.GameLost();
     }
 }
