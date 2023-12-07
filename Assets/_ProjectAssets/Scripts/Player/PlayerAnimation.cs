@@ -38,15 +38,17 @@ public class PlayerAnimation : MonoBehaviour
     
     public void SetRagdollEnabled(bool isEnabled)
     {
+        if (isEnabled)
+        {
+            playerAnimator.enabled = false;
+        }
+        
         foreach (var rb in rigidbodies)
         {
             rb.isKinematic = !isEnabled;
             rb.detectCollisions = isEnabled;
         }
-        if (isEnabled)
-        {
-            playerAnimator.enabled = false;
-        }
+        
     }
     
     void Update()

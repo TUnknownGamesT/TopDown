@@ -4,7 +4,7 @@ using UnityEngine;
 public class EnemyHealth : MonoBehaviour
 {
     
-    private float health;
+    public float health;
     private EnemyBrain _enemyBrain;
 
     private void Awake()
@@ -46,7 +46,7 @@ public class EnemyHealth : MonoBehaviour
         if (health <= 0)
         {
             _enemyBrain.Death();
-            Destroy(gameObject);
+            GetComponent<EnemyWalking>()?.SetRagdollEnabled(true);
         }
     }
     private void OnCollisionEnter(Collision collision)

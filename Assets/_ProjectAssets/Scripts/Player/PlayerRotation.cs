@@ -15,9 +15,16 @@ public class PlayerRotation : MonoBehaviour
     
     void Update()
     {
-        RotatePlayer();
+        if (!UIManager.instance.isPaused)
+        {
+            RotatePlayer();
+        }
     }
 
+    public void Die()
+    {
+        this.enabled = false;
+    }
     private void RotatePlayer()
     {
         mousePosition = Input.mousePosition;

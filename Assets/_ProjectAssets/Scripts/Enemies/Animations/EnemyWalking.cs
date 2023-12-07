@@ -25,29 +25,14 @@ public class EnemyWalking : MonoBehaviour
     
     public void SetRagdollEnabled(bool isEnabled)
     {
-        if (isEnabled)
-        {
-            animator.enabled = false;
-        }
         
+        gameObject.GetComponent<CapsuleCollider>().enabled = !isEnabled;
+        animator.enabled = !isEnabled;
+
         foreach (var rb in rigidbodies)
         {
             rb.isKinematic = !isEnabled;
             rb.detectCollisions = isEnabled;
-        }
-        
-    }
-
-    public void Explode()
-    {
-        gameObject.GetComponent<CapsuleCollider>().enabled = false;
-        animator.enabled = false;
-        
-        
-        foreach (var rb in rigidbodies)
-        {
-            rb.isKinematic = false;
-            rb.detectCollisions = true;
         }
         
     }
