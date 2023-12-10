@@ -2923,7 +2923,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8710649129263319150}
   - component: {fileID: 3315315560764641812}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: characterRagdoll
   m_TagString: Untagged
   m_Icon: {fileID: 0}

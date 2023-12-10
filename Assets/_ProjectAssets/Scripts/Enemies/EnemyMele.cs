@@ -7,12 +7,17 @@ using UnityEngine;
 public class EnemyMele : EnemyArms
 {
 
+    private float stoppingDistacne;
+    
+    
+    
     protected override bool CanShoot()
     {
         try
         {
             if(Vector3.Distance(transform.position,GameManager.playerRef.position) < GetComponent<EnemyMovement>().stoppingDistance )
             {
+                Debug.Log("Can shoot");
                 return true;
             }
         }
@@ -41,10 +46,10 @@ public class EnemyMele : EnemyArms
         });
     }
 
-    protected override void InitStats(EnemyType enemyType)
+    public override void InitStats(EnemyType enemyType)
     {
         damage = enemyType.damage;
         timeBetweenShoots = enemyType.timeBetweenShoots;
-        Instantiate(enemyType.armPrefab, armSpawnPoint.position, armSpawnPoint.rotation,transform);
+        Instantiate(enemyType.armPrefab, armSpawnPoint.position, Quaternion.identity,armSpawnPoint.transform);
     }
 }

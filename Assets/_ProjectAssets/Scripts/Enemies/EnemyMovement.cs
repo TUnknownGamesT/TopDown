@@ -11,8 +11,8 @@ using Random = UnityEngine.Random;
 public class EnemyMovement : MonoBehaviour
 {
     public Transform[] _travelPoints;
+    
     public float stoppingDistance;
-
     private NavMeshAgent _navMeshAgent;
     private CancellationTokenSource _cts;
 
@@ -28,7 +28,7 @@ public class EnemyMovement : MonoBehaviour
         if(_travelPoints.Length > 0)
             Travel();
     }
-    
+
     public void PlayerOutOfView()
     {
         _navMeshAgent.isStopped = false;
@@ -49,6 +49,7 @@ public class EnemyMovement : MonoBehaviour
     public void EnemyDeath()
     {
         _cts.Cancel();
+        _navMeshAgent.destination = transform.position;
     }
     
     private void Travel()
@@ -68,14 +69,27 @@ public class EnemyMovement : MonoBehaviour
     {
         UniTask.Void(async  () =>
         {
-            await UniTask.Delay(TimeSpan.FromSeconds(0.1f), cancellationToken: _cts.Token);
-            if (Vector3.Distance(transform.position, GameManager.playerRef.position) > stoppingDistance)
+            try
+            { 
+                await UniTask.Delay(TimeSpan.FromSeconds(0.1f), cancellationToken: _cts.Token);
+                if (Vector3.Distance(transform.position, GameManager.playerRef.position) > stoppingDistance)
+                {
+                    Debug.Log("FollowPlayer");
+                    _navMeshAgent.destination = GameManager.playerRef.position;
+                }
+                else
+                {
+                    _navMeshAgent.destination = transform.position;
+                }
+            
+                FollowPlayer();
+            }
+            catch (Exception e)
             {
-                Debug.Log("FollowPlayer");
-                _navMeshAgent.destination = GameManager.playerRef.position;
+                Debug.Log("Thread Miss reference",this);
+                _cts.Cancel();
             }
             
-            FollowPlayer();
         });
     }
 

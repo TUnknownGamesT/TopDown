@@ -7,7 +7,6 @@ public class InteractableChecker : MonoBehaviour
     
     public IInteractable interactable;
     
-
     private void OnDisable()
     {
         UserInputController._spaceAction.started -= InteractWithLatsObject;

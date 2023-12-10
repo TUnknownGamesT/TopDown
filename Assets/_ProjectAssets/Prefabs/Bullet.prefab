@@ -4876,7 +4876,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23d061c537ceb98418337b6bd9147963, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 0
+  damage: 1
   wallHitEffect: {fileID: 1506893024578197116, guid: 170dc4a151ea51540827a7489b2ff58e,
     type: 3}
 --- !u!65 &-9000890661309056285
