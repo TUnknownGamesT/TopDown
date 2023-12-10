@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -26,18 +27,28 @@ public class UIManager : MonoBehaviour
     private List<GameObject> canvases;
     public Slider playerHealthBar;
     public bool isPaused = false;
+      
+    [Header("Amo UI")] 
+    public TextMeshProUGUI currentAmoText;
+    public TextMeshProUGUI rezAmoText;
 
+    
+    private void OnDisable()
+    {
+        Gunn.onShoot -= SetCurrentAmoUI;
+        Gunn.onPickUpNewWeapon -= SetAmoUI;
+        PlayerHealth.onPlayerGetDamage -= DecreaseHealthBarValue;
+    }
 
     private void Start()
     {
+        Gunn.onShoot += SetCurrentAmoUI;
+        Gunn.onPickUpNewWeapon += SetAmoUI;
         PlayerHealth.onPlayerGetDamage += DecreaseHealthBarValue;
         UserInputController._pause.performed += Pause;
     }
     
-    private void OnDisable()
-    {
-        PlayerHealth.onPlayerGetDamage -= DecreaseHealthBarValue;
-    }
+   
 
     public void SetHealthBarMaxLife(float value)
     {
@@ -45,6 +56,19 @@ public class UIManager : MonoBehaviour
         playerHealthBar.value = value;
     }
 
+    private void SetAmoUI(int currentAmo, int maxAmo)
+    {
+        currentAmoText.text = currentAmo.ToString();
+        rezAmoText.text = maxAmo.ToString();
+    }
+
+    private void SetCurrentAmoUI()
+    {
+        int amo = int.Parse(currentAmoText.text);
+        amo--;
+        currentAmoText.text = amo.ToString();
+    }
+    
     public void DecreaseHealthBarValue(int value)
     {
         playerHealthBar.value -= value;

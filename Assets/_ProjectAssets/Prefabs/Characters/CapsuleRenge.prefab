@@ -1286,9 +1286,9 @@ GameObject:
   - component: {fileID: 2589744881573884561}
   - component: {fileID: 2589744881573884566}
   - component: {fileID: 2589744881573884567}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: CapsuleRenge
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1300,7 +1300,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2589744881573884554}
-  m_LocalRotation: {x: -0, y: -0.9999914, z: -0, w: -0.0041606426}
+  m_LocalRotation: {x: -0, y: -0.99999136, z: 0, w: -0.0041624466}
   m_LocalPosition: {x: 0.27999595, y: 1.79, z: 27.780005}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1308,7 +1308,7 @@ Transform:
   - {fileID: 6562569310670536903}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: -90.477, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -180.477, z: 0}
 --- !u!33 &2589744881573884553
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -1370,9 +1370,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.5
-  m_Height: 2
+  m_Height: 3.59
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 0.52, z: 0}
 --- !u!195 &2589744881573884556
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1407,11 +1407,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f53a7eb842556bf4485557de169214bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 10.01
+  radius: 28.3
   angle: 82
   obstructionMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8388608
   targetMask:
     serializedVersion: 2
     m_Bits: 1024
@@ -1443,6 +1443,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3f2d768172ffb04491b7dc1c2b2ecf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 0
 --- !u!114 &2589744881573884560
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1455,7 +1456,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a69624dd6012f4a47a868c75eb7d34b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damping: 10
+  damping: 300
 --- !u!114 &2589744881573884561
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1469,7 +1470,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _travelPoints: []
-  stoppingDistance: 0
+  stoppingDistance: 6
 --- !u!114 &2589744881573884566
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1482,6 +1483,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee171edff25ba30448c2ee2c05120917, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyType: 0
 --- !u!114 &2589744881573884567
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1496,6 +1498,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 1005079866088364733}
   _enemyTransform: {fileID: 6562569310670536903}
+  rigidbodies: []
 --- !u!1 &2589744881868037238
 GameObject:
   m_ObjectHideFlags: 0
@@ -1519,14 +1522,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2589744881868037238}
-  m_LocalRotation: {x: -0.9306422, y: 0.24523507, z: -0.25850484, w: 0.083307184}
+  m_LocalRotation: {x: -0.4043259, y: 0.25966072, z: -0.87698066, w: 0.0013549357}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2450187509657518400}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 27.022, y: 52.832, z: -166.209}
 --- !u!1 &2650176439581122217
 GameObject:
   m_ObjectHideFlags: 0
