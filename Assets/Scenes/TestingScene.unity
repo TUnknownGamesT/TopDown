@@ -33752,9 +33752,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c42419a5ec936954a8a2ea828f342fec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerAnimator: {fileID: 6969803593686083379}
-  _playerTransform: {fileID: 3916332481239563593}
-  gun: {fileID: 5540816289483858138, guid: d982b7807e182484c8ece0898f7f194b, type: 3}
+  animator: {fileID: 6969803593686083379}
+  _transform: {fileID: 3916332481239563593}
   rigidbodies: []
 --- !u!114 &1637404055533089709
 MonoBehaviour:
