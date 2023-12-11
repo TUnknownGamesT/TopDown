@@ -2,22 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyWalking : MonoBehaviour
+public class AnimationController : MonoBehaviour
 {
     [SerializeField]
-    private Animator animator;
+    public Animator animator;
     [SerializeField]
-    private Transform _enemyTransform;
-    private Vector3 _oldPosition;
+    protected Transform _transform;
+    protected Vector3 _oldPosition;
     
-    private const float _animationMultiplier=30;
+    protected const float _animationMultiplier=30;
     
-    private static readonly int frontWalking = Animator.StringToHash("frontWalking");
-    private static readonly int sideWalking = Animator.StringToHash("sideWalking");
+    protected readonly int frontWalking = Animator.StringToHash("frontWalking");
+    protected readonly int sideWalking = Animator.StringToHash("sideWalking");
     
     public Rigidbody[] rigidbodies;
+    
+    
     // Start is called before the first frame update
-    private void Start()
+    protected virtual void Start()
     {
         rigidbodies = GetComponentsInChildren<Rigidbody>();
         SetRagdollEnabled(false);
@@ -37,17 +39,22 @@ public class EnemyWalking : MonoBehaviour
         
     }
     // Update is called once per frame
-    void Update()
+    public void SetWalkingAnimation()
     {
         
-        Vector3 newToOld = _oldPosition - _enemyTransform.position;
+        Vector3 newToOld = _oldPosition - _transform.position;
 
-        float directionValue = Vector3.Dot(_enemyTransform.forward, newToOld);
+        float directionValue = Vector3.Dot(_transform.forward, newToOld);
         animator.SetFloat(frontWalking, directionValue*_animationMultiplier);
         
-        directionValue = Vector3.Dot(_enemyTransform.right, newToOld);
+        directionValue = Vector3.Dot(_transform.right, newToOld);
         animator.SetFloat(sideWalking, directionValue*_animationMultiplier);
         
-        _oldPosition = _enemyTransform.position;
+        _oldPosition = _transform.position;
+    }
+    
+    public virtual void Die()
+    {
+        SetRagdollEnabled(true);
     }
 }

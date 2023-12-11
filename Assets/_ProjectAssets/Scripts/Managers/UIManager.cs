@@ -54,7 +54,6 @@ public class UIManager : MonoBehaviour
     {
         canvases[0].SetActive(false);
         canvases[2].SetActive(true);
-        Time.timeScale = 0.1f;
     }
 
     public void UnPause()

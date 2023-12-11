@@ -6,6 +6,7 @@ public class EnemyHealth : MonoBehaviour
     
     public float health;
     private EnemyBrain _enemyBrain;
+    public float forceMultiplier;
 
     private void Awake()
     {
@@ -46,14 +47,24 @@ public class EnemyHealth : MonoBehaviour
         if (health <= 0)
         {
             _enemyBrain.Death();
-            GetComponent<EnemyWalking>()?.SetRagdollEnabled(true);
+            GetComponent<AnimationController>()?.Die();
         }
     }
     private void OnCollisionEnter(Collision collision)
     {
+        var animations = GetComponent<EnemyAnimations>();
         if (collision.gameObject.CompareTag("Bullet"))
         {
             TakeDmg(1);
+            ContactPoint contact = collision.contacts[0];
+
+            // Calculate the force direction based on the collision point
+            Vector3 forceDirection = contact.point - transform.position;
+
+            // Apply force to the ragdoll's rigidbody
+            GetComponent<EnemyAnimations>().rigidbodies[5].AddForceAtPosition(forceDirection.normalized * forceMultiplier, contact.point);
+
+
         }
     }
 }

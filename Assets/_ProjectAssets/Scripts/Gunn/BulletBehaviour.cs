@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks.Triggers;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]

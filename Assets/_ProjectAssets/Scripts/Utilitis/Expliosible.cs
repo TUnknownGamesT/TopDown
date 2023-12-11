@@ -66,7 +66,7 @@ public class Expliosible : MonoBehaviour
                 enemy.TakeDmg(dmg);
                 if (enemy.health <= 0)
                 {
-                    var animator = collider.GetComponent<EnemyWalking>();
+                    var animator = collider.GetComponent<AnimationController>();
                     foreach (var element in animator.rigidbodies)
                     {
                        ApplyForce(element);

@@ -117,7 +117,8 @@ public abstract class EnemyArms : MonoBehaviour
 
     public void DropArm()
     {
+        Destroy(armPrefab);
         EnemyInitiator.instance.InstantiateArm(enemyType,transform.position);
     }
-    
+
 }

@@ -1285,7 +1285,7 @@ GameObject:
   - component: {fileID: 2589744881573884560}
   - component: {fileID: 2589744881573884561}
   - component: {fileID: 2589744881573884566}
-  - component: {fileID: 2589744881573884567}
+  - component: {fileID: 5831068002214202626}
   m_Layer: 0
   m_Name: CapsuleRenge
   m_TagString: Untagged
@@ -1443,6 +1443,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3f2d768172ffb04491b7dc1c2b2ecf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 0
 --- !u!114 &2589744881573884560
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1482,7 +1483,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee171edff25ba30448c2ee2c05120917, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &2589744881573884567
+--- !u!114 &5831068002214202626
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1491,11 +1492,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 2589744881573884554}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66a1ab9eaa9546549a4fb71ca4070d4c, type: 3}
+  m_Script: {fileID: 11500000, guid: e4263c675c7492d49833f7ced2c49e61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 1005079866088364733}
-  _enemyTransform: {fileID: 6562569310670536903}
+  _transform: {fileID: 6562569310670536903}
+  rigidbodies: []
 --- !u!1 &2589744881868037238
 GameObject:
   m_ObjectHideFlags: 0

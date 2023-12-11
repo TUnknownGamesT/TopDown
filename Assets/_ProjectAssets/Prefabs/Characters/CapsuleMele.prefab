@@ -50,7 +50,7 @@ GameObject:
   - component: {fileID: 4071720317072541654}
   - component: {fileID: 4071720317072541658}
   - component: {fileID: 4071720317072541486}
-  - component: {fileID: 183170361925686409}
+  - component: {fileID: 8865731870079514736}
   m_Layer: 0
   m_Name: CapsuleMele
   m_TagString: Untagged
@@ -221,6 +221,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3f2d768172ffb04491b7dc1c2b2ecf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 0
 --- !u!114 &4071720317072541658
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -247,7 +248,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee171edff25ba30448c2ee2c05120917, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &183170361925686409
+--- !u!114 &8865731870079514736
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -256,11 +257,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 4071720317072541661}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66a1ab9eaa9546549a4fb71ca4070d4c, type: 3}
+  m_Script: {fileID: 11500000, guid: e4263c675c7492d49833f7ced2c49e61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 1593412705067908144}
-  _enemyTransform: {fileID: 4682860417928095306}
+  _transform: {fileID: 4682860417928095306}
   rigidbodies: []
 --- !u!1001 &4043860307932163620
 PrefabInstance:
