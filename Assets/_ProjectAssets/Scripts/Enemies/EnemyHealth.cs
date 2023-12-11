@@ -1,4 +1,5 @@
 using System;
+using Cinemachine;
 using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
@@ -20,7 +21,7 @@ public class EnemyHealth : MonoBehaviour
 
     private void Init()
     {
-        switch (GetComponent<EnemyArms>().enemyType)
+        switch (_enemyBrain.enemyType)
         {
             case Constants.EnemyType.Pistol:
             {

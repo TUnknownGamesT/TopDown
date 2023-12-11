@@ -1,7 +1,10 @@
 using UnityEngine;
 
+
 public class EnemyBrain : MonoBehaviour
 {
+    
+    public Constants.EnemyType enemyType;
     
     private EnemyMovement _enemyMovement;
     private EnemyHealth _enemyHealth;
@@ -17,6 +20,19 @@ public class EnemyBrain : MonoBehaviour
         _enemyRotation = GetComponent<EnemyRotation>();
         _enemyArms = GetComponent<EnemyArms>();
         _enemyMovement = GetComponent<EnemyMovement>();
+        
+    }
+
+    private void Start()
+    {
+        InitStats(EnemyInitiator.instance.GetEnemyStats(enemyType));
+    }
+
+    private void InitStats(EnemyType enemyType)
+    {
+        _enemyArms.InitStats(enemyType);
+        if(_enemyMovement != null)
+            _enemyMovement.stoppingDistance = enemyType.stoppingDistance;;    
     }
 
     public void PlayerInView()
@@ -38,6 +54,7 @@ public class EnemyBrain : MonoBehaviour
     {
         _fieldOfView.EnemyDeath();
        _enemyMovement?.EnemyDeath();
+       _enemyRotation.PlayerDeath();
        _enemyArms.DropArm();
     }
 

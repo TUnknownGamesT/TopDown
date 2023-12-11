@@ -43,36 +43,48 @@ public class FieldOfView : MonoBehaviour
     {
         UniTask.Void(async () =>
         {
-            await UniTask.Delay(TimeSpan.FromSeconds(0.05f), cancellationToken: _cts.Token);
-
-            Collider[] rangeChecks =
-                Physics.OverlapSphere(transform.position, radius, targetMask, QueryTriggerInteraction.Collide);
-
-            if (rangeChecks.Length != 0)
+            
+            try
             {
-                Transform target = rangeChecks[0].transform;
-                Vector3 directionToTarget = (target.position - transform.position).normalized;
+                await UniTask.Delay(TimeSpan.FromSeconds(0.05f), cancellationToken: _cts.Token);
                 
-                if (Vector3.Angle(transform.forward, directionToTarget) < angle / 2)
+                Collider[] rangeChecks =
+                    Physics.OverlapSphere(transform.position, radius, targetMask, QueryTriggerInteraction.Collide);
+
+                if (rangeChecks.Length != 0)
                 {
-                    float distanceToTarget = Vector3.Distance(transform.position, target.position);
-                    canSeePlayer = !Physics.Raycast(transform.position, directionToTarget, distanceToTarget,
-                        obstructionMask);
-                    if (canSeePlayer && !_alreadyInView)
+                    Transform target = rangeChecks[0].transform;
+                    Vector3 directionToTarget = (target.position - transform.position).normalized;
+                
+                    if (Vector3.Angle(transform.forward, directionToTarget) < angle / 2)
                     {
-                        _enemyBrain.PlayerInView();
-                        _alreadyInView = true;
+                        float distanceToTarget = Vector3.Distance(transform.position, target.position);
+                        canSeePlayer = !Physics.Raycast(transform.position, directionToTarget, distanceToTarget,
+                            obstructionMask);
+                        if (canSeePlayer && !_alreadyInView)
+                        {
+                            _enemyBrain.PlayerInView();
+                            _alreadyInView = true;
+                        }
                     }
                 }
-            }
-            else if (canSeePlayer)
-            {
-                canSeePlayer = false;
-                _enemyBrain.PlayerOutOfView();
-                _alreadyInView = false;
-            }
+                else if (canSeePlayer)
+                {
+                    canSeePlayer = false;
+                    _enemyBrain.PlayerOutOfView();
+                    _alreadyInView = false;
+                }
 
-            FiledOfViewCheck();
+                FiledOfViewCheck();
+            }
+            catch (Exception e)
+            {
+                Debug.Log("Thread Miss reference",this);
+                _cts.Cancel();
+            }
+            
+
+           
         });
     }
 }

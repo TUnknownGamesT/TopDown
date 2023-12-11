@@ -6,7 +6,7 @@ using UnityEngine;
 public class Expliosible : MonoBehaviour
 {
 
-    public List<ParticleSystem> vfxList = new List<ParticleSystem>();
+    public GameObject explosionVFX;
 
     
     [Header("Explosion")]
@@ -18,7 +18,7 @@ public class Expliosible : MonoBehaviour
     {
         if (collision.gameObject.tag =="Bullet")
         {
-           PlayVFX();
+            PlayVFX();
             CameraShake.ExplosionCameraShake();
             FindRigidBodies();
         }
@@ -26,10 +26,7 @@ public class Expliosible : MonoBehaviour
     
     private void PlayVFX()
     {
-        foreach (ParticleSystem vfx in vfxList)
-        {
-            vfx.Play();
-        }
+        Instantiate(explosionVFX, transform.position, Quaternion.identity);
     }
 
     void OnDrawGizmosSelected()
@@ -96,5 +93,8 @@ public class Expliosible : MonoBehaviour
 
         // Apply the force
         rb.AddForce(direction.normalized * force, ForceMode.Impulse);
+        
+        Destroy(gameObject);
+        
     }
 }

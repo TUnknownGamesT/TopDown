@@ -11,9 +11,9 @@ using UnityEngine.InputSystem.LowLevel;
 public abstract class EnemyArms : MonoBehaviour
 {
     public Transform armSpawnPoint;
-    public Constants.EnemyType enemyType;
-
-
+    
+    
+    private Constants.EnemyType enemyType;
     [Header("Shooting")] protected float timeBetweenShoots;
     protected int damage;
     [Header("Reloading")] private float fireRate;
@@ -33,15 +33,9 @@ public abstract class EnemyArms : MonoBehaviour
 
     protected virtual bool CanShoot() => !reloading && timeSinceLastShot > 1f / (fireRate / 60f);
 
-    private void Awake()
+    public virtual void Awake()
     {
         _fieldOfView = GetComponent<FieldOfView>();
-    }
-
-
-    protected void Start()
-    {
-        InitStats(EnemyInitiator.instance.GetEnemyStats(enemyType));
     }
 
     protected void Update()
@@ -50,8 +44,9 @@ public abstract class EnemyArms : MonoBehaviour
     }
 
 
-    protected virtual void InitStats(EnemyType enemyType)
+    public virtual void InitStats(EnemyType enemyType)
     {
+        this.enemyType = enemyType.enemyType;
         damage = enemyType.damage;
         fireRate = enemyType.fireRate;
         reloadTime = enemyType.reloadTime;
@@ -59,9 +54,12 @@ public abstract class EnemyArms : MonoBehaviour
         bulletSpeed = enemyType.bulletSpeed;
         currentAmo = enemyType.magSize;
         timeBetweenShoots = enemyType.timeBetweenShoots;
-
         bulletPrefab = enemyType.bulletPrefab;
-        armPrefab = Instantiate(enemyType.armPrefab, armSpawnPoint.position, armSpawnPoint.localRotation, armSpawnPoint.transform);
+        
+        armPrefab = Instantiate(enemyType.armPrefab, armSpawnPoint.position, Quaternion.identity, armSpawnPoint.transform);
+        armPrefab.transform.localPosition = Vector3.zero;
+        armPrefab.transform.localRotation = Quaternion.identity;
+        
         bulletSpawnPoint = armPrefab.transform.GetChild(0);
     }
 

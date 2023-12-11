@@ -13,10 +13,12 @@ public class EnemyType : ScriptableObject
     public float fireRate;
     public float reloadTime;
     public int magSize;
+    public float totalAmmunition;
     public float bulletSpeed;
-    public float currentAmo;
     public bool reloading;
     [Header("References")]
     public GameObject bulletPrefab;
-    
+    public float stoppingDistance;
+
+
 }

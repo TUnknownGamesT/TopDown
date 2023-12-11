@@ -25,6 +25,11 @@ public class EnemyRotation : MonoBehaviour
         if(_staringAtPlayer)
             RotateTowardThePlayer();
     }
+
+    public void PlayerDeath()
+    {
+        _staringAtPlayer = false;
+    }
     
     
     

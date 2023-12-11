@@ -6,6 +6,11 @@ using UnityEngine.InputSystem;
 
 public abstract class Gunn : MonoBehaviour,IInteractable
 {
+    
+    
+    public static Action onShoot;
+    public static Action<int> onReload;
+    public static Action<int,int> onPickUpNewWeapon;
 
     [Header("Shooting")]
     public float damage;
@@ -14,25 +19,24 @@ public abstract class Gunn : MonoBehaviour,IInteractable
     public float fireRate;
     public float reloadTime;
     public int magSize;
+    public int totalAmunition;
     public float bulletSpeed;
-    public float currentAmo;
     public bool reloading;
     [Header("References")]
     public Transform bulletSpawnPoint;
     public GameObject bulletPrefab;
 
-
     public Event animation = new Event();
     
     private float timeSinceLasrShot;
     private MeshRenderer _renderer;
-
+    private int currentAmunition;
 
     private void Awake()
     {
+        currentAmunition = magSize;
         _renderer = GetComponent<MeshRenderer>();
     }
-
 
     protected void Update()
     {
@@ -44,16 +48,17 @@ public abstract class Gunn : MonoBehaviour,IInteractable
     public void Shoot()
     {
 
-        if(currentAmo>0&& CanShoot())
+        if(currentAmunition>0&& CanShoot())
         {
             Rigidbody rb =  Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation).GetComponent<Rigidbody>();
             rb.AddRelativeForce(Vector3.forward * bulletSpeed, ForceMode.Impulse);
             vfx.Play();
-            currentAmo--;
+            currentAmunition--;
             timeSinceLasrShot = 0;
             CameraShake.ShakeCamera();
+            onShoot?.Invoke();
         }
-        else if(currentAmo<=0)
+        else if(currentAmunition<=0 && totalAmunition>0)
         {
             if (!reloading)
             {
@@ -69,7 +74,18 @@ public abstract class Gunn : MonoBehaviour,IInteractable
         {
             await UniTask.Delay(TimeSpan.FromSeconds(reloadTime));
             reloading = false;
-            currentAmo = magSize;
+            if (totalAmunition - magSize >= 0)
+            {
+                currentAmunition= magSize;
+                totalAmunition -= magSize;
+            }
+            else
+            {
+                currentAmunition = totalAmunition;
+                totalAmunition = 0;
+            }
+            
+            onPickUpNewWeapon?.Invoke(currentAmunition,totalAmunition);
         });
     }
 
@@ -77,14 +93,16 @@ public abstract class Gunn : MonoBehaviour,IInteractable
     {
         UnHighLight();
         PlayerArmHandler.instance.ChangeArm(gameObject);
+        currentAmunition = magSize;
+        onPickUpNewWeapon?.Invoke(currentAmunition,totalAmunition);
     }
 
-    public void HighLight()
+    public virtual void HighLight()
     {
         _renderer.material = Constants.instance.gunnHighLight;
     }
 
-    public void UnHighLight()
+    public virtual void UnHighLight()
     {
         _renderer.material = Constants.instance.gunnUnHighLight;
     }

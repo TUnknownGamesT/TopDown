@@ -33,6 +33,11 @@ public class Constants : MonoBehaviour
    public static int Ak47EnemyHealth = 1;
    public static int MaleEnemyHealth = 1;
 
+   public static float meleEnemyAttackDistace = 1.8f;
+   public static float rangeStoppingDistance = 6;
+   
+   
+   
    public Material gunnHighLight;
    public Material gunnUnHighLight;
 
