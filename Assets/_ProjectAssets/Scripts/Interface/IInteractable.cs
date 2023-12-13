@@ -9,4 +9,6 @@ public interface IInteractable
     public void HighLight();
     
     public void UnHighLight();
+    
+    
 }
