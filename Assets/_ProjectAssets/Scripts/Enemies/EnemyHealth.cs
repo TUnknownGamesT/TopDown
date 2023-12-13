@@ -49,22 +49,40 @@ public class EnemyHealth : MonoBehaviour
         {
             _enemyBrain.Death();
             GetComponent<AnimationController>()?.Die();
+            Debug.Log("death");
         }
     }
     private void OnCollisionEnter(Collision collision)
     {
-        var animations = GetComponent<EnemyAnimations>();
         if (collision.gameObject.CompareTag("Bullet"))
         {
             TakeDmg(1);
-            ContactPoint contact = collision.contacts[0];
+            if (health<=0)
+            {
+                ContactPoint contact = collision.contacts[0];
+                foreach (var rb in GetComponent<AnimationController>().rigidbodies)
+                {
+                    Vector3 direction = contact.point - transform.position;
+                    direction.y = 0;
+                    float distance = direction.magnitude;
 
-            // Calculate the force direction based on the collision point
-            Vector3 forceDirection = contact.point - transform.position;
+                    // Calculate the force to be applied using an inverse square law
+                    float force = (2 - distance) * forceMultiplier;
+                    if (force<0)
+                    {
+                        force = 0;
+                    }
+                    else
+                    {
+                        force = -force;
+                    }
 
-            // Apply force to the ragdoll's rigidbody
-            GetComponent<EnemyAnimations>().rigidbodies[5].AddForceAtPosition(forceDirection.normalized * forceMultiplier, contact.point);
-
+                    // Apply the force
+                    rb.AddForce(direction.normalized * force, ForceMode.Impulse);
+                    Debug.Log(force +"force");
+                }
+            }
+            
 
         }
     }

@@ -74,7 +74,6 @@ public class EnemyMovement : MonoBehaviour
                 await UniTask.Delay(TimeSpan.FromSeconds(0.1f), cancellationToken: _cts.Token);
                 if (Vector3.Distance(transform.position, GameManager.playerRef.position) > stoppingDistance)
                 {
-                    Debug.Log("FollowPlayer");
                     _navMeshAgent.destination = GameManager.playerRef.position;
                 }
                 else

@@ -3990,6 +3990,11 @@ PrefabInstance:
       propertyPath: enemyType
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2589744881573884563, guid: a5d3fc2e0ac166d4e9827af37de0efe4,
+        type: 3}
+      propertyPath: forceMultiplier
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 2589744881573884566, guid: a5d3fc2e0ac166d4e9827af37de0efe4,
         type: 3}
       propertyPath: enemyType
