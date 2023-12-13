@@ -1495,6 +1495,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
+  forceMultiplier: 0
 --- !u!114 &117618748
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1922,6 +1923,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
+  forceMultiplier: 0
 --- !u!114 &131056605
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2239,6 +2241,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
+  forceMultiplier: 0
 --- !u!114 &161501077
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2452,6 +2455,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
+  forceMultiplier: 0
 --- !u!114 &164411856
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3681,6 +3685,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
+  forceMultiplier: 0
 --- !u!114 &283231906
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3910,6 +3915,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
+  forceMultiplier: 0
 --- !u!114 &294822599
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5967,6 +5973,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
+  forceMultiplier: 0
 --- !u!114 &452762616
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6442,6 +6449,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
+  forceMultiplier: 0
 --- !u!114 &481898960
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6884,6 +6892,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
+  forceMultiplier: 0
 --- !u!114 &517811457
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8584,6 +8593,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
+  forceMultiplier: 0
 --- !u!114 &618466272
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9151,6 +9161,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
+  forceMultiplier: 0
 --- !u!114 &636722017
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10178,6 +10189,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
+  forceMultiplier: 0
 --- !u!114 &728448512
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10831,6 +10843,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
+  forceMultiplier: 0
 --- !u!114 &765505140
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13543,6 +13556,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
+  forceMultiplier: 0
 --- !u!114 &1061396023
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14124,6 +14138,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
+  forceMultiplier: 0
 --- !u!114 &1096873406
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16208,6 +16223,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
+  forceMultiplier: 0
 --- !u!114 &1283550563
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16454,6 +16470,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
+  forceMultiplier: 0
 --- !u!114 &1310624041
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16975,6 +16992,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
+  forceMultiplier: 0
 --- !u!114 &1345220431
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18491,9 +18509,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c42419a5ec936954a8a2ea828f342fec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerAnimator: {fileID: 421120474}
-  _playerTransform: {fileID: 421120475}
-  gun: {fileID: 5540816289483858138, guid: d982b7807e182484c8ece0898f7f194b, type: 3}
+  animator: {fileID: 421120474}
+  _transform: {fileID: 421120475}
   rigidbodies: []
 --- !u!1 &1446232365
 GameObject:
@@ -18831,6 +18848,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
+  forceMultiplier: 0
 --- !u!114 &1498517333
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19036,6 +19054,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
+  forceMultiplier: 0
 --- !u!114 &1500245220
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19285,6 +19304,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
+  forceMultiplier: 0
 --- !u!114 &1506180986
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19436,6 +19456,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: CapsuleRenge (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2589744881573884554, guid: a5d3fc2e0ac166d4e9827af37de0efe4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2589744881573884555, guid: a5d3fc2e0ac166d4e9827af37de0efe4,
         type: 3}
       propertyPath: m_Height
@@ -19510,6 +19535,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2589744881573884562, guid: a5d3fc2e0ac166d4e9827af37de0efe4,
+        type: 3}
+      propertyPath: enemyType
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2589744881573884562, guid: a5d3fc2e0ac166d4e9827af37de0efe4,
         type: 3}
@@ -21729,6 +21759,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
+  forceMultiplier: 0
 --- !u!114 &1792838890
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22209,6 +22240,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
+  forceMultiplier: 0
 --- !u!114 &1827406000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22927,6 +22959,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
+  forceMultiplier: 0
 --- !u!114 &1895704255
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23395,6 +23428,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
+  forceMultiplier: 0
 --- !u!114 &1912829817
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23552,6 +23586,56 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 27400874111290442, guid: 2db8ed038e8226f4dbf3176d608b0844,
+        type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 734887739411528624, guid: 2db8ed038e8226f4dbf3176d608b0844,
+        type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 841054329979171831, guid: 2db8ed038e8226f4dbf3176d608b0844,
+        type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 932802741967575932, guid: 2db8ed038e8226f4dbf3176d608b0844,
+        type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 1205855328971519996, guid: 2db8ed038e8226f4dbf3176d608b0844,
+        type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 2433719339228000291, guid: 2db8ed038e8226f4dbf3176d608b0844,
+        type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 2549284257873545286, guid: 2db8ed038e8226f4dbf3176d608b0844,
+        type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 2797795011931667614, guid: 2db8ed038e8226f4dbf3176d608b0844,
+        type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 4014210198249019914, guid: 2db8ed038e8226f4dbf3176d608b0844,
+        type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 4032257164049187409, guid: 2db8ed038e8226f4dbf3176d608b0844,
+        type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 4071720317072541649, guid: 2db8ed038e8226f4dbf3176d608b0844,
         type: 3}
       propertyPath: m_RootOrder
@@ -23607,12 +23691,73 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4071720317072541650, guid: 2db8ed038e8226f4dbf3176d608b0844,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4071720317072541654, guid: 2db8ed038e8226f4dbf3176d608b0844,
+        type: 3}
+      propertyPath: forceMultiplier
+      value: 1618
+      objectReference: {fileID: 0}
     - target: {fileID: 4071720317072541661, guid: 2db8ed038e8226f4dbf3176d608b0844,
         type: 3}
       propertyPath: m_Name
       value: CapsuleMele
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 4071720317072541661, guid: 2db8ed038e8226f4dbf3176d608b0844,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4071720317072541661, guid: 2db8ed038e8226f4dbf3176d608b0844,
+        type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224739839876451672, guid: 2db8ed038e8226f4dbf3176d608b0844,
+        type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 5455842743520017648, guid: 2db8ed038e8226f4dbf3176d608b0844,
+        type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 7169360929255096490, guid: 2db8ed038e8226f4dbf3176d608b0844,
+        type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 7823310688611601898, guid: 2db8ed038e8226f4dbf3176d608b0844,
+        type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 7961598811682710224, guid: 2db8ed038e8226f4dbf3176d608b0844,
+        type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 8266363105184850568, guid: 2db8ed038e8226f4dbf3176d608b0844,
+        type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 8582455879146145397, guid: 2db8ed038e8226f4dbf3176d608b0844,
+        type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 8988928261880812777, guid: 2db8ed038e8226f4dbf3176d608b0844,
+        type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 183170361925686409, guid: 2db8ed038e8226f4dbf3176d608b0844, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 2db8ed038e8226f4dbf3176d608b0844, type: 3}
 --- !u!1 &1921085779
 GameObject:
@@ -23910,6 +24055,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
+  forceMultiplier: 0
 --- !u!114 &1938012668
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24127,6 +24273,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
+  forceMultiplier: 0
 --- !u!114 &1941613146
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25564,6 +25711,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
+  forceMultiplier: 0
 --- !u!114 &2112650328
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28995,6 +29143,11 @@ PrefabInstance:
     - target: {fileID: 2589744881573884558, guid: a5d3fc2e0ac166d4e9827af37de0efe4,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2589744881573884562, guid: a5d3fc2e0ac166d4e9827af37de0efe4,
+        type: 3}
+      propertyPath: enemyType
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2589744881573884562, guid: a5d3fc2e0ac166d4e9827af37de0efe4,
@@ -35179,7 +35332,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8757042445535307599}
   m_LocalRotation: {x: 0.49999997, y: 0.50000006, z: 0.5, w: -0.50000006}
-  m_LocalPosition: {x: -0.11766435, y: 2.25, z: 11.561582}
+  m_LocalPosition: {x: -0.16, y: 2.25, z: 11.5}
   m_LocalScale: {x: 21.098415, y: 997.85004, z: 161.2759}
   m_ConstrainProportionsScale: 0
   m_Children: []

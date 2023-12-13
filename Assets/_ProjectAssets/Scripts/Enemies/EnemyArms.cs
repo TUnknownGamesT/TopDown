@@ -13,7 +13,7 @@ public abstract class EnemyArms : MonoBehaviour
     public Transform armSpawnPoint;
     
     
-    private Constants.EnemyType enemyType;
+    public Constants.EnemyType enemyType;
     [Header("Shooting")] protected float timeBetweenShoots;
     protected int damage;
     [Header("Reloading")] private float fireRate;
@@ -115,7 +115,8 @@ public abstract class EnemyArms : MonoBehaviour
 
     public void DropArm()
     {
+        Destroy(armPrefab);
         EnemyInitiator.instance.InstantiateArm(enemyType,transform.position);
     }
-    
+
 }

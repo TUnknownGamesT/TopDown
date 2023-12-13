@@ -23,10 +23,9 @@ public class Constants : MonoBehaviour
    
    public enum EnemyType
    {
-      Pistol,
-      AKA47,
-      Male
-      
+      Pistol=1,
+      AKA47=2,
+      Male=0
    }
 
    public static int PistolEnemyHealth = 2;

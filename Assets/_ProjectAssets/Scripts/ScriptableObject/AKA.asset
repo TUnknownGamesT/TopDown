@@ -14,14 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   armPrefab: {fileID: 7223032848886916969, guid: b47f1ed230e63cf4ab26e23c68d900dc,
     type: 3}
-  enemyType: 1
+  enemyType: 2
   timeBetweenShoots: 0.2
   damage: 2
   fireRate: 350
   reloadTime: 2
   magSize: 40
+  totalAmmunition: 0
   bulletSpeed: 300
-  currentAmo: 40
   reloading: 0
   bulletPrefab: {fileID: 4554020830683859374, guid: 9307afa9b3a1b244ebed89b1babc2b7f,
     type: 3}
