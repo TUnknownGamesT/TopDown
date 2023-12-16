@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class EnemyAnimations : AnimationController
 {
+    public int WeaponType;
     private WeaponAnimations myWeapon;
     protected override void Start()
     {
@@ -24,10 +25,12 @@ public class EnemyAnimations : AnimationController
         if (gameObject.GetComponent<EnemyMele>()!=null)
         {
             myWeapon.SetWeaponType(0);
+            WeaponType = 0;
         }
         else if (gameObject.GetComponent<EnemyRange>()!=null)
         {
             myWeapon.SetWeaponType((int)GetComponent<EnemyRange>().enemyType);
+            WeaponType = (int)GetComponent<EnemyRange>().enemyType;
         }
     }
 }

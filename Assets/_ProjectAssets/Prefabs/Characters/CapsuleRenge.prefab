@@ -1285,7 +1285,7 @@ GameObject:
   - component: {fileID: 2589744881573884560}
   - component: {fileID: 2589744881573884561}
   - component: {fileID: 2589744881573884566}
-  - component: {fileID: 2589744881573884567}
+  - component: {fileID: 8024498769109455546}
   m_Layer: 13
   m_Name: CapsuleRenge
   m_TagString: Enemy
@@ -1430,7 +1430,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   armSpawnPoint: {fileID: 2589744881868037239}
-  enemyType: 0
+  enemyType: 1
 --- !u!114 &2589744881573884563
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1444,6 +1444,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
+  forceMultiplier: 10
 --- !u!114 &2589744881573884560
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1483,8 +1484,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee171edff25ba30448c2ee2c05120917, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyType: 0
---- !u!114 &2589744881573884567
+  enemyType: 1
+--- !u!114 &8024498769109455546
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1493,12 +1494,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 2589744881573884554}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66a1ab9eaa9546549a4fb71ca4070d4c, type: 3}
+  m_Script: {fileID: 11500000, guid: e4263c675c7492d49833f7ced2c49e61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 1005079866088364733}
-  _enemyTransform: {fileID: 6562569310670536903}
+  _transform: {fileID: 6562569310670536903}
   rigidbodies: []
+  WeaponType: 0
 --- !u!1 &2589744881868037238
 GameObject:
   m_ObjectHideFlags: 0
@@ -1522,14 +1524,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2589744881868037238}
-  m_LocalRotation: {x: -0.4043259, y: 0.25966072, z: -0.87698066, w: 0.0013549357}
+  m_LocalRotation: {x: -0.9312702, y: 0.25515375, z: -0.15543708, w: 0.20849892}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2450187509657518400}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 27.022, y: 52.832, z: -166.209}
+  m_LocalEulerAnglesHint: {x: 26.699, y: 59.621, z: -167.917}
 --- !u!1 &2650176439581122217
 GameObject:
   m_ObjectHideFlags: 0

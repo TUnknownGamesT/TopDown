@@ -24,6 +24,7 @@ public class PlayerArmHandler : MonoBehaviour
 
     #endregion
     
+    private PlayerAnimation _animation;
     private Transform grooundArmChecker;
     public Transform armSpawnPoint;
     public Gunn currentArm;
@@ -68,6 +69,7 @@ public class PlayerArmHandler : MonoBehaviour
     protected void Start()
     {
         UserInputController._leftClick.performed += Shoot;
+        _animation = GetComponent<PlayerAnimation>();
     }
 
     private void Shoot(InputAction.CallbackContext obj)
@@ -89,6 +91,14 @@ public class PlayerArmHandler : MonoBehaviour
         currentArm.transform.parent = armSpawnPoint;
         currentArm.transform.localPosition = Vector3.zero;
         currentArm.transform.localRotation = Quaternion.identity;
+        if (currentArm.GetType() == typeof(Pistol))
+        {
+            _animation?.ChangeWeapon(1);
+        }else if (currentArm.GetType() ==typeof(AKA47))
+        {
+            _animation?.ChangeWeapon(2);
+        }
+        
 
     }
 

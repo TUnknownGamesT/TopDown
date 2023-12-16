@@ -10,7 +10,7 @@ public class PlayerAnimation : AnimationController
     private PlayerInput _playerInput;
     private InputAction _inputAction;
     private WeaponAnimations _myWeapon;
-    
+
     protected override void Start()
     {
         base.Start();
@@ -24,7 +24,11 @@ public class PlayerAnimation : AnimationController
     {
         SetWalkingAnimation();
     }
-    
+
+    public void ChangeWeapon(int hands)
+    {
+        _myWeapon.SetWeaponType(hands);
+    }
     
     private void OnShoot(InputAction.CallbackContext obj)
     {
