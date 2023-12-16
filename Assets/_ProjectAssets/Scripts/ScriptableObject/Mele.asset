@@ -26,3 +26,4 @@ MonoBehaviour:
   bulletPrefab: {fileID: 1000011764500980, guid: bf6e65de4f70a4dcf99ceb68e999d287,
     type: 3}
   stoppingDistance: 1.8
+  shootSound: {fileID: 8300000, guid: 38e31fe8409cf3a45a9fe3d143057f95, type: 3}

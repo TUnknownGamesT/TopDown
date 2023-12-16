@@ -1,13 +1,9 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.LowLevel;
 
-[RequireComponent(typeof(FieldOfView))]
+
+[RequireComponent(typeof(FieldOfView),typeof(SoundComponent))]
 public abstract class EnemyArms : MonoBehaviour
 {
     public Transform armSpawnPoint;
@@ -25,6 +21,8 @@ public abstract class EnemyArms : MonoBehaviour
     [Header("References")] private Transform bulletSpawnPoint;
     private GameObject bulletPrefab;
     private GameObject armPrefab;
+    private SoundComponent soundComponent;
+    private AudioClip shootSound;
 
 
     private float timeSinceLastShot;
@@ -35,6 +33,7 @@ public abstract class EnemyArms : MonoBehaviour
 
     public virtual void Awake()
     {
+        soundComponent = GetComponent<SoundComponent>();
         _fieldOfView = GetComponent<FieldOfView>();
     }
 
@@ -55,12 +54,14 @@ public abstract class EnemyArms : MonoBehaviour
         currentAmo = enemyType.magSize;
         timeBetweenShoots = enemyType.timeBetweenShoots;
         bulletPrefab = enemyType.bulletPrefab;
+        shootSound = enemyType.shootSound;
         
         armPrefab = Instantiate(enemyType.armPrefab, armSpawnPoint.position, Quaternion.identity, armSpawnPoint.transform);
         armPrefab.transform.localPosition = Vector3.zero;
         armPrefab.transform.localRotation = Quaternion.identity;
         
-        bulletSpawnPoint = armPrefab.transform.GetChild(0);
+        if(enemyType.enemyType !=  Constants.EnemyType.Male)
+            bulletSpawnPoint = armPrefab.transform.GetChild(0);
     }
 
 
@@ -78,6 +79,7 @@ public abstract class EnemyArms : MonoBehaviour
 
                     currentAmo--;
                     timeSinceLastShot = 0;
+                    soundComponent.PlaySound(shootSound);
 
                     await UniTask.Delay(TimeSpan.FromSeconds(timeBetweenShoots));
                 }
