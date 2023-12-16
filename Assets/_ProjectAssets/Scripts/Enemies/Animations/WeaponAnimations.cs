@@ -16,6 +16,12 @@ public class WeaponAnimations
 
     public void SetWeaponType(int type)
     {
+        
+        Debug.Log((Constants.EnemyType)type);
+        //make this more modular
+        if (type >= 2)
+            type = 2;
+        
         _daddy.animator.SetInteger(weaponType, type);
     }
     
