@@ -56,10 +56,7 @@ public class PlayerArmHandler : MonoBehaviour
 
     }
 
-    public void Die()
-    {
-        this.enabled = false;
-    }
+   
     protected void OnDisable()
     {
         UserInputController._leftClick.performed -= Shoot;
@@ -80,6 +77,11 @@ public class PlayerArmHandler : MonoBehaviour
         }   
     }
 
+    
+    public void Die()
+    {
+        enabled = false;
+    }
 
     public void ChangeArm(GameObject arm)
     {

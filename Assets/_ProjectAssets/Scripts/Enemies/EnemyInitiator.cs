@@ -49,6 +49,13 @@ public class EnemyInitiator : MonoBehaviour
                 break;
             }
 
+            case Constants.EnemyType.Sniper:
+            {
+                GameObject arm = enemyLootArms.Find(x => x.name == "AKA47");
+                Instantiate(arm, position, Quaternion.identity);
+                break;
+            }
+
 
         }
 

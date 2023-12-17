@@ -19,6 +19,7 @@ public class EnemyType : ScriptableObject
     [Header("References")]
     public GameObject bulletPrefab;
     public float stoppingDistance;
+    public AudioClip shootSound;
 
 
 }

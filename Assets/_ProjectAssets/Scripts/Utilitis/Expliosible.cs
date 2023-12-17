@@ -1,8 +1,11 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 
+
+[RequireComponent(typeof(SoundComponent))]
 public class Expliosible : MonoBehaviour
 {
 
@@ -13,17 +16,17 @@ public class Expliosible : MonoBehaviour
     public float explosionForce = 10f; 
     public float explosionRadius = 5f;
     public int dmg = 10;
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.tag =="Bullet")
-        {
-            PlayVFX();
-            CameraShake.ExplosionCameraShake();
-            FindRigidBodies();
-        }
-    }
+    public AudioClip explosionSound;
     
+    private SoundComponent soundComponent;
+
+
+    private void Awake()
+    {
+        soundComponent = GetComponent<SoundComponent>();
+    }
+
+
     private void PlayVFX()
     {
         Instantiate(explosionVFX, transform.position, Quaternion.identity);
@@ -94,7 +97,22 @@ public class Expliosible : MonoBehaviour
         // Apply the force
         rb.AddForce(direction.normalized * force, ForceMode.Impulse);
         
-        Destroy(gameObject);
-        
+        UniTask.Void(async () =>
+        {
+            await UniTask.Delay(TimeSpan.FromSeconds(2));
+            Destroy(gameObject);
+        });
+
+    }
+    
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag =="Bullet")
+        {
+            soundComponent.PlaySound(explosionSound);
+            PlayVFX();
+            CameraShake.ExplosionCameraShake();
+            FindRigidBodies();
+        }
     }
 }

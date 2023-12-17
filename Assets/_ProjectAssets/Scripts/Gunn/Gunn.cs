@@ -4,6 +4,7 @@ using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+[RequireComponent(typeof(SoundComponent))]
 public abstract class Gunn : MonoBehaviour,IInteractable
 {
     
@@ -25,6 +26,8 @@ public abstract class Gunn : MonoBehaviour,IInteractable
     [Header("References")]
     public Transform bulletSpawnPoint;
     public GameObject bulletPrefab;
+    public SoundComponent soundComponent;
+    public AudioClip shootSound;
 
     public Event animation = new Event();
     
@@ -36,6 +39,8 @@ public abstract class Gunn : MonoBehaviour,IInteractable
     {
         currentAmunition = magSize;
         _renderer = GetComponent<MeshRenderer>();
+        soundComponent = GetComponent<SoundComponent>();
+        
     }
 
     protected void Update()
@@ -57,6 +62,7 @@ public abstract class Gunn : MonoBehaviour,IInteractable
             timeSinceLasrShot = 0;
             CameraShake.ShakeCamera();
             onShoot?.Invoke();
+            soundComponent.PlaySound(shootSound);
         }
         else if(currentAmunition<=0 && totalAmunition>0)
         {
