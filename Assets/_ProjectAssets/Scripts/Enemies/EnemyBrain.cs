@@ -5,16 +5,19 @@ public class EnemyBrain : MonoBehaviour
 {
     
     public Constants.EnemyType enemyType;
+    public AudioClip deathSound;
     
     private EnemyMovement _enemyMovement;
     private EnemyHealth _enemyHealth;
     private FieldOfView _fieldOfView;
     private EnemyRotation _enemyRotation;
     private EnemyArms _enemyArms;
+    private SoundComponent _soundComponent;
     
 
     private void Awake()
     {
+        _soundComponent = GetComponent<SoundComponent>();
         _enemyHealth = GetComponent<EnemyHealth>();
         _fieldOfView = GetComponent<FieldOfView>();
         _enemyRotation = GetComponent<EnemyRotation>();
@@ -52,6 +55,7 @@ public class EnemyBrain : MonoBehaviour
     
     public void Death()
     {
+        _soundComponent.PlaySound(deathSound);
         _fieldOfView.EnemyDeath();
        _enemyMovement?.EnemyDeath();
        _enemyRotation.PlayerDeath();

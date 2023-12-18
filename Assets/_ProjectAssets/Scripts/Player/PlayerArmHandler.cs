@@ -67,6 +67,7 @@ public class PlayerArmHandler : MonoBehaviour
     {
         UserInputController._leftClick.performed += Shoot;
         _animation = GetComponent<PlayerAnimation>();
+        UIManager.instance.SetAmoUI(currentArm.magSize,currentArm.totalAmunition);
     }
 
     private void Shoot(InputAction.CallbackContext obj)

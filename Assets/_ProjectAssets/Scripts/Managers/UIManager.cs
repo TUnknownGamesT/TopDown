@@ -27,7 +27,8 @@ public class UIManager : MonoBehaviour
     private List<GameObject> canvases;
     public Slider playerHealthBar;
     public bool isPaused = false;
-      
+    public Canvas mainMenu;
+
     [Header("Amo UI")] 
     public TextMeshProUGUI currentAmoText;
     public TextMeshProUGUI rezAmoText;
@@ -56,7 +57,7 @@ public class UIManager : MonoBehaviour
         playerHealthBar.value = value;
     }
 
-    private void SetAmoUI(int currentAmo, int maxAmo)
+    public void SetAmoUI(int currentAmo, int maxAmo)
     {
         currentAmoText.text = currentAmo.ToString();
         rezAmoText.text = maxAmo.ToString();
@@ -76,8 +77,7 @@ public class UIManager : MonoBehaviour
 
     public void GameLost()
     {
-        canvases[0].SetActive(false);
-        canvases[2].SetActive(true);
+        mainMenu.enabled = true;
     }
 
     public void UnPause()
