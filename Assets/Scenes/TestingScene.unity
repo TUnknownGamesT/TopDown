@@ -19196,12 +19196,15 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1714034493}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0ae43851ff601fb44ad7f8abf56e665e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvases: []
+  canvases:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   playerHealthBar: {fileID: 562728767}
   isPaused: 0
   currentAmoText: {fileID: 1830559579}
@@ -23347,7 +23350,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 6d90bb2fbf2596a4bb850291c040001a, type: 2}
   - {fileID: 11400000, guid: 4f71b714cc3674a40a574cf75308b741, type: 2}
   enemyLootArms:
-  - {fileID: 6111390722928597194, guid: d982b7807e182484c8ece0898f7f194b, type: 3}
+  - {fileID: 937828832324034772, guid: 467bfb013048cc2438696346beea8e54, type: 3}
   - {fileID: 6414394063023086015, guid: 7ed1ab98ae7c9924498aba330144ae55, type: 3}
 --- !u!114 &2108414359
 MonoBehaviour:
