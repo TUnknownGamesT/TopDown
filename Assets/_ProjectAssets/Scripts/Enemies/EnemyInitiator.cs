@@ -33,11 +33,12 @@ public class EnemyInitiator : MonoBehaviour
     public void InstantiateArm(Constants.EnemyType enemy, Vector3 position)
     {
 
+        //TODO:nici nu vreau sa comentez
         switch (enemy)
         {
             case Constants.EnemyType.Pistol:
             {
-                GameObject arm = enemyLootArms.Find(x => x.name == "Pistol");
+                GameObject arm = enemyLootArms.Find(x => x.name == "pistol 1");
                 Instantiate(arm, position, Quaternion.identity);
                 break;
             }
