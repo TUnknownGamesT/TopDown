@@ -24,7 +24,7 @@ public class PlayerArmHandler : MonoBehaviour
 
     #endregion
     
-    private PlayerAnimation _animation;
+    public PlayerAnimation animation;
     private Transform grooundArmChecker;
     public Transform armSpawnPoint;
     public Gunn currentArm;
@@ -60,14 +60,17 @@ public class PlayerArmHandler : MonoBehaviour
     protected void OnDisable()
     {
         UserInputController._leftClick.performed -= Shoot;
+        UserInputController._reload.started -= Reload;
     }
 
 
     protected void Start()
     {
         UserInputController._leftClick.performed += Shoot;
-        _animation = GetComponent<PlayerAnimation>();
+        UserInputController._reload.started += Reload;
+        animation = GetComponent<PlayerAnimation>();
         UIManager.instance.SetAmoUI(currentArm.magSize,currentArm.totalAmunition);
+        currentArm.SetArmHandler(this);
     }
 
     private void Shoot(InputAction.CallbackContext obj)
@@ -76,6 +79,14 @@ public class PlayerArmHandler : MonoBehaviour
         {
             currentArm.Shoot();
         }   
+    }
+
+    private void Reload(InputAction.CallbackContext obj)
+    {
+        if (currentArm != null)
+        {
+            currentArm.Reload();
+        }  
     }
 
     
@@ -96,12 +107,12 @@ public class PlayerArmHandler : MonoBehaviour
         currentArm.transform.localRotation = Quaternion.identity;
         if (currentArm.GetType() == typeof(Pistol))
         {
-            _animation?.ChangeWeapon(1);
+            animation?.ChangeWeapon(1);
         }else if (currentArm.GetType() ==typeof(AKA47))
         {
-            _animation?.ChangeWeapon(2);
+            animation?.ChangeWeapon(2);
         }
-        
+        currentArm.SetArmHandler(this);
 
     }
 

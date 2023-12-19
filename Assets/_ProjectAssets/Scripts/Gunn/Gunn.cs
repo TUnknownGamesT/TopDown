@@ -35,6 +35,8 @@ public abstract class Gunn : MonoBehaviour,IInteractable
     private MeshRenderer _renderer;
     private int currentAmunition;
 
+    protected PlayerArmHandler _armHandler;
+
     private void Awake()
     {
         currentAmunition = magSize;
@@ -42,6 +44,11 @@ public abstract class Gunn : MonoBehaviour,IInteractable
         soundComponent = GetComponent<SoundComponent>();
         
     }
+
+    public void SetArmHandler(PlayerArmHandler arm)
+    {
+        _armHandler = arm;
+    } 
 
     protected void Update()
     {
@@ -55,6 +62,7 @@ public abstract class Gunn : MonoBehaviour,IInteractable
 
         if(currentAmunition>0&& CanShoot())
         {
+            _armHandler.animation.Shoot();
             Rigidbody rb =  Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation).GetComponent<Rigidbody>();
             rb.AddRelativeForce(Vector3.forward * bulletSpeed, ForceMode.Impulse);
             vfx.Play();
@@ -63,23 +71,26 @@ public abstract class Gunn : MonoBehaviour,IInteractable
             CameraShake.ShakeCamera();
             onShoot?.Invoke();
             soundComponent.PlaySound(shootSound);
+            _armHandler.animation.StopShooting();
         }
         else if(currentAmunition<=0 && totalAmunition>0)
         {
             if (!reloading)
             {
-                reloading = true;
                 Reload();
             }
         }
     }
 
-    private void Reload()
+    public void Reload()
     {
+        reloading = true;
+        _armHandler.animation.Reload();
         UniTask.Void(async () =>
         {
             await UniTask.Delay(TimeSpan.FromSeconds(reloadTime));
             reloading = false;
+            _armHandler.animation.ReloadComplete();
             if (totalAmunition - magSize >= 0)
             {
                 currentAmunition= magSize;
