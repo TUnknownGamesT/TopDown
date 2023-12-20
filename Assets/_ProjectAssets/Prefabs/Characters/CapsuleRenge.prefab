@@ -2791,7 +2791,6 @@ GameObject:
   m_Component:
   - component: {fileID: 9015499420895201016}
   - component: {fileID: 2362093976575560767}
-  - component: {fileID: 7733521905987399105}
   m_Layer: 13
   m_Name: Weapon
   m_TagString: Untagged
@@ -2806,8 +2805,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7365533726585555405}
-  m_LocalRotation: {x: -0, y: 0.000000374507, z: -0, w: 1}
-  m_LocalPosition: {x: 0.22459343, y: 1.3467934, z: 0.9692552}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.2245929, y: 1.3467937, z: 0.9692695}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2828,25 +2827,6 @@ PositionConstraint:
   m_AffectTranslationX: 1
   m_AffectTranslationY: 1
   m_AffectTranslationZ: 1
-  m_IsContraintActive: 1
-  m_IsLocked: 1
-  m_Sources:
-  - sourceTransform: {fileID: 2450187509657518400}
-    weight: 1
---- !u!1818360609 &7733521905987399105
-RotationConstraint:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7365533726585555405}
-  m_Enabled: 1
-  m_Weight: 1
-  m_RotationAtRest: {x: 0, y: 0, z: 0}
-  m_RotationOffset: {x: -1.6199493, y: 148.5187, z: -150.01831}
-  m_AffectRotationX: 0
-  m_AffectRotationY: 1
-  m_AffectRotationZ: 0
   m_IsContraintActive: 1
   m_IsLocked: 1
   m_Sources:
