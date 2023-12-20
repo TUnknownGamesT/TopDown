@@ -96,12 +96,6 @@ public class Expliosible : MonoBehaviour
 
         // Apply the force
         rb.AddForce(direction.normalized * force, ForceMode.Impulse);
-        
-        UniTask.Void(async () =>
-        {
-            await UniTask.Delay(TimeSpan.FromSeconds(2));
-            Destroy(gameObject);
-        });
 
     }
     
@@ -113,6 +107,7 @@ public class Expliosible : MonoBehaviour
             PlayVFX();
             CameraShake.ExplosionCameraShake();
             FindRigidBodies();
+            Destroy(gameObject);
         }
     }
 }

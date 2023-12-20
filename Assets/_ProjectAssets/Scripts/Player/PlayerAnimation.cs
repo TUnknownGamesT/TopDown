@@ -16,8 +16,6 @@ public class PlayerAnimation : AnimationController
         base.Start();
         _myWeapon = new WeaponAnimations(this);
         _myWeapon.SetWeaponType(1);
-        UserInputController._leftClick.performed  += OnShoot;
-        UserInputController._leftClick.canceled += StopShooting;
     }
 
     void Update()
@@ -30,12 +28,22 @@ public class PlayerAnimation : AnimationController
         _myWeapon.SetWeaponType(hands);
     }
     
-    private void OnShoot(InputAction.CallbackContext obj)
+    public void Shoot()
     {
         _myWeapon.Shoot();
     }
-    private void StopShooting(InputAction.CallbackContext obj)
+    public void StopShooting()
     {
         _myWeapon.StopShooting();
+    }
+
+    public void Reload()
+    {
+        _myWeapon.StartReload();
+    }
+
+    public void ReloadComplete()
+    {
+        _myWeapon.ReloadComplete();
     }
 }

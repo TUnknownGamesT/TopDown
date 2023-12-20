@@ -11,6 +11,7 @@ public class UserInputController : MonoBehaviour
     public static InputAction _leftClick;
     public static InputAction _spaceAction;
     public static InputAction _pause;
+    public static InputAction _reload;
 
     private void Awake()
     {
@@ -22,6 +23,7 @@ public class UserInputController : MonoBehaviour
         _leftClick = _playerMovement.Player.LeftClick;
         _spaceAction = _playerMovement.Player.Interact;
         _pause = _playerMovement.Player.Pause;
+        _reload = _playerMovement.Player.Reload;
 
     }
     

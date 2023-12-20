@@ -24,7 +24,7 @@ public class PlayerArmHandler : MonoBehaviour
 
     #endregion
     
-    private PlayerAnimation _animation;
+    public PlayerAnimation animation;
     private Transform grooundArmChecker;
     public Transform armSpawnPoint;
     public Gunn currentArm;
@@ -61,8 +61,10 @@ public class PlayerArmHandler : MonoBehaviour
    
     protected void OnDisable()
     {
+
         UserInputController._leftClick.started -= StartShooting;
         UserInputController._leftClick.canceled -= StopShooting;
+        UserInputController._reload.started -= Reload;
     }
 
 
@@ -70,15 +72,17 @@ public class PlayerArmHandler : MonoBehaviour
     {
         UserInputController._leftClick.started += StartShooting;
         UserInputController._leftClick.canceled += StopShooting;
-        _animation = GetComponent<PlayerAnimation>();
+        UserInputController._reload.started += Reload;
+        animation = GetComponent<PlayerAnimation>();
         UIManager.instance.SetAmoUI(currentArm.magSize,currentArm.totalAmunition);
+        currentArm.SetArmHandler(this);
     }
 
     private void StartShooting(InputAction.CallbackContext obj)
     {
         shoot = true;
     }
-
+    
     private void StopShooting(InputAction.CallbackContext obj)
     {
         shoot = false;
@@ -91,6 +95,16 @@ public class PlayerArmHandler : MonoBehaviour
     }
 
 
+
+    private void Reload(InputAction.CallbackContext obj)
+    {
+        if (currentArm != null)
+        {
+            currentArm.Reload();
+        }  
+    }
+
+    
     public void Die()
     {
         enabled = false;
@@ -108,12 +122,12 @@ public class PlayerArmHandler : MonoBehaviour
         currentArm.transform.localRotation = Quaternion.identity;
         if (currentArm.GetType() == typeof(Pistol))
         {
-            _animation?.ChangeWeapon(1);
+            animation?.ChangeWeapon(1);
         }else if (currentArm.GetType() ==typeof(AKA47))
         {
-            _animation?.ChangeWeapon(2);
+            animation?.ChangeWeapon(2);
         }
-        
+        currentArm.SetArmHandler(this);
 
     }
 
