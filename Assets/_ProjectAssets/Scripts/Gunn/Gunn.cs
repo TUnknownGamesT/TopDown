@@ -31,7 +31,7 @@ public abstract class Gunn : MonoBehaviour,IInteractable
 
     public Event animation = new Event();
     
-    private float timeSinceLasrShot;
+    protected float timeSinceLasrShot;
     private MeshRenderer _renderer;
     private int currentAmunition;
 
@@ -55,7 +55,7 @@ public abstract class Gunn : MonoBehaviour,IInteractable
         timeSinceLasrShot += Time.deltaTime;
     }
 
-    private bool CanShoot() => !reloading && timeSinceLasrShot > 1f / (fireRate / 60f);
+    protected virtual bool CanShoot() => !reloading && timeSinceLasrShot > 1f / (fireRate / 60f);
     
     public void Shoot()
     {
@@ -91,10 +91,12 @@ public abstract class Gunn : MonoBehaviour,IInteractable
             await UniTask.Delay(TimeSpan.FromSeconds(reloadTime));
             reloading = false;
             _armHandler.animation.ReloadComplete();
-            if (totalAmunition - magSize >= 0)
+            
+            int difference = magSize - currentAmunition;
+            if ( totalAmunition - difference >= 0)
             {
-                currentAmunition= magSize;
-                totalAmunition -= magSize;
+                currentAmunition += difference;
+                totalAmunition -= difference;
             }
             else
             {
