@@ -9,7 +9,7 @@ using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
-    #region Sinfleton
+    #region Singleton
     
     public static UIManager instance;
 
@@ -46,7 +46,7 @@ public class UIManager : MonoBehaviour
         Gunn.onShoot += SetCurrentAmoUI;
         Gunn.onPickUpNewWeapon += SetAmoUI;
         PlayerHealth.onPlayerGetDamage += DecreaseHealthBarValue;
-        UserInputController._pause.performed += Pause;
+        UserInputController._pause.started += Pause;
     }
     
    
@@ -95,10 +95,7 @@ public class UIManager : MonoBehaviour
 
     public void RestartGame()
     {
-        Scene currentScene = SceneManager.GetActiveScene();
-
-        // Reload the current scene
-        SceneManager.LoadScene(currentScene.name);
+        ScenesManager.instance.ReloadCurrentScene();
         
     }
 
