@@ -134,11 +134,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 3
   vfx: {fileID: 4046032779211601473}
-  fireRate: 600
+  fireRate: 60
   reloadTime: 1
   magSize: 10
-  totalAmunition: 0
-  bulletSpeed: 30
+  totalAmunition: 30
+  bulletSpeed: 25
   reloading: 0
   bulletSpawnPoint: {fileID: 4459699204743388749}
   bulletPrefab: {fileID: 4554020830683859374, guid: 9307afa9b3a1b244ebed89b1babc2b7f,
