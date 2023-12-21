@@ -17,11 +17,11 @@ MonoBehaviour:
   enemyType: 1
   timeBetweenShoots: 1
   damage: 2
-  fireRate: 70
+  fireRate: 60
   reloadTime: 1
-  magSize: 10
-  totalAmmunition: 0
-  bulletSpeed: 50
+  magSize: 12
+  totalAmmunition: 24
+  bulletSpeed: 25
   reloading: 0
   bulletPrefab: {fileID: 4554020830683859374, guid: 9307afa9b3a1b244ebed89b1babc2b7f,
     type: 3}

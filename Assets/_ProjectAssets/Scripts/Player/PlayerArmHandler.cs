@@ -29,6 +29,8 @@ public class PlayerArmHandler : MonoBehaviour
     public Transform armSpawnPoint;
     public Gunn currentArm;
 
+    private bool shoot;
+
 
     [ContextMenu("Init PlayerArmHandler")]
     private void  Init()
@@ -59,27 +61,40 @@ public class PlayerArmHandler : MonoBehaviour
    
     protected void OnDisable()
     {
-        UserInputController._leftClick.performed -= Shoot;
+
+        UserInputController._leftClick.started -= StartShooting;
+        UserInputController._leftClick.canceled -= StopShooting;
         UserInputController._reload.started -= Reload;
     }
 
 
     protected void Start()
     {
-        UserInputController._leftClick.performed += Shoot;
+        UserInputController._leftClick.started += StartShooting;
+        UserInputController._leftClick.canceled += StopShooting;
         UserInputController._reload.started += Reload;
         animation = GetComponent<PlayerAnimation>();
         UIManager.instance.SetAmoUI(currentArm.magSize,currentArm.totalAmunition);
         currentArm.SetArmHandler(this);
     }
 
-    private void Shoot(InputAction.CallbackContext obj)
+    private void StartShooting(InputAction.CallbackContext obj)
     {
-        if (currentArm != null)
-        {
-            currentArm.Shoot();
-        }   
+        shoot = true;
     }
+    
+    private void StopShooting(InputAction.CallbackContext obj)
+    {
+        shoot = false;
+    }
+
+    private void Update()
+    {
+        if(currentArm!=null&&shoot)
+            currentArm.Shoot();
+    }
+
+
 
     private void Reload(InputAction.CallbackContext obj)
     {
