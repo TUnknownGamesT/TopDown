@@ -62,6 +62,7 @@ public abstract class Gunn : MonoBehaviour,IInteractable
 
         if(currentAmunition>0&& CanShoot())
         {
+            Debug.Log("shoot");
             _armHandler.animation.Shoot();
             Rigidbody rb =  Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation).GetComponent<Rigidbody>();
             rb.AddRelativeForce(Vector3.forward * bulletSpeed, ForceMode.Impulse);

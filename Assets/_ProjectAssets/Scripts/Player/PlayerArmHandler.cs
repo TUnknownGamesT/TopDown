@@ -123,9 +123,11 @@ public class PlayerArmHandler : MonoBehaviour
         if (currentArm.GetType() == typeof(Pistol))
         {
             animation?.ChangeWeapon(1);
+            UIManager.instance.SetImage(1);
         }else if (currentArm.GetType() ==typeof(AKA47))
         {
             animation?.ChangeWeapon(2);
+            UIManager.instance.SetImage(2);
         }
         currentArm.SetArmHandler(this);
 

@@ -33,6 +33,9 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI currentAmoText;
     public TextMeshProUGUI rezAmoText;
 
+    [Header("Weapon UI")] 
+    public Image image;
+    public Sprite pistol, AK;
     
     private void OnDisable()
     {
@@ -48,6 +51,19 @@ public class UIManager : MonoBehaviour
         PlayerHealth.onPlayerGetDamage += DecreaseHealthBarValue;
         UserInputController._pause.started += Pause;
         
+    }
+
+    public void SetImage(int type)
+    {
+        switch (type)
+        {
+            case 1:
+                image.sprite = pistol;
+                break;
+            case 2:
+                image.sprite = AK;
+                break;
+        }
     }
     
    

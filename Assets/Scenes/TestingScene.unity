@@ -12069,6 +12069,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5965354732511646358, guid: a8c699ffe98cfca4c95e3f153a01998c,
         type: 3}
+      propertyPath: AK
+      value: 
+      objectReference: {fileID: 21300000, guid: 0944c4cf8e6ba1f49b09b53c6f4eac68,
+        type: 3}
+    - target: {fileID: 5965354732511646358, guid: a8c699ffe98cfca4c95e3f153a01998c,
+        type: 3}
+      propertyPath: image
+      value: 
+      objectReference: {fileID: 1873609482}
+    - target: {fileID: 5965354732511646358, guid: a8c699ffe98cfca4c95e3f153a01998c,
+        type: 3}
+      propertyPath: pistol
+      value: 
+      objectReference: {fileID: 21300000, guid: 13d7cc99854b0c64ab66330a7ea30c0b,
+        type: 3}
+    - target: {fileID: 5965354732511646358, guid: a8c699ffe98cfca4c95e3f153a01998c,
+        type: 3}
       propertyPath: lifeBarColor.atime1
       value: 65535
       objectReference: {fileID: 0}
@@ -20395,6 +20412,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1857998637}
   m_Mesh: {fileID: 8184971468695229912, guid: 53929e75a4a8b8d4996fe32c69bdc0d0, type: 3}
+--- !u!114 &1873609482 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 144962224, guid: a8c699ffe98cfca4c95e3f153a01998c,
+    type: 3}
+  m_PrefabInstance: {fileID: 1016364824}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1874948637
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25702,7 +25731,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6c272d93b6926d4a98689ebbb28dce3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animation: {fileID: 0}
+  animation: {fileID: 1637404055533089708}
   armSpawnPoint: {fileID: 1261432759}
   currentArm: {fileID: 1131545129}
 --- !u!114 &1637404055533089710

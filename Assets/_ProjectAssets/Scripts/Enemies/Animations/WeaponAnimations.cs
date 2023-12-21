@@ -5,6 +5,7 @@ using UnityEngine;
 public class WeaponAnimations
 {
     protected AnimationController _daddy;
+    protected int handsOnWeapon;
     
     private static readonly int IsShooting = Animator.StringToHash("isShooting");
     private static readonly int weaponType = Animator.StringToHash("weaponType");
@@ -19,19 +20,25 @@ public class WeaponAnimations
 
     public void SetWeaponType(int type)
     {
-        
-        Debug.Log((Constants.EnemyType)type);
         //make this more modular
         if (type >= 2)
             type = 2;
-        
+        handsOnWeapon = type;
         _daddy.animator.SetInteger(weaponType, type);
     }
     
     public void Shoot()
     {
-        Debug.Log("shoot");
-        _daddy.animator.SetTrigger(Shoot1);
+        if (handsOnWeapon==1)
+        {
+            _daddy.animator.Play("1handShoot");
+        }
+        else
+        {
+            _daddy.animator.Play("2handShoot",0,0);
+        }
+        
+        //_daddy.animator.SetTrigger(Shoot1);
     }
 
     public void StopShooting()
