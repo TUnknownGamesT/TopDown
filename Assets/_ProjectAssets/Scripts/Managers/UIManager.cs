@@ -26,8 +26,8 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private List<GameObject> canvases;
     public Slider playerHealthBar;
+    public Gradient lifeBarColor;
     public bool isPaused = false;
-    public Canvas mainMenu;
 
     [Header("Amo UI")] 
     public TextMeshProUGUI currentAmoText;
@@ -47,6 +47,7 @@ public class UIManager : MonoBehaviour
         Gunn.onPickUpNewWeapon += SetAmoUI;
         PlayerHealth.onPlayerGetDamage += DecreaseHealthBarValue;
         UserInputController._pause.started += Pause;
+        
     }
     
    
@@ -55,6 +56,9 @@ public class UIManager : MonoBehaviour
     {
         playerHealthBar.maxValue = value;
         playerHealthBar.value = value;
+        var current = playerHealthBar.colors;
+        current.normalColor = lifeBarColor.Evaluate((float)(playerHealthBar.value/10));
+        playerHealthBar.colors = current;
     }
 
     public void SetAmoUI(int currentAmo, int maxAmo)
@@ -73,11 +77,10 @@ public class UIManager : MonoBehaviour
     public void DecreaseHealthBarValue(int value)
     {
         playerHealthBar.value -= value;
-    }
-
-    public void GameLost()
-    {
-        mainMenu.enabled = true;
+        var current = playerHealthBar.colors;
+        current.normalColor = lifeBarColor.Evaluate((float)(playerHealthBar.value/10));
+        playerHealthBar.colors = current;
+        
     }
 
     public void UnPause()
@@ -91,6 +94,11 @@ public class UIManager : MonoBehaviour
         canvases[0].SetActive(!isPaused);
         canvases[1].SetActive(isPaused);
         Time.timeScale = isPaused ? 0f : 1f;
+    }
+
+    public void Die()
+    {
+        canvases[2].SetActive(true);
     }
 
     public void RestartGame()

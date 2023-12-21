@@ -7,7 +7,7 @@ using UnityEngine;
 public class EnemyAnimations : AnimationController
 {
     public int WeaponType;
-    private WeaponAnimations myWeapon;
+    public WeaponAnimations myWeapon;
     protected override void Start()
     {
         base.Start();
