@@ -107,6 +107,7 @@ public abstract class EnemyArms : MonoBehaviour
 
     private void Reload()
     {
+        GetComponent<EnemyAnimations>()?.myWeapon.StartReload();
         UniTask.Void(async () =>
         {
             await UniTask.Delay(TimeSpan.FromSeconds(reloadTime));

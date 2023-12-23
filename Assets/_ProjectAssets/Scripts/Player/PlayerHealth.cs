@@ -43,6 +43,6 @@ public class PlayerHealth : MonoBehaviour
         GetComponent<PlayerMovement>()?.Die();
         GetComponent<PlayerRotation>()?.Die();
         GetComponent<PlayerArmHandler>()?.Die();
-        UIManager.instance.GameLost();
+        UIManager.instance.Die();
     }
 }

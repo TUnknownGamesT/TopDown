@@ -33,8 +33,15 @@ public class AnimationController : MonoBehaviour
 
         foreach (var rb in rigidbodies)
         {
-            rb.isKinematic = !isEnabled;
-            rb.detectCollisions = isEnabled;
+            if (rb!=null)
+            {
+                rb.isKinematic = !isEnabled;
+                rb.detectCollisions = isEnabled;
+                if (isEnabled)
+                {
+                    rb.mass = 0.5f;
+                }
+            }
         }
         
     }
