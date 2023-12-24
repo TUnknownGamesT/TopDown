@@ -4,27 +4,16 @@ using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
-
-[RequireComponent(typeof(SoundComponent))]
 public class Expliosible : MonoBehaviour
 {
 
     public GameObject explosionVFX;
-
+    public GameObject soundPrefab;
     
     [Header("Explosion")]
     public float explosionForce = 10f; 
     public float explosionRadius = 5f;
     public int dmg = 10;
-    public AudioClip explosionSound;
-    
-    private SoundComponent soundComponent;
-
-
-    private void Awake()
-    {
-        soundComponent = GetComponent<SoundComponent>();
-    }
 
 
     private void PlayVFX()
@@ -87,15 +76,26 @@ public class Expliosible : MonoBehaviour
 
     private void ApplyForce(Rigidbody rb)
     {
-        // Apply force to the rigidbody based on distance from the explosion point
-        Vector3 direction = rb.gameObject.transform.position - transform.position;
-        float distance = direction.magnitude;
+        try
+        {
+            if (rb != null)
+            {
+                // Apply force to the rigidbody based on distance from the explosion point
+                Vector3 direction = rb.gameObject.transform.position - transform.position;
+                float distance = direction.magnitude;
 
-        // Calculate the force to be applied using an inverse square law
-        float force = (1 - distance / explosionRadius) * explosionForce;
+                // Calculate the force to be applied using an inverse square law
+                float force = (1 - distance / explosionRadius) * explosionForce;
 
-        // Apply the force
-        rb.AddForce(direction.normalized * force, ForceMode.Impulse);
+                // Apply the force
+                rb.AddForce(direction.normalized * force, ForceMode.Impulse);
+            }
+        }
+        catch (Exception e)
+        {
+            Debug.Log($"Error{e} can't find rigidbody");
+        }
+        
 
     }
     
@@ -103,7 +103,7 @@ public class Expliosible : MonoBehaviour
     {
         if (collision.gameObject.tag =="Bullet")
         {
-            soundComponent.PlaySound(explosionSound);
+            Instantiate(soundPrefab, transform.position, Quaternion.identity);
             PlayVFX();
             CameraShake.ExplosionCameraShake();
             FindRigidBodies();

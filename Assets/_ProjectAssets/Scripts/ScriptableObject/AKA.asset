@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80efef4e5200bdb45817fc5a3fb2c43f, type: 3}
   m_Name: AKA
   m_EditorClassIdentifier: 
-  armPrefab: {fileID: 6414394063023086015, guid: 7ed1ab98ae7c9924498aba330144ae55,
+  armPrefab: {fileID: 5350970468327829429, guid: b47f1ed230e63cf4ab26e23c68d900dc,
     type: 3}
   enemyType: 2
   timeBetweenShoots: 0.2

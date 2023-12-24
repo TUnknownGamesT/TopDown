@@ -36,12 +36,12 @@ public class EnemyInitiator : MonoBehaviour
         //TODO:nici nu vreau sa comentez
         switch (enemy)
         {
-            /*case Constants.EnemyType.Male:
+            case Constants.EnemyType.Male:
             {
-                GameObject arm = enemyLootArms.Find(x => x.name == "knife");
+                GameObject arm = enemyLootArms.Find(x => x.name == "Knife");
                 Instantiate(arm, position, Quaternion.identity);
                 break;
-            }*/
+            }
             case Constants.EnemyType.Pistol:
             {
                 GameObject arm = enemyLootArms.Find(x => x.name == "pistol 1");

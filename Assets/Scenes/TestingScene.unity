@@ -1945,11 +1945,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: explosiveBarrel (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 8460270201330079501, guid: 2c4ae7104bf0b2545a050e8acd85baa9,
-        type: 3}
-      propertyPath: Priority
-      value: 156
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2c4ae7104bf0b2545a050e8acd85baa9, type: 3}
 --- !u!4 &142550196 stripped
@@ -23413,12 +23408,12 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2126273383}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 6bc69d975eca9e740b6f65a12aa41b39, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.74
+  m_Volume: 0.301
   m_Pitch: 1
   Loop: 0
   Mute: 0
