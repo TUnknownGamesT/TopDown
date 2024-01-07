@@ -1,17 +1,14 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody),typeof(SoundComponent))]
 public class DoorBehaviour : MonoBehaviour,IInteractable
 {
-    public CustomBoxCollider _boxCollider;
-    public AudioClip openDoorSound;
-    public AudioClip enemiesInTheRoomSound;
 
-
+    public Vector3 cameraOffset;
+    
+    private AudioClip _openDoorSound;
     private MeshRenderer _renderer;
     private SoundComponent _soundComponent;
 
@@ -21,54 +18,47 @@ public class DoorBehaviour : MonoBehaviour,IInteractable
         _renderer = GetComponent<MeshRenderer>();
     }
 
-    public void Interact()
+
+    private void Start()
     {
-        if (_boxCollider.CheckIfAllEnemiesDead())
-        {
-            _soundComponent.PlaySound(openDoorSound);
-            OpenDoor();
-        }
-        else
-        {
-            _soundComponent.PlaySound(enemiesInTheRoomSound);
-            EnemiesInTheRoom();
-        }
+        _openDoorSound = Constants.instance.openDoorSound;
+    }
+
+    public void QuickPressInteract()
+    {
+        _soundComponent.PlaySound(_openDoorSound);
+        OpenDoor();
     }
     
-    
-    private void EnemiesInTheRoom()
+    public void HoldInteract()
     {
-        UniTask.Void(async () =>
-        {
-            Color color = _renderer.material.GetColor("_EmissionColor");
-            _renderer.material.SetColor("_EmissionColor", Color.red);
-            _renderer.material.color=Color.red;
-            await UniTask.Delay(TimeSpan.FromSeconds(0.2f));
-            _renderer.material.color=color;
-            _renderer.material.SetColor("_EmissionColor", color);
-            await UniTask.Delay(TimeSpan.FromSeconds(0.2f));
-            _renderer.material.color=Color.red;
-            _renderer.material.SetColor("_EmissionColor", Color.red);
-            await UniTask.Delay(TimeSpan.FromSeconds(0.2f));
-            _renderer.material.color=color;
-            _renderer.material.SetColor("_EmissionColor", color);
-        });
+        PlayerBrain.instance.DisableMove();
+        CameraController.MoveCameraSmooth(cameraOffset);
+        GlobalVolumeBehaviour.AddKeyHallEffect();
     }
+    
+    public void CancelHoldInteract()
+    {
+        PlayerBrain.instance.EnableMove();
+        CameraController.MoveCameraSmooth(Vector3.zero);
+        GlobalVolumeBehaviour.RemoveKeyHallEffect();
+    }
+    
 
     public void HighLight()
     {
-        _renderer.material = Constants.instance.gunnHighLight;
+        _renderer.material = Constants.instance.highLightInteractable;
     }
 
     public void UnHighLight()
     {
-        _renderer.material = Constants.instance.gunnUnHighLight;
+        _renderer.material = Constants.instance.unhighlightInteractable;
     }
 
     [ContextMenu("Open Door")]
     public void OpenDoor()
     {
-       LeanTween.moveLocalY(gameObject, 6.3f, 1f).setEaseOutBounce();
+        LeanTween.rotateY(gameObject, 90, 1f).setEaseInQuad();
     }
     
     

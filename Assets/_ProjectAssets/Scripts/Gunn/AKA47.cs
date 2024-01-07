@@ -15,7 +15,7 @@ public class AKA47 : Gunn
     {
         foreach (var mesh in meshRenderers)
         {
-            mesh.material = Constants.instance.gunnHighLight;
+            mesh.material = Constants.instance.highLightInteractable;
         }
     }
     
@@ -23,7 +23,7 @@ public class AKA47 : Gunn
     {
         foreach (var mesh in meshRenderers)
         {
-            mesh.material = Constants.instance.gunnUnHighLight;
+            mesh.material = Constants.instance.unhighlightInteractable;
         }
     }
     

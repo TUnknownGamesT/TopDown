@@ -105,7 +105,7 @@ public class Expliosible : MonoBehaviour
         {
             Instantiate(soundPrefab, transform.position, Quaternion.identity);
             PlayVFX();
-            CameraShake.ExplosionCameraShake();
+            CameraController.ExplosionCameraShake();
             FindRigidBodies();
             Destroy(gameObject);
         }
