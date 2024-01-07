@@ -36,6 +36,7 @@ public class FieldOfView : MonoBehaviour
 
     public void EnemyDeath()
     {
+        canSeePlayer = false;
         _cts.Cancel();
     }
     
@@ -53,6 +54,7 @@ public class FieldOfView : MonoBehaviour
 
                 if (rangeChecks.Length != 0)
                 {
+                    Debug.Log("Collider dimension is not 0");
                     Transform target = rangeChecks[0].transform;
                     Vector3 directionToTarget = (target.position - transform.position).normalized;
                 
@@ -63,12 +65,19 @@ public class FieldOfView : MonoBehaviour
                             obstructionMask);
                         if (canSeePlayer && !_alreadyInView)
                         {
+                            Debug.Log("Player in view");
                             _enemyBrain.PlayerInView();
                             _alreadyInView = true;
                         }
+                        else if(!canSeePlayer)
+                        {
+                            canSeePlayer = false;
+                            _alreadyInView = false;
+                            _enemyBrain.PlayerOutOfView();
+                        }
                     }
                 }
-                else if (canSeePlayer)
+                else if (!canSeePlayer)
                 {
                     canSeePlayer = false;
                     _enemyBrain.PlayerOutOfView();
@@ -80,11 +89,9 @@ public class FieldOfView : MonoBehaviour
             catch (Exception e)
             {
                 Debug.Log("Thread Miss reference",this);
+                Debug.Log(e);
                 _cts.Cancel();
             }
-            
-
-           
         });
     }
 }

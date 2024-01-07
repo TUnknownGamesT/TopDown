@@ -31,8 +31,8 @@ public class EnemyMovement : MonoBehaviour
 
     public void PlayerOutOfView()
     {
-        _navMeshAgent.isStopped = false;
         _cts.Cancel();
+        _navMeshAgent.SetDestination(transform.position);
         _cts = new CancellationTokenSource();
         if(_travelPoints.Length > 0)
             Travel();
@@ -72,20 +72,14 @@ public class EnemyMovement : MonoBehaviour
             try
             { 
                 await UniTask.Delay(TimeSpan.FromSeconds(0.1f), cancellationToken: _cts.Token);
-                if (Vector3.Distance(transform.position, GameManager.playerRef.position) > stoppingDistance)
-                {
-                    _navMeshAgent.destination = GameManager.playerRef.position;
-                }
-                else
-                {
-                    _navMeshAgent.destination = transform.position;
-                }
-            
+                _navMeshAgent.destination = Vector3.Distance(transform.position, GameManager.playerRef.position) > stoppingDistance 
+                    ? GameManager.playerRef.position : transform.position;
                 FollowPlayer();
             }
             catch (Exception e)
             {
                 Debug.Log("Thread Miss reference",this);
+                Debug.Log(e);
                 _cts.Cancel();
             }
             

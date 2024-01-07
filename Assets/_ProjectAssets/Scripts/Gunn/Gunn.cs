@@ -69,7 +69,7 @@ public abstract class Gunn : MonoBehaviour,IInteractable
             vfx.Play();
             currentAmunition--;
             timeSinceLasrShot = 0;
-            CameraShake.ShakeCamera();
+            CameraController.ShakeCamera();
             onShoot?.Invoke();
             soundComponent.PlaySound(shootSound);
             _armHandler.animation.StopShooting();
@@ -109,7 +109,7 @@ public abstract class Gunn : MonoBehaviour,IInteractable
         });
     }
 
-    public void Interact()
+    public void QuickPressInteract()
     {
         UnHighLight();
         PlayerArmHandler.instance.ChangeArm(gameObject);
@@ -119,12 +119,12 @@ public abstract class Gunn : MonoBehaviour,IInteractable
 
     public virtual void HighLight()
     {
-        _renderer.material = Constants.instance.gunnHighLight;
+        _renderer.material = Constants.instance.highLightInteractable;
     }
 
     public virtual void UnHighLight()
     {
-        _renderer.material = Constants.instance.gunnUnHighLight;
+        _renderer.material = Constants.instance.unhighlightInteractable;
     }
 
 
