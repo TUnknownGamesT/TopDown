@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 44725377}
   - component: {fileID: 44725376}
   - component: {fileID: 44725375}
-  m_Layer: 0
+  m_Layer: 23
   m_Name: Button (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -145,7 +145,7 @@ GameObject:
   - component: {fileID: 144962223}
   - component: {fileID: 144962225}
   - component: {fileID: 144962224}
-  m_Layer: 5
+  m_Layer: 23
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -221,7 +221,7 @@ GameObject:
   - component: {fileID: 271283926}
   - component: {fileID: 271283928}
   - component: {fileID: 271283927}
-  m_Layer: 0
+  m_Layer: 23
   m_Name: REVIVE
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -356,7 +356,7 @@ GameObject:
   - component: {fileID: 1433126108}
   - component: {fileID: 1433126110}
   - component: {fileID: 1433126109}
-  m_Layer: 0
+  m_Layer: 23
   m_Name: REVIVE
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -492,7 +492,7 @@ GameObject:
   - component: {fileID: 1907902762}
   - component: {fileID: 1907902761}
   - component: {fileID: 1907902760}
-  m_Layer: 0
+  m_Layer: 23
   m_Name: Button (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -625,7 +625,7 @@ GameObject:
   - component: {fileID: 4097069678098023233}
   - component: {fileID: 7200045577082052294}
   - component: {fileID: 7610690398511499361}
-  m_Layer: 0
+  m_Layer: 23
   m_Name: REVIVE
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -761,7 +761,7 @@ GameObject:
   - component: {fileID: 879950633191265319}
   - component: {fileID: 7422129526072746192}
   - component: {fileID: 7762246182291601274}
-  m_Layer: 0
+  m_Layer: 23
   m_Name: DeathMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -863,7 +863,7 @@ GameObject:
   - component: {fileID: 452635496296497669}
   - component: {fileID: 2586396108237100283}
   - component: {fileID: 6435254841356944232}
-  m_Layer: 0
+  m_Layer: 23
   m_Name: Button (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -996,7 +996,7 @@ GameObject:
   - component: {fileID: 1783269772202576084}
   - component: {fileID: 7575164888230212000}
   - component: {fileID: 6248244504028094063}
-  m_Layer: 0
+  m_Layer: 23
   m_Name: REVIVE
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1131,7 +1131,7 @@ GameObject:
   - component: {fileID: 5965354730627405187}
   - component: {fileID: 5965354730627405185}
   - component: {fileID: 5965354730627405186}
-  m_Layer: 5
+  m_Layer: 23
   m_Name: MagazinSize
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1266,7 +1266,7 @@ GameObject:
   - component: {fileID: 5965354730694425489}
   - component: {fileID: 5965354730694424687}
   - component: {fileID: 5965354730694425488}
-  m_Layer: 5
+  m_Layer: 23
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1314,7 +1314,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.21461558, g: 1, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1342,7 +1342,7 @@ GameObject:
   - component: {fileID: 5965354730821765988}
   - component: {fileID: 5965354730821765986}
   - component: {fileID: 5965354730821765987}
-  m_Layer: 5
+  m_Layer: 23
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1419,7 +1419,7 @@ GameObject:
   - component: {fileID: 5965354731140902848}
   - component: {fileID: 5965354731140902849}
   - component: {fileID: 5965354731140902850}
-  m_Layer: 0
+  m_Layer: 23
   m_Name: Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1551,7 +1551,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5965354731193148753}
   - component: {fileID: 5965354731193148752}
-  m_Layer: 5
+  m_Layer: 23
   m_Name: PlayerHealth
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1605,7 +1605,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 1, g: 1, b: 1, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -1619,7 +1619,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 5965354730694425488}
   m_FillRect: {fileID: 5965354730694425489}
   m_HandleRect: {fileID: 0}
@@ -1640,7 +1640,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5965354731565119151}
-  m_Layer: 5
+  m_Layer: 23
   m_Name: AMO
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1681,7 +1681,7 @@ GameObject:
   - component: {fileID: 5965354731967134471}
   - component: {fileID: 5965354731967134469}
   - component: {fileID: 5965354731967134470}
-  m_Layer: 0
+  m_Layer: 23
   m_Name: REVIVE
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1816,7 +1816,7 @@ GameObject:
   - component: {fileID: 5965354732055704885}
   - component: {fileID: 5965354732055704883}
   - component: {fileID: 5965354732055704884}
-  m_Layer: 5
+  m_Layer: 23
   m_Name: CurrentAmo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1952,7 +1952,7 @@ GameObject:
   - component: {fileID: 5965354732138937647}
   - component: {fileID: 5965354732138937680}
   - component: {fileID: 5965354732138937681}
-  m_Layer: 5
+  m_Layer: 23
   m_Name: PlayerCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2054,7 +2054,7 @@ GameObject:
   - component: {fileID: 5965354732293078902}
   - component: {fileID: 5965354732293078900}
   - component: {fileID: 5965354732293078901}
-  m_Layer: 5
+  m_Layer: 23
   m_Name: /
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2190,7 +2190,7 @@ GameObject:
   - component: {fileID: 5965354732314590299}
   - component: {fileID: 5965354732314590300}
   - component: {fileID: 5965354732314590301}
-  m_Layer: 0
+  m_Layer: 23
   m_Name: PauseMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2290,7 +2290,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5965354732507057775}
-  m_Layer: 5
+  m_Layer: 23
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2328,9 +2328,9 @@ GameObject:
   m_Component:
   - component: {fileID: 5965354732511646359}
   - component: {fileID: 5965354732511646358}
-  m_Layer: 0
+  m_Layer: 23
   m_Name: GameUI
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2372,17 +2372,17 @@ MonoBehaviour:
   playerHealthBar: {fileID: 5965354731193148752}
   lifeBarColor:
     serializedVersion: 2
-    key0: {r: 0, g: 1, b: 0.14186478, a: 1}
+    key0: {r: 1, g: 0, b: 0, a: 1}
     key1: {r: 1, g: 0.9553571, b: 0, a: 1}
-    key2: {r: 1, g: 0, b: 0, a: 0}
+    key2: {r: 0, g: 1, b: 0.14186478, a: 1}
     key3: {r: 0, g: 0, b: 0, a: 0}
     key4: {r: 0, g: 0, b: 0, a: 0}
     key5: {r: 0, g: 0, b: 0, a: 0}
     key6: {r: 0, g: 0, b: 0, a: 0}
     key7: {r: 0, g: 0, b: 0, a: 0}
-    ctime0: 0
-    ctime1: 33346
-    ctime2: 65535
+    ctime0: 11758
+    ctime1: 49730
+    ctime2: 63222
     ctime3: 0
     ctime4: 0
     ctime5: 0
@@ -2390,7 +2390,7 @@ MonoBehaviour:
     ctime7: 0
     atime0: 0
     atime1: 65535
-    atime2: 0
+    atime2: 65535
     atime3: 0
     atime4: 0
     atime5: 0
@@ -2402,6 +2402,9 @@ MonoBehaviour:
   isPaused: 0
   currentAmoText: {fileID: 5965354732055704884}
   rezAmoText: {fileID: 5965354730627405186}
+  image: {fileID: 144962224}
+  pistol: {fileID: 21300000, guid: 13d7cc99854b0c64ab66330a7ea30c0b, type: 3}
+  AK: {fileID: 21300000, guid: 0944c4cf8e6ba1f49b09b53c6f4eac68, type: 3}
 --- !u!1 &8241386584778216695
 GameObject:
   m_ObjectHideFlags: 0
@@ -2414,7 +2417,7 @@ GameObject:
   - component: {fileID: 8374277467263868193}
   - component: {fileID: 8882480565750113958}
   - component: {fileID: 1362151323182201089}
-  m_Layer: 0
+  m_Layer: 23
   m_Name: Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}

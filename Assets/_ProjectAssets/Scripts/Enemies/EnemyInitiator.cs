@@ -38,8 +38,7 @@ public class EnemyInitiator : MonoBehaviour
         {
             case Constants.EnemyType.Male:
             {
-                GameObject arm = enemyLootArms.Find(x => x.name == "Knife");
-                Instantiate(arm, position, Quaternion.identity);
+                // don't need to instantiate enything
                 break;
             }
             case Constants.EnemyType.Pistol:

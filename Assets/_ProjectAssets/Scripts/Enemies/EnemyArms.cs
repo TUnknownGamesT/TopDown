@@ -1,4 +1,5 @@
 using System;
+using System.Threading.Tasks;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
@@ -88,7 +89,7 @@ public abstract class EnemyArms : MonoBehaviour
                     if (!reloading)
                     {
                         reloading = true;
-                        Reload();
+                        await UniTask.WaitUntil(()=> reloading == false);
                     }
                 }
 
@@ -105,15 +106,12 @@ public abstract class EnemyArms : MonoBehaviour
         });
     }
 
-    private void Reload()
+    private async UniTask Reload()
     {
         GetComponent<EnemyAnimations>()?.myWeapon.StartReload();
-        UniTask.Void(async () =>
-        {
-            await UniTask.Delay(TimeSpan.FromSeconds(reloadTime));
-            reloading = false;
-            currentAmo = magSize;
-        });
+        await UniTask.Delay(TimeSpan.FromSeconds(reloadTime));
+        reloading = false;
+        currentAmo = magSize;
     }
 
     public void DropArm()

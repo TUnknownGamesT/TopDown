@@ -4,11 +4,21 @@ using UnityEngine;
 
 public interface IInteractable
 {
-    public void Interact();
+    public void QuickPressInteract();
     
     public void HighLight();
     
     public void UnHighLight();
+
+    public void HoldInteract()
+    {
+        Debug.Log("Hold Interact");
+    }
+    
+    public void CancelHoldInteract()
+    {
+        Debug.Log("Cancel Hold Interact");
+    }
     
     
 }

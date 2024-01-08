@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class Constants : MonoBehaviour
 {
@@ -36,10 +37,10 @@ public class Constants : MonoBehaviour
 
    public static float meleEnemyAttackDistace = 1.8f;
    public static float rangeStoppingDistance = 6;
-   
-   
-   
-   public Material gunnHighLight;
-   public Material gunnUnHighLight;
+
+   public AudioClip openDoorSound;
+
+   [FormerlySerializedAs("gunnHighLight")] public Material highLightInteractable;
+   [FormerlySerializedAs("gunnUnHighLight")] public Material unhighlightInteractable;
 
 }
