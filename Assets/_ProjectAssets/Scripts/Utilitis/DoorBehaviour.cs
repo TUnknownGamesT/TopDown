@@ -1,5 +1,6 @@
 using System;
 using Cysharp.Threading.Tasks;
+using UnityEditor;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody),typeof(SoundComponent))]
@@ -70,5 +71,20 @@ public class DoorBehaviour : MonoBehaviour,IInteractable
     private void OnTriggerExit(Collider other)
     {
         UnHighLight();
+    }
+    
+    
+    void OnGUI()
+    {
+        float sphereRadius = 100f;
+        GUI.color = Color.red;
+        // Convert world position to screen position
+        Vector3 screenPos = Camera.main.WorldToScreenPoint(cameraOffset);
+
+        // Calculate GUI position
+        Vector2 guiPos = new Vector2(screenPos.x, Screen.height - screenPos.y);
+
+        // Draw a sphere at the specified position
+        GUI.DrawTexture(new Rect(guiPos.x - sphereRadius, guiPos.y - sphereRadius, 2 * sphereRadius, 2 * sphereRadius), EditorGUIUtility.whiteTexture);
     }
 }

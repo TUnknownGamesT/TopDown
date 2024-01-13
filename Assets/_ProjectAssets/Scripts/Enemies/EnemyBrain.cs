@@ -35,7 +35,7 @@ public class EnemyBrain : MonoBehaviour
     {
         _enemyArms.InitStats(enemyType);
         if(_enemyMovement != null)
-            _enemyMovement.stoppingDistance = enemyType.stoppingDistance;;    
+            _enemyMovement.stoppingDistance = enemyType.stoppingDistance;    
     }
 
     public void PlayerInView()
