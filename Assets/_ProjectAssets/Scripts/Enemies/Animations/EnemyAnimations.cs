@@ -6,12 +6,17 @@ using UnityEngine;
 
 public class EnemyAnimations : AnimationController
 {
-    public int WeaponType;
     public WeaponAnimations myWeapon;
+    
+    
+    private int WeaponType;
+
+
     protected override void Start()
     {
         base.Start();
-        SetWeapon();
+        animator = transform.GetChild(0).GetComponent<Animator>();
+        
     }
 
     private void Update()
@@ -19,7 +24,7 @@ public class EnemyAnimations : AnimationController
         SetWalkingAnimation();
     }
 
-    void SetWeapon()
+    public void SetWeapon(Constants.EnemyType enemyType)
     {
         myWeapon = new WeaponAnimations(this);
         if (gameObject.GetComponent<EnemyMele>()!=null)
@@ -29,8 +34,8 @@ public class EnemyAnimations : AnimationController
         }
         else if (gameObject.GetComponent<EnemyRange>()!=null)
         {
-            myWeapon.SetWeaponType((int)GetComponent<EnemyRange>().enemyType);
-            WeaponType = (int)GetComponent<EnemyRange>().enemyType;
+            myWeapon.SetWeaponType((int)enemyType);
+            WeaponType = (int)enemyType;
         }
     }
 }

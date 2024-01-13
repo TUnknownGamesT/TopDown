@@ -1,8 +1,7 @@
 using System;
-using System.Security.Permissions;
+using System.Collections.Generic;
 using System.Threading;
 using Cysharp.Threading.Tasks;
-using MoreMountains.FeedbacksForThirdParty;
 using UnityEngine;
 using UnityEngine.AI;
 using Random = UnityEngine.Random;
@@ -10,14 +9,17 @@ using Random = UnityEngine.Random;
 [RequireComponent(typeof(NavMeshAgent))]
 public class EnemyMovement : MonoBehaviour
 {
-    public Transform[] _travelPoints;
-    
+    public List<Transform> _travelPoints;
     public float stoppingDistance;
+    public float pauseBetweenMovement;
+    public EnemyBrain enemyBrain;
+    
     private NavMeshAgent _navMeshAgent;
     private CancellationTokenSource _cts;
 
     private void Awake()
     {
+        enemyBrain = GetComponent<EnemyBrain>();
         _cts = new CancellationTokenSource();
         _navMeshAgent = GetComponent<NavMeshAgent>();
     }
@@ -25,8 +27,14 @@ public class EnemyMovement : MonoBehaviour
 
     private void Start()
     {
-        if(_travelPoints.Length > 0)
+        if (_travelPoints.Count > 0)
+        {
             Travel();
+        }
+        else
+        {
+            enemyBrain.FinishMoving();
+        }
     }
 
     public void PlayerOutOfView()
@@ -34,14 +42,16 @@ public class EnemyMovement : MonoBehaviour
         _cts.Cancel();
         _navMeshAgent.SetDestination(transform.position);
         _cts = new CancellationTokenSource();
-        if(_travelPoints.Length > 0)
-            Travel();
+        _travelPoints.Add(GameManager.playerRef);
+        Travel();
     }
 
     public void PlayerInView()
     {
         _cts.Cancel();
         _cts = new CancellationTokenSource();
+        if(_travelPoints.Contains(GameManager.playerRef))
+            _travelPoints.Remove(GameManager.playerRef);
         FollowPlayer();
     }
 
@@ -52,13 +62,27 @@ public class EnemyMovement : MonoBehaviour
         _navMeshAgent.destination = transform.position;
     }
     
-    private void Travel()
+    public void Travel()
     {
         UniTask.Void(async () =>
         {
-            _navMeshAgent.destination = _travelPoints[Random.Range(0,_travelPoints.Length)].position;
+            _navMeshAgent.destination = _travelPoints[Random.Range(0,_travelPoints.Count)].position;
 
-            await UniTask.WaitUntil(()=>_navMeshAgent.remainingDistance <= _navMeshAgent.stoppingDistance, cancellationToken: _cts.Token);
+            Debug.Log("START MOVEMENT");
+            
+            await UniTask.WaitUntil(()=>Vector3.Distance(transform.position,_navMeshAgent.destination) <= _navMeshAgent.stoppingDistance, cancellationToken: _cts.Token);
+            
+            Debug.Log("Finish Movement");
+            
+            enemyBrain.FinishMoving();
+
+            Debug.Log("Start Looking Around");
+            
+            await UniTask.Delay(TimeSpan.FromSeconds(pauseBetweenMovement), cancellationToken: _cts.Token);
+            
+            Debug.Log("Start Moving Around");
+            
+            enemyBrain.StartMovingAround();
              
             Travel();
         });

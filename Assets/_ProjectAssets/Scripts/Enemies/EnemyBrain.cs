@@ -13,6 +13,7 @@ public class EnemyBrain : MonoBehaviour
     private EnemyRotation _enemyRotation;
     private EnemyArms _enemyArms;
     private SoundComponent _soundComponent;
+    private EnemyAnimations _enemyAnimations;
     
 
     private void Awake()
@@ -23,6 +24,7 @@ public class EnemyBrain : MonoBehaviour
         _enemyRotation = GetComponent<EnemyRotation>();
         _enemyArms = GetComponent<EnemyArms>();
         _enemyMovement = GetComponent<EnemyMovement>();
+        _enemyAnimations = GetComponent<EnemyAnimations>();
         
     }
 
@@ -34,12 +36,14 @@ public class EnemyBrain : MonoBehaviour
     private void InitStats(EnemyType enemyType)
     {
         _enemyArms.InitStats(enemyType);
+        _enemyAnimations.SetWeapon(this.enemyType);
         if(_enemyMovement != null)
             _enemyMovement.stoppingDistance = enemyType.stoppingDistance;    
     }
 
     public void PlayerInView()
     {
+        Debug.Log("Player in view Enemy brain");
         _enemyRotation.PlayerInView();
         _enemyArms.Shoot();
         _enemyMovement?.PlayerInView();
@@ -48,6 +52,7 @@ public class EnemyBrain : MonoBehaviour
 
     public void PlayerOutOfView()
     {
+        Debug.Log("Player out of view Enemy brain");
         _enemyRotation.PlayerOutOfView();
         _enemyMovement?.PlayerOutOfView();
     }
@@ -60,6 +65,16 @@ public class EnemyBrain : MonoBehaviour
        _enemyMovement?.EnemyDeath();
        _enemyRotation.PlayerDeath();
        _enemyArms.DropArm();
+    }
+    
+    public void FinishMoving()
+    {
+        _enemyRotation.StartLookingAround();
+    }
+
+    public void StartMovingAround()
+    {
+        _enemyRotation.StopLookingAround();
     }
 
     private void Arm()
