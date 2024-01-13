@@ -29,11 +29,11 @@ public class InteractableChecker : MonoBehaviour
     {
         UniTask.Void(async () =>
         {
-           await UniTask.Delay(TimeSpan.FromSeconds(0.1));
+           await UniTask.Delay(TimeSpan.FromSeconds(0.2));
             if (interactable != null&& !isHolding)
             {
-                Debug.Log("Quick Interact");
                 interactable.QuickPressInteract();
+                interactable = null;
             }
         });
     }
@@ -41,10 +41,16 @@ public class InteractableChecker : MonoBehaviour
     private void HoldInteract(InputAction.CallbackContext callbackContext)
     {
         isHolding = true;
-        if (interactable != null)
+        UniTask.Void(async () =>
         {
-            interactable.HoldInteract();
-        }
+            await UniTask.Delay(TimeSpan.FromSeconds(0.1));
+            if (interactable != null&& isHolding)
+            {
+                Debug.Log("Hold Interact");
+                interactable.HoldInteract();
+                
+            }
+        });
     }
 
     private void StopInteraction(InputAction.CallbackContext callbackContext)
@@ -52,13 +58,14 @@ public class InteractableChecker : MonoBehaviour
         if (interactable != null)
         {
             interactable.CancelHoldInteract();
-            isHolding= false;
+            interactable = null;
         }
+        isHolding= false;
     }
     
 
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         if (other.gameObject.GetComponent<IInteractable>()!=null)
         {

@@ -10,7 +10,7 @@ public abstract class EnemyArms : MonoBehaviour
     public Transform armSpawnPoint;
     
     
-    public Constants.EnemyType enemyType;
+    private Constants.EnemyType enemyType;
     [Header("Shooting")] protected float timeBetweenShoots;
     protected int damage;
     [Header("Reloading")] private float fireRate;
