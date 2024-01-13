@@ -1,25 +1,23 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class CustomBoxCollider : MonoBehaviour
 {
 
     public LayerMask targetMask;
 
-
-    private void Awake()
-    {
-        //targetMask = LayerMask.NameToLayer("Enemy");
-    }
-
-    public bool CheckIfAllEnemiesDead()
+    public void NotticeEenemies(Transform transform)
     {
         Collider[] rangeChecks =
-            Physics.OverlapBox(transform.position, transform.localScale/2,Quaternion.identity , targetMask, QueryTriggerInteraction.Collide);
-        Debug.Log(rangeChecks.Length);
-        return rangeChecks.Length == 0; 
+            Physics.OverlapBox(this.transform.position, this.transform.localScale/2,Quaternion.identity , targetMask, QueryTriggerInteraction.Collide);
+        foreach (var enemy in rangeChecks)
+        {
+            Transform newTransform = new GameObject().transform;
+            newTransform.position = new Vector3(transform.position.x + Random.Range(-2,2f), transform.position.y , transform.position.z+Random.Range(-2,2f));
+            EnemyMovement enemyMovementComponent = enemy.GetComponent<EnemyMovement>();
+            enemyMovementComponent._travelPoints.Add(newTransform);
+            enemyMovementComponent.Travel();
+        }
     }
     
     void OnDrawGizmosSelected()
@@ -28,13 +26,14 @@ public class CustomBoxCollider : MonoBehaviour
         Gizmos.color = new Color(1, 0, 0, 0.5f);
         Gizmos.DrawCube(transform.position, transform.localScale);
     }
-}
-
-
-public static class Vector3Extension
-{
-    public static Vector3 ReverseXZ(this Vector3 vector3)
+    
+    public void KillAllEnemies()
     {
-        return new Vector3(vector3.z, vector3.y, vector3.x);
-    }
+        Collider[] rangeChecks =
+            Physics.OverlapBox(transform.position, transform.localScale/2,Quaternion.identity, targetMask, QueryTriggerInteraction.Collide);
+        foreach (var enemy in rangeChecks)
+        {
+            enemy.GetComponent<EnemyHealth>().TakeDmg(1000);
+        }
+    }    
 }

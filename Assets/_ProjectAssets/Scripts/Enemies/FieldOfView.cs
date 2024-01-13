@@ -11,7 +11,6 @@ public class FieldOfView : MonoBehaviour
     public float angle;
     public LayerMask obstructionMask;
     public LayerMask targetMask;
-    [HideInInspector]
     public bool canSeePlayer;
 
     private bool _alreadyInView;
@@ -54,7 +53,6 @@ public class FieldOfView : MonoBehaviour
 
                 if (rangeChecks.Length != 0)
                 {
-                    Debug.Log("Collider dimension is not 0");
                     Transform target = rangeChecks[0].transform;
                     Vector3 directionToTarget = (target.position - transform.position).normalized;
                 
@@ -65,23 +63,16 @@ public class FieldOfView : MonoBehaviour
                             obstructionMask);
                         if (canSeePlayer && !_alreadyInView)
                         {
-                            Debug.Log("Player in view");
                             _enemyBrain.PlayerInView();
                             _alreadyInView = true;
                         }
-                        else if(!canSeePlayer)
+                        else if(!canSeePlayer && _alreadyInView)
                         {
                             canSeePlayer = false;
                             _alreadyInView = false;
                             _enemyBrain.PlayerOutOfView();
                         }
                     }
-                }
-                else if (!canSeePlayer)
-                {
-                    canSeePlayer = false;
-                    _enemyBrain.PlayerOutOfView();
-                    _alreadyInView = false;
                 }
 
                 FiledOfViewCheck();

@@ -11,9 +11,11 @@ public class DoorBehaviour : MonoBehaviour,IInteractable
     private AudioClip _openDoorSound;
     private MeshRenderer _renderer;
     private SoundComponent _soundComponent;
+    private Rigidbody _rigidbody;
 
     private void Awake()
     {
+        _rigidbody = GetComponent<Rigidbody>();
         _soundComponent = GetComponent<SoundComponent>();
         _renderer = GetComponent<MeshRenderer>();
     }
@@ -70,5 +72,14 @@ public class DoorBehaviour : MonoBehaviour,IInteractable
     private void OnTriggerExit(Collider other)
     {
         UnHighLight();
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Bullet"))
+        {
+            _rigidbody.isKinematic = false;
+        }
+            
     }
 }
