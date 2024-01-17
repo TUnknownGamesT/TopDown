@@ -1,6 +1,7 @@
 using System;
 using System.Threading;
 using Cysharp.Threading.Tasks;
+using MoreMountains.FeedbacksForThirdParty;
 using UnityEngine;
 
 public class EnemyRotation : MonoBehaviour
@@ -33,12 +34,6 @@ public class EnemyRotation : MonoBehaviour
     private void Start()
     {
         _cts = new CancellationTokenSource();
-
-        _dynamicRotation.x = transform.rotation.eulerAngles.y + rotationAngles.x;
-        _dynamicRotation.y = transform.rotation.eulerAngles.y - rotationAngles.y;
-        
-        _angle = _dynamicRotation.x;
-        
     }
 
     // Update is called once per frame
@@ -59,10 +54,16 @@ public class EnemyRotation : MonoBehaviour
     
     public void StartLookingAround()
     {
+
         _cts = new CancellationTokenSource();
         
         _dynamicRotation.x = transform.rotation.eulerAngles.y + rotationAngles.x;
         _dynamicRotation.y = transform.rotation.eulerAngles.y - rotationAngles.y;
+        
+         // NailAngle(ref _dynamicRotation.x);
+         // NailAngle(ref _dynamicRotation.y);
+        
+        _angle = _dynamicRotation.x;
         
         RotateAround();
     }
@@ -82,21 +83,42 @@ public class EnemyRotation : MonoBehaviour
         transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * damping);
     }
 
-    public void RotateAround()
+    private void RotateAround()
     {
         UniTask.Void(async () =>
         {
             float angle = Mathf.SmoothDampAngle( transform.eulerAngles.y, _angle, ref _rotationVelocity, 1f);
             transform.rotation = Quaternion.Euler( transform.eulerAngles.x, angle,  transform.eulerAngles.z);
-            if (Math.Abs(angle - _angle) < 2)
+            if (Math.Abs(ReturnIn360Range(_angle) - transform.rotation.eulerAngles.y) < 3)
             {
                 await UniTask.Delay(TimeSpan.FromSeconds(pauseBetweenRotation), cancellationToken: _cts.Token);
-                _angle = _rotationDirection ? _dynamicRotation.x : _dynamicRotation.y;
+                _angle = _rotationDirection ? _dynamicRotation.y : _dynamicRotation.x;
                 _rotationDirection= !_rotationDirection;
             }
             
             await UniTask.Delay(TimeSpan.FromSeconds(0), cancellationToken: _cts.Token);
+
             RotateAround();
         });
     }
+
+
+    private void NailAngle(ref float  angleToNail)
+    {
+        while(angleToNail > 180)
+            angleToNail -= 180;
+        while (angleToNail <-180)
+            angleToNail += 180;
+    }
+
+    private float ReturnIn360Range(float angle)
+    {
+        while (angle > 360)
+            angle -= 360;
+        while (angle < 0)
+            angle += 360;
+
+        return angle;
+    }
+    
 }
