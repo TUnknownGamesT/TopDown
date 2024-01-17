@@ -1,7 +1,4 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
 using UnityEngine;
 
 public class EnemyInitiator : MonoBehaviour
@@ -24,6 +21,7 @@ public class EnemyInitiator : MonoBehaviour
 
     public List<EnemyType> enemyTypes;
     public List<GameObject> enemyLootArms;
+    public GameObject alertPrefab;
 
     public EnemyType GetEnemyStats(Constants.EnemyType enemy)
     {
@@ -60,10 +58,15 @@ public class EnemyInitiator : MonoBehaviour
                 Instantiate(arm, position, Quaternion.identity);
                 break;
             }
-
-
+            
         }
 
+    }
+    
+    public void InstantiateAlert(Vector3 position)
+    {
+      CustomBoxCollider customBoxCollider = Instantiate(alertPrefab, position, Quaternion.identity).GetComponent<CustomBoxCollider>();
+      customBoxCollider.AlertEnemies();
     }
 
 
