@@ -9,13 +9,14 @@ using Random = UnityEngine.Random;
 [RequireComponent(typeof(NavMeshAgent))]
 public class EnemyMovement : MonoBehaviour
 {
-    public List<Transform> _travelPoints;
+    public List<Transform> travelPoints;
     public float stoppingDistance;
     public float pauseBetweenMovement;
     public EnemyBrain enemyBrain;
     
     private NavMeshAgent _navMeshAgent;
     private CancellationTokenSource _cts;
+    private int _travelPointIndex;
 
     private void Awake()
     {
@@ -27,8 +28,8 @@ public class EnemyMovement : MonoBehaviour
 
     private void Start()
     {
-        if (_travelPoints.Count > 0)
-        {
+        if (travelPoints.Count > 0)
+        { 
             Travel();
         }
         else
@@ -42,7 +43,7 @@ public class EnemyMovement : MonoBehaviour
         _cts.Cancel();
         _navMeshAgent.SetDestination(transform.position);
         _cts = new CancellationTokenSource();
-        _travelPoints.Add(GameManager.playerRef);
+        travelPoints.Add(GameManager.playerRef);
         Travel();
     }
 
@@ -50,9 +51,18 @@ public class EnemyMovement : MonoBehaviour
     {
         _cts.Cancel();
         _cts = new CancellationTokenSource();
-        if(_travelPoints.Contains(GameManager.playerRef))
-            _travelPoints.Remove(GameManager.playerRef);
+        if(travelPoints.Contains(GameManager.playerRef))
+            travelPoints.Remove(GameManager.playerRef);
         FollowPlayer();
+    }
+    
+    public void Notice()
+    {
+        _cts.Cancel();
+        _cts = new CancellationTokenSource();
+        if(travelPoints.Contains(GameManager.playerRef)==false)
+            travelPoints.Add(GameManager.playerRef);
+        Travel();
     }
 
 
@@ -66,7 +76,10 @@ public class EnemyMovement : MonoBehaviour
     {
         UniTask.Void(async () =>
         {
-            _navMeshAgent.destination = _travelPoints[Random.Range(0,_travelPoints.Count)].position;
+            _navMeshAgent.destination = travelPoints[_travelPointIndex].position;
+            _travelPointIndex++;
+            if(_travelPointIndex >= travelPoints.Count)
+                _travelPointIndex = 0;
 
             Debug.Log("START MOVEMENT");
             
@@ -79,6 +92,7 @@ public class EnemyMovement : MonoBehaviour
             Debug.Log("Start Looking Around");
             
             await UniTask.Delay(TimeSpan.FromSeconds(pauseBetweenMovement), cancellationToken: _cts.Token);
+            
             
             Debug.Log("Start Moving Around");
             

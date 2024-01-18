@@ -5,6 +5,7 @@ public class FridgeButton : MonoBehaviour, IInteractable
 {
 
     public CustomBoxCollider customBoxCollider;
+    public ParticleSystem snow;
     
     private MeshRenderer _renderer;
     
@@ -16,6 +17,7 @@ public class FridgeButton : MonoBehaviour, IInteractable
 
     public void QuickPressInteract()
     {
+        snow.Play();
         customBoxCollider.KillAllEnemies();
     }
 
@@ -27,5 +29,15 @@ public class FridgeButton : MonoBehaviour, IInteractable
     public void UnHighLight()
     {
         _renderer.material = Constants.instance.unhighlightInteractable;
+    }
+    
+    private void OnTriggerEnter(Collider other)
+    {
+        HighLight();
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        UnHighLight();
     }
 }

@@ -15,9 +15,23 @@ public class CustomBoxCollider : MonoBehaviour
             Transform newTransform = new GameObject().transform;
             newTransform.position = new Vector3(transform.position.x + Random.Range(-2,2f), transform.position.y , transform.position.z+Random.Range(-2,2f));
             EnemyMovement enemyMovementComponent = enemy.GetComponent<EnemyMovement>();
-            enemyMovementComponent._travelPoints.Add(newTransform);
+            enemyMovementComponent.travelPoints.Add(newTransform);
             enemyMovementComponent.Travel();
         }
+    }
+    
+    public void AlertEnemies()
+    {
+        Debug.Log("Allert enemies");
+        Collider[] rangeChecks =
+            Physics.OverlapBox(this.transform.position, this.transform.localScale/2,Quaternion.identity , targetMask, QueryTriggerInteraction.Collide);
+        foreach (var enemy in rangeChecks)
+        {
+            EnemyBrain enemyBrainComponent = enemy.GetComponent<EnemyBrain>();
+            enemyBrainComponent.Notice();
+        }
+        
+        //Destroy(gameObject,2f);
     }
     
     void OnDrawGizmosSelected()

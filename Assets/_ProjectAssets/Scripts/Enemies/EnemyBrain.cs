@@ -1,3 +1,5 @@
+using System;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 
@@ -14,6 +16,7 @@ public class EnemyBrain : MonoBehaviour
     private EnemyArms _enemyArms;
     private SoundComponent _soundComponent;
     private EnemyAnimations _enemyAnimations;
+    private bool noticed;
     
 
     private void Awake()
@@ -47,6 +50,26 @@ public class EnemyBrain : MonoBehaviour
         _enemyRotation.PlayerInView();
         _enemyArms.Shoot();
         _enemyMovement?.PlayerInView();
+        Notice();
+    }
+
+    public void Notice()
+    {
+        if (!noticed)
+        {
+            noticed= true;
+            EnemyInitiator.instance.InstantiateAlert(transform.position);
+            _enemyRotation.StopLookingAround();
+            _enemyMovement.Notice();
+        }
+        else
+        {
+            UniTask.Void(async () =>
+            {
+                await UniTask.Delay(TimeSpan.FromSeconds(3));
+                noticed= false;
+            });
+        }
     }
 
 
