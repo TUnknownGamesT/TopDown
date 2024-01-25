@@ -45,6 +45,18 @@ public class ScenesManager : MonoBehaviour
             onSceneNewSceneLoad?.Invoke();
         }
     }
+
+    public void LoadNextScene()
+    {
+        if (!isLoading)
+        {
+            isLoading = !isLoading;
+            TransitionManager.Instance()
+                .Transition(SceneManager.GetActiveScene().buildIndex +1
+                    ,TransitionSettings[Random.Range(0,TransitionSettings.Length-1)],0);
+            onSceneNewSceneLoad?.Invoke();
+        }
+    }
     
     public  void LoadGameScene()
     {
@@ -55,5 +67,11 @@ public class ScenesManager : MonoBehaviour
                 .Transition(gameSceneIndex,TransitionSettings[Random.Range(0,TransitionSettings.Length-1)]
                     ,0);
         }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.CompareTag("Player"))
+            LoadNextScene();
     }
 }

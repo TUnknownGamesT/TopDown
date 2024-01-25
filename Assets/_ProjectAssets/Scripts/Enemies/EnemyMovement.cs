@@ -76,29 +76,40 @@ public class EnemyMovement : MonoBehaviour
     {
         UniTask.Void(async () =>
         {
-            _navMeshAgent.destination = travelPoints[_travelPointIndex].position;
-            _travelPointIndex++;
-            if(_travelPointIndex >= travelPoints.Count)
-                _travelPointIndex = 0;
+            try
+            {
+                if(travelPoints.Count == 0)
+                    return;
+                _navMeshAgent.destination = travelPoints[_travelPointIndex].position;
+                _travelPointIndex++;
+                if(_travelPointIndex >= travelPoints.Count-1)
+                    _travelPointIndex = 0;
 
-            Debug.Log("START MOVEMENT");
+                Debug.Log("START MOVEMENT");
             
-            await UniTask.WaitUntil(()=>Vector3.Distance(transform.position,_navMeshAgent.destination) <= _navMeshAgent.stoppingDistance, cancellationToken: _cts.Token);
+                await UniTask.WaitUntil(()=>Vector3.Distance(transform.position,_navMeshAgent.destination) <= _navMeshAgent.stoppingDistance, cancellationToken: _cts.Token);
             
-            Debug.Log("Finish Movement");
+                Debug.Log("Finish Movement");
             
-            enemyBrain.FinishMoving();
+                enemyBrain.FinishMoving();
 
-            Debug.Log("Start Looking Around");
+                Debug.Log("Start Looking Around");
             
-            await UniTask.Delay(TimeSpan.FromSeconds(pauseBetweenMovement), cancellationToken: _cts.Token);
+                await UniTask.Delay(TimeSpan.FromSeconds(pauseBetweenMovement), cancellationToken: _cts.Token);
             
             
-            Debug.Log("Start Moving Around");
+                Debug.Log("Start Moving Around");
             
-            enemyBrain.StartMovingAround();
+                enemyBrain.StartMovingAround();
              
-            Travel();
+                Travel();
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                Debug.Log("Miss Reference");
+            }
         });
     }
 

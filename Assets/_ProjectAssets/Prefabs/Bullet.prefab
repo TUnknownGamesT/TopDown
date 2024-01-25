@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 217618483775161296}
   - component: {fileID: 7650103890073534600}
   - component: {fileID: 1482597408440323069}
-  m_Layer: 0
+  m_Layer: 25
   m_Name: Point Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -126,7 +126,7 @@ GameObject:
   - component: {fileID: 7793272565942839649}
   - component: {fileID: 764057270838635866}
   - component: {fileID: 5282255329083870147}
-  m_Layer: 0
+  m_Layer: 25
   m_Name: VFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4939,7 +4939,7 @@ GameObject:
   - component: {fileID: -5406974868776382429}
   - component: {fileID: 3739268472641103576}
   - component: {fileID: -9000890661309056285}
-  m_Layer: 0
+  m_Layer: 25
   m_Name: Bullet
   m_TagString: Bullet
   m_Icon: {fileID: 0}
@@ -5101,6 +5101,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: bulletPistol
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f823312789be36d4baa34e67782d560e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f823312789be36d4baa34e67782d560e, type: 3}

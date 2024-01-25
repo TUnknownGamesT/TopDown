@@ -16,11 +16,16 @@ public class EnemyBrain : MonoBehaviour
     private EnemyArms _enemyArms;
     private SoundComponent _soundComponent;
     private EnemyAnimations _enemyAnimations;
+    
+    
     private bool noticed;
+    private CapsuleCollider _capsuleCollider;
+    private bool dead;
     
 
     private void Awake()
     {
+        _capsuleCollider = GetComponent<CapsuleCollider>();
         _soundComponent = GetComponent<SoundComponent>();
         _enemyHealth = GetComponent<EnemyHealth>();
         _fieldOfView = GetComponent<FieldOfView>();
@@ -28,7 +33,6 @@ public class EnemyBrain : MonoBehaviour
         _enemyArms = GetComponent<EnemyArms>();
         _enemyMovement = GetComponent<EnemyMovement>();
         _enemyAnimations = GetComponent<EnemyAnimations>();
-        
     }
 
     private void Start()
@@ -83,6 +87,10 @@ public class EnemyBrain : MonoBehaviour
     
     public void Death()
     {
+        if (dead)
+            return;
+        dead = true;
+        _capsuleCollider.enabled = false;
         _soundComponent.PlaySound(deathSound);
         _fieldOfView.EnemyDeath();
        _enemyMovement?.EnemyDeath();

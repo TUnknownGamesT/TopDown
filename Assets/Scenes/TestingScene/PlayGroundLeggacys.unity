@@ -1781,9 +1781,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3f4bf47c6f0333498ad315163d7ee89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _boxCollider: {fileID: 1239248421}
-  openDoorSound: {fileID: 0}
-  enemiesInTheRoomSound: {fileID: 0}
+  cameraOffset: {x: 0, y: 0, z: 0}
 --- !u!54 &121144515
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -8836,9 +8834,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3f4bf47c6f0333498ad315163d7ee89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _boxCollider: {fileID: 66575553}
-  openDoorSound: {fileID: 0}
-  enemiesInTheRoomSound: {fileID: 0}
+  cameraOffset: {x: 0, y: 0, z: 0}
 --- !u!54 &706846211
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -9353,9 +9349,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3f4bf47c6f0333498ad315163d7ee89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _boxCollider: {fileID: 1687310750}
-  openDoorSound: {fileID: 0}
-  enemiesInTheRoomSound: {fileID: 0}
+  cameraOffset: {x: 0, y: 0, z: 0}
 --- !u!54 &746906853
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -12804,9 +12798,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3f4bf47c6f0333498ad315163d7ee89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _boxCollider: {fileID: 1660450974}
-  openDoorSound: {fileID: 0}
-  enemiesInTheRoomSound: {fileID: 0}
+  cameraOffset: {x: 0, y: 0, z: 0}
 --- !u!54 &1141844829
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -16349,6 +16341,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dd94dc4e9cd39f478bfd1f3b03167cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _characterController: {fileID: 0}
 --- !u!65 &1524857626
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -16956,9 +16949,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3f4bf47c6f0333498ad315163d7ee89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _boxCollider: {fileID: 378125378}
-  openDoorSound: {fileID: 0}
-  enemiesInTheRoomSound: {fileID: 0}
+  cameraOffset: {x: 0, y: 0, z: 0}
 --- !u!54 &1599557094
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -18218,9 +18209,41 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvases: []
   playerHealthBar: {fileID: 562728767}
+  lifeBarColor:
+    serializedVersion: 2
+    key0: {r: 1, g: 1, b: 1, a: 1}
+    key1: {r: 1, g: 1, b: 1, a: 1}
+    key2: {r: 0, g: 0, b: 0, a: 0}
+    key3: {r: 0, g: 0, b: 0, a: 0}
+    key4: {r: 0, g: 0, b: 0, a: 0}
+    key5: {r: 0, g: 0, b: 0, a: 0}
+    key6: {r: 0, g: 0, b: 0, a: 0}
+    key7: {r: 0, g: 0, b: 0, a: 0}
+    ctime0: 0
+    ctime1: 65535
+    ctime2: 0
+    ctime3: 0
+    ctime4: 0
+    ctime5: 0
+    ctime6: 0
+    ctime7: 0
+    atime0: 0
+    atime1: 65535
+    atime2: 0
+    atime3: 0
+    atime4: 0
+    atime5: 0
+    atime6: 0
+    atime7: 0
+    m_Mode: 0
+    m_NumColorKeys: 2
+    m_NumAlphaKeys: 2
   isPaused: 0
   currentAmoText: {fileID: 1830559579}
   rezAmoText: {fileID: 4341741}
+  image: {fileID: 0}
+  pistol: {fileID: 0}
+  AK: {fileID: 0}
 --- !u!1 &1717654631
 GameObject:
   m_ObjectHideFlags: 0
@@ -18839,6 +18862,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3088f5c4e469644eb5aee557b609b87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  forwardPosition: {fileID: 0}
 --- !u!1 &1786947301
 GameObject:
   m_ObjectHideFlags: 0
@@ -18972,9 +18996,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3f4bf47c6f0333498ad315163d7ee89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _boxCollider: {fileID: 1760832618}
-  openDoorSound: {fileID: 0}
-  enemiesInTheRoomSound: {fileID: 0}
+  cameraOffset: {x: 0, y: 0, z: 0}
 --- !u!54 &1795879883
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -21049,9 +21071,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3f4bf47c6f0333498ad315163d7ee89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _boxCollider: {fileID: 644880238}
-  openDoorSound: {fileID: 0}
-  enemiesInTheRoomSound: {fileID: 0}
+  cameraOffset: {x: 0, y: 0, z: 0}
 --- !u!54 &2002201119
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -21822,9 +21842,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3f4bf47c6f0333498ad315163d7ee89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _boxCollider: {fileID: 524033955}
-  openDoorSound: {fileID: 0}
-  enemiesInTheRoomSound: {fileID: 0}
+  cameraOffset: {x: 0, y: 0, z: 0}
 --- !u!54 &2061591028
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -22334,6 +22352,7 @@ MonoBehaviour:
   enemyLootArms:
   - {fileID: 6111390722928597194, guid: d982b7807e182484c8ece0898f7f194b, type: 3}
   - {fileID: 6414394063023086015, guid: 7ed1ab98ae7c9924498aba330144ae55, type: 3}
+  alertPrefab: {fileID: 0}
 --- !u!114 &2108414359
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22358,8 +22377,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bacd2841adacab4587fef28458bd9fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gunnHighLight: {fileID: 2100000, guid: 3876fcf8bfa921c4a91e03da2c92546a, type: 2}
-  gunnUnHighLight: {fileID: 2100000, guid: 7e270afe542d5ea4b8e3dac85cd01fe7, type: 2}
+  openDoorSound: {fileID: 0}
+  highLightInteractable: {fileID: 2100000, guid: 3876fcf8bfa921c4a91e03da2c92546a,
+    type: 2}
+  unhighlightInteractable: {fileID: 2100000, guid: 7e270afe542d5ea4b8e3dac85cd01fe7,
+    type: 2}
 --- !u!1 &2113654867
 GameObject:
   m_ObjectHideFlags: 0
@@ -34715,6 +34737,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6c272d93b6926d4a98689ebbb28dce3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animation: {fileID: 0}
   armSpawnPoint: {fileID: 279351554}
   currentArm: {fileID: 6511595241635913767}
 --- !u!114 &1637404055533089710
@@ -41069,7 +41092,7 @@ ParticleSystemRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_RenderMode: 4
   m_MeshDistribution: 0
   m_SortMode: 0
@@ -41183,7 +41206,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 10
+      scalar: 1000000
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -41235,7 +41258,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startSpeed:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 1
       minScalar: 5
       maxCurve:
@@ -41352,7 +41375,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 3
+      scalar: 5
       minScalar: 2
       maxCurve:
         serializedVersion: 2
@@ -41510,7 +41533,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startRotationX:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 1.5707963
       minScalar: 0
       maxCurve:
@@ -41563,7 +41586,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startRotationY:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 0
       minScalar: 0
       maxCurve:
@@ -41616,7 +41639,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startRotation:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 1.5707963
       minScalar: 0
       maxCurve:
@@ -42098,7 +42121,7 @@ ParticleSystem:
       repeatInterval: 0.01
       probability: 1
   SizeModule:
-    enabled: 1
+    enabled: 0
     curve:
       serializedVersion: 2
       minMaxState: 1
@@ -43814,7 +43837,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
   NoiseModule:
-    enabled: 0
+    enabled: 1
     strength:
       serializedVersion: 2
       minMaxState: 0
@@ -44817,7 +44840,7 @@ ParticleSystem:
     m_Bounce:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 0.4
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -44927,7 +44950,7 @@ ParticleSystem:
       serializedVersion: 2
       m_Bits: 768
     maxCollisionShapes: 256
-    quality: 2
+    quality: 0
     voxelSize: 0.5
     collisionMessages: 0
     collidesWithDynamic: 1

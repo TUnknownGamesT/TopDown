@@ -17,13 +17,15 @@ public class BulletBehaviour : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Wall"))
-        {
+        { 
             Quaternion rot = Quaternion.FromToRotation(Vector3.back, collision.contacts[0].normal);
-            Instantiate(wallHitEffect, collision.contacts[0].point, rot);
+           GameObject wallMark =Instantiate(wallHitEffect, collision.contacts[0].point, rot);
+           wallMark.transform.position += wallMark.transform.forward * -0.1f;
         }else if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("Player"))
         {
             GameObject blood = Instantiate(bloodEffect, collision.contacts[0].point, Quaternion.LookRotation(transform.forward));
         }
         Destroy(gameObject);
+        
     }
 }
