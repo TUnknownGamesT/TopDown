@@ -87,18 +87,27 @@ public class EnemyRotation : MonoBehaviour
     {
         UniTask.Void(async () =>
         {
-            float angle = Mathf.SmoothDampAngle( transform.eulerAngles.y, _angle, ref _rotationVelocity, 1f);
-            transform.rotation = Quaternion.Euler( transform.eulerAngles.x, angle,  transform.eulerAngles.z);
-            if (Math.Abs(ReturnIn360Range(_angle) - transform.rotation.eulerAngles.y) < 3)
+            try
             {
-                await UniTask.Delay(TimeSpan.FromSeconds(pauseBetweenRotation), cancellationToken: _cts.Token);
-                _angle = _rotationDirection ? _dynamicRotation.y : _dynamicRotation.x;
-                _rotationDirection= !_rotationDirection;
-            }
+                float angle = Mathf.SmoothDampAngle( transform.eulerAngles.y, _angle, ref _rotationVelocity, 1f);
+                transform.rotation = Quaternion.Euler( transform.eulerAngles.x, angle,  transform.eulerAngles.z);
+                if (Math.Abs(ReturnIn360Range(_angle) - transform.rotation.eulerAngles.y) < 3)
+                {
+                    await UniTask.Delay(TimeSpan.FromSeconds(pauseBetweenRotation), cancellationToken: _cts.Token);
+                    _angle = _rotationDirection ? _dynamicRotation.y : _dynamicRotation.x;
+                    _rotationDirection= !_rotationDirection;
+                }
             
-            await UniTask.Delay(TimeSpan.FromSeconds(0), cancellationToken: _cts.Token);
+                await UniTask.Delay(TimeSpan.FromSeconds(0), cancellationToken: _cts.Token);
 
-            RotateAround();
+                RotateAround();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                Debug.Log("Thread miss reference");
+            }
+           
         });
     }
 

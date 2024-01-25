@@ -16,7 +16,7 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Ground
+  - 
   - Water
   - UI
   - 
@@ -38,7 +38,7 @@ TagManager:
   - Camera4
   - Wall
   - CrossHair
-  - 
+  - Bullet
   - 
   - 
   - 

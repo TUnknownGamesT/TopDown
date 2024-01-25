@@ -5,15 +5,20 @@ using Cysharp.Threading.Tasks;
 using Unity.VisualScripting;
 using UnityEngine;
 
+[RequireComponent(typeof(BoxCollider))]
 public class DestroyablOobject : MonoBehaviour
 {
-   public void DesTroy()
+   
+   
+   public void DesTroy(Vector3 direction)
    {
       foreach (Transform children in transform)
       {
          MeshCollider meshCollider= children.AddComponent<MeshCollider>();
          meshCollider.convex = true;
-         children.AddComponent<Rigidbody>();
+         Rigidbody _rb =  children.AddComponent<Rigidbody>();
+         _rb.AddForce(direction.normalized * 100, ForceMode.Impulse);
+         
       }
 
       UniTask.Void(async () =>
@@ -25,7 +30,9 @@ public class DestroyablOobject : MonoBehaviour
 
    private void OnCollisionEnter(Collision collision)
    {
-      if(collision.gameObject.CompareTag("Bullet"))
-         DesTroy();
+      if (collision.gameObject.CompareTag("Bullet"))
+      {
+         DesTroy(collision.contacts[0].normal);
+      }
    }
 }

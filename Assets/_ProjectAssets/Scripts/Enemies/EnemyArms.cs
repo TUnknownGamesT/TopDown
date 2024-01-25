@@ -13,7 +13,10 @@ public abstract class EnemyArms : MonoBehaviour
     private Constants.EnemyType enemyType;
     [Header("Shooting")] protected float timeBetweenShoots;
     protected int damage;
-    [Header("Reloading")] private float fireRate;
+    [Range(0,0.3f)]
+    public float spread;
+    [Header("Reloading")] 
+    private float fireRate;
     private float reloadTime;
     private int magSize;
     private float bulletSpeed;
@@ -74,9 +77,12 @@ public abstract class EnemyArms : MonoBehaviour
             {
                 if (currentAmo > 0 && CanShoot())
                 {
+                    float xSpread = UnityEngine.Random.Range(-spread, spread);
+                    float YSpread = UnityEngine.Random.Range(-spread, spread);
+                    
                     Rigidbody rb = Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation)
                         .GetComponent<Rigidbody>();
-                    rb.AddRelativeForce(Vector3.forward * bulletSpeed, ForceMode.Impulse);
+                    rb.AddRelativeForce((Vector3.forward +new Vector3(xSpread,YSpread,0) )* bulletSpeed, ForceMode.Impulse);
 
                     currentAmo--;
                     timeSinceLastShot = 0;

@@ -16,6 +16,8 @@ public abstract class Gunn : MonoBehaviour,IInteractable
     [Header("Shooting")]
     public float damage;
     public ParticleSystem vfx;
+    [Range(0,1f)]
+    public float spread;
     [Header("Reloading")]
     public float fireRate;
     public float reloadTime;
@@ -33,7 +35,7 @@ public abstract class Gunn : MonoBehaviour,IInteractable
     
     protected float timeSinceLasrShot;
     private MeshRenderer _renderer;
-    private int currentAmunition;
+    protected int currentAmunition;
 
     protected PlayerArmHandler _armHandler;
 
@@ -57,15 +59,19 @@ public abstract class Gunn : MonoBehaviour,IInteractable
 
     protected virtual bool CanShoot() => !reloading && timeSinceLasrShot > 1f / (fireRate / 60f);
     
-    public void Shoot()
+    public virtual void Shoot()
     {
 
         if(currentAmunition>0&& CanShoot())
         {
+            
+            float xSpread = UnityEngine.Random.Range(-spread, spread);
+            float YSpread = UnityEngine.Random.Range(-spread, spread);
+            
             Debug.Log("shoot");
             _armHandler.animation.Shoot();
             Rigidbody rb =  Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation).GetComponent<Rigidbody>();
-            rb.AddRelativeForce(Vector3.forward * bulletSpeed, ForceMode.Impulse);
+            rb.AddRelativeForce((Vector3.forward + new Vector3(xSpread,YSpread,0)) * bulletSpeed, ForceMode.Impulse);
             vfx.Play();
             currentAmunition--;
             timeSinceLasrShot = 0;
