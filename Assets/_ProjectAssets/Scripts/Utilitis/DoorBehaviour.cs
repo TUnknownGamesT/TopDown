@@ -7,6 +7,7 @@ public class DoorBehaviour : MonoBehaviour,IInteractable
 {
 
     public Vector3 cameraOffset;
+    public GameObject interactableCanvas;
     
     private AudioClip _openDoorSound;
     private MeshRenderer _renderer;
@@ -50,11 +51,21 @@ public class DoorBehaviour : MonoBehaviour,IInteractable
     public void HighLight()
     {
         _renderer.material = Constants.instance.highLightInteractable;
+        if (interactableCanvas != null)
+        {
+            interactableCanvas.SetActive(true);
+        }
+
     }
 
     public void UnHighLight()
     {
         _renderer.material = Constants.instance.unhighlightInteractable;
+        if (interactableCanvas!=null)
+        {
+            interactableCanvas.SetActive(false);
+        }
+        
     }
 
     [ContextMenu("Open Door")]

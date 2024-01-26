@@ -6,7 +6,7 @@ public class FridgeButton : MonoBehaviour, IInteractable
 
     public CustomBoxCollider customBoxCollider;
     public ParticleSystem snow;
-    
+    public GameObject interactableCanvas;
     private MeshRenderer _renderer;
     
 
@@ -24,11 +24,19 @@ public class FridgeButton : MonoBehaviour, IInteractable
     public void HighLight()
     {
         _renderer.material = Constants.instance.highLightInteractable;
+        if (interactableCanvas!=null)
+        {
+            interactableCanvas.SetActive(true);
+        }
     }
 
     public void UnHighLight()
     {
         _renderer.material = Constants.instance.unhighlightInteractable;
+        if (interactableCanvas!=null)
+        {
+            interactableCanvas.SetActive(false);
+        }
     }
     
     private void OnTriggerEnter(Collider other)
