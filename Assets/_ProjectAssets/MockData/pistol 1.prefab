@@ -291,10 +291,50 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 452619416995854958}
     m_Modifications:
+    - target: {fileID: 1494275939686578064, guid: ffa5dd660c8272f42a8584298ea4b684,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1737342950560376318, guid: ffa5dd660c8272f42a8584298ea4b684,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2251901839534880342, guid: ffa5dd660c8272f42a8584298ea4b684,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3984363656265878898, guid: ffa5dd660c8272f42a8584298ea4b684,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4486240697438307665, guid: ffa5dd660c8272f42a8584298ea4b684,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5268022739964775439, guid: ffa5dd660c8272f42a8584298ea4b684,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6060251442689822443, guid: ffa5dd660c8272f42a8584298ea4b684,
         type: 3}
       propertyPath: m_Name
       value: MuzzleFlare
+      objectReference: {fileID: 0}
+    - target: {fileID: 6060251442689822443, guid: ffa5dd660c8272f42a8584298ea4b684,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7756846095372769949, guid: ffa5dd660c8272f42a8584298ea4b684,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8706080261236547451, guid: ffa5dd660c8272f42a8584298ea4b684,
         type: 3}
@@ -353,6 +393,32 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ffa5dd660c8272f42a8584298ea4b684, type: 3}
+--- !u!1 &2965072291979631065 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 656435789711592038, guid: ffa5dd660c8272f42a8584298ea4b684,
+    type: 3}
+  m_PrefabInstance: {fileID: 2322218402423264191}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4067185281763568203
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2965072291979631065}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Version: 1
+  m_UsePipelineSettings: 1
+  m_AdditionalLightsShadowResolutionTier: 2
+  m_LightLayerMask: 1
+  m_CustomShadowLayers: 0
+  m_ShadowLayerMask: 1
+  m_LightCookieSize: {x: 1, y: 1}
+  m_LightCookieOffset: {x: 0, y: 0}
 --- !u!198 &4046032779211601473 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 1737342950560376318, guid: ffa5dd660c8272f42a8584298ea4b684,
