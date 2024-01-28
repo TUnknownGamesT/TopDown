@@ -13,6 +13,7 @@ public class DoorBehaviour : MonoBehaviour,IInteractable
     private MeshRenderer _renderer;
     private SoundComponent _soundComponent;
     private Rigidbody _rigidbody;
+    private bool _wasOpened = false;
 
     private void Awake()
     {
@@ -71,7 +72,12 @@ public class DoorBehaviour : MonoBehaviour,IInteractable
     [ContextMenu("Open Door")]
     public void OpenDoor()
     {
-        LeanTween.rotateY(gameObject, 90, 1f).setEaseInQuad();
+        if (!_wasOpened)
+        {
+            LeanTween.rotateLocal(gameObject, new Vector3(0f, 90f, 0f), 1f).setEaseInQuad();
+            _wasOpened = true;
+        }
+        
     }
     
     
