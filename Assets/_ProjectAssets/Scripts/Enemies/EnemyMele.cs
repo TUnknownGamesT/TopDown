@@ -3,13 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class EnemyMele : EnemyArms
 {
 
     private float stoppingDistacne;
-    
-    
+    public GameObject knife;
     
     protected override bool CanShoot()
     {
@@ -51,5 +51,11 @@ public class EnemyMele : EnemyArms
         damage = enemyType.damage;
         timeBetweenShoots = enemyType.timeBetweenShoots;
         Instantiate(enemyType.armPrefab, armSpawnPoint.position, Quaternion.identity,armSpawnPoint.transform);
+    }
+
+    public override void DropArm()
+    {
+        GameObject arm = EnemyInitiator.instance.GetKnife();
+        Instantiate(arm,transform.position,Quaternion.identity); 
     }
 }

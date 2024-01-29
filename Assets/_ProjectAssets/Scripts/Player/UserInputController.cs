@@ -12,7 +12,8 @@ public class UserInputController : MonoBehaviour
     public static InputAction _spaceAction;
     public static InputAction _pause;
     public static InputAction _reload;
-    public static InputAction _QButton;
+    public static InputAction _rightClick;
+    public static InputAction _throwGrenade;
 
     private void Awake()
     {
@@ -25,7 +26,8 @@ public class UserInputController : MonoBehaviour
         _spaceAction = _playerMovement.Player.Interact;
         _pause = _playerMovement.Player.Pause;
         _reload = _playerMovement.Player.Reload;
-        _QButton = _playerMovement.Player.LookForward;
+        _rightClick = _playerMovement.Player.LookForward;
+        _throwGrenade = _playerMovement.Player.ThrowGrenade;
 
     }
     

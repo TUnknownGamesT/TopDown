@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3514471267979411368}
   - component: {fileID: -4412743901024954412}
   m_Layer: 0
-  m_Name: BarrelExplosion
+  m_Name: BarrelExplosionSound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

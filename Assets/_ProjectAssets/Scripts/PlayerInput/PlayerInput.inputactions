@@ -60,9 +60,18 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "LookForward",
+                    "name": "ThrowGrenade",
                     "type": "Button",
                     "id": "b87fb197-f33a-4d3e-bc26-37d8065108a3",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "LookForward",
+                    "type": "Button",
+                    "id": "45830a62-7f7f-4121-b116-d0e33627ec7c",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -185,6 +194,17 @@
                     "id": "e8dfaf62-a720-4e31-bb07-94c30d2b8328",
                     "path": "<Keyboard>/q",
                     "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ThrowGrenade",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e6366f95-8c3a-44ba-8ddc-61d80c11b6a9",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "Press",
                     "processors": "",
                     "groups": "",
                     "action": "LookForward",

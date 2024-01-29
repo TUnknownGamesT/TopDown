@@ -6,6 +6,8 @@ using UnityEngine.InputSystem;
 public class InteractableChecker : MonoBehaviour
 {
     
+    public static Action<GameObject> onGrenadePickUp;
+    
     public IInteractable interactable;
 
     private bool isHolding;
@@ -71,6 +73,14 @@ public class InteractableChecker : MonoBehaviour
         {
             Debug.Log("Interactable found");
             interactable = other.gameObject.GetComponent<IInteractable>();
+        }
+    }
+    
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Grenade"))
+        {
+            onGrenadePickUp?.Invoke(other.gameObject);
         }
     }
 

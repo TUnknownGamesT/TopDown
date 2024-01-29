@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 5032266901560752177}
   - component: {fileID: 9013348120947029644}
   m_Layer: 0
-  m_Name: pistol 1
+  m_Name: Pistol
   m_TagString: Gun
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -132,8 +132,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 955ebf4dcc7d7dd4189855859e1dcbfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyDrop: 1
   damage: 3
   vfx: {fileID: 4046032779211601473}
+  spread: 0
   fireRate: 60
   reloadTime: 1
   magSize: 10
@@ -141,10 +143,10 @@ MonoBehaviour:
   bulletSpeed: 25
   reloading: 0
   bulletSpawnPoint: {fileID: 4459699204743388749}
-  bulletPrefab: {fileID: 4554020830683859374, guid: 9307afa9b3a1b244ebed89b1babc2b7f,
+  bulletPrefab: {fileID: 4554020830683859374, guid: 2687b04bd1f5c1b48b717b353962c100,
     type: 3}
   soundComponent: {fileID: 0}
-  shootSound: {fileID: 0}
+  shootSound: {fileID: 8300000, guid: 38e31fe8409cf3a45a9fe3d143057f95, type: 3}
 --- !u!82 &5032266901560752177
 AudioSource:
   m_ObjectHideFlags: 0

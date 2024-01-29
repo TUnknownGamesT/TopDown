@@ -1,7 +1,9 @@
 using System;
+using System.Security.Cryptography;
 using Cinemachine;
 using Cysharp.Threading.Tasks.Triggers;
 using Unity.VisualScripting;
+using UnityEditor.Build;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -28,9 +30,11 @@ public class PlayerArmHandler : MonoBehaviour
     private Transform grooundArmChecker;
     public Transform armSpawnPoint;
     public Gunn currentArm;
+    public GameObject grenade;
+    public Transform throwGrenadePoint;
 
     private bool shoot;
-
+    private bool haveGrenade = false;
 
     [ContextMenu("Init PlayerArmHandler")]
     private void  Init()
@@ -61,18 +65,21 @@ public class PlayerArmHandler : MonoBehaviour
    
     protected void OnDisable()
     {
-
+        InteractableChecker.onGrenadePickUp -= PickUpGrenade;
         UserInputController._leftClick.started -= StartShooting;
         UserInputController._leftClick.canceled -= StopShooting;
         UserInputController._reload.started -= Reload;
+        UserInputController._throwGrenade.started -= ThrowGrenade;
     }
 
 
     protected void Start()
     {
+        InteractableChecker.onGrenadePickUp += PickUpGrenade;
         UserInputController._leftClick.started += StartShooting;
         UserInputController._leftClick.canceled += StopShooting;
         UserInputController._reload.started += Reload;
+        UserInputController._throwGrenade.started += ThrowGrenade;
         animation = GetComponent<PlayerAnimation>();
         UIManager.instance.SetAmoUI(currentArm.magSize,currentArm.totalAmunition);
         currentArm.SetArmHandler(this);
@@ -105,6 +112,28 @@ public class PlayerArmHandler : MonoBehaviour
     }
 
     
+    private void ThrowGrenade(InputAction.CallbackContext obj)
+    {
+        if (haveGrenade)
+        {
+            haveGrenade = false;
+            GameObject newGrenade = Instantiate(grenade,armSpawnPoint.position,Quaternion.identity);
+            newGrenade.tag = "Untagged";
+            newGrenade.GetComponent<Rigidbody>().AddForce(armSpawnPoint.forward*30,ForceMode.Impulse);
+            newGrenade.GetComponent<Grenade>().Throw();
+            
+        }
+    }
+
+    private void PickUpGrenade(GameObject grenade)
+    {
+        if (!haveGrenade)
+        {
+            haveGrenade = true;
+            Destroy(grenade);
+        }
+    }
+    
     public void Die()
     {
         enabled = false;
@@ -132,6 +161,7 @@ public class PlayerArmHandler : MonoBehaviour
         currentArm.SetArmHandler(this);
 
     }
+    
 
 
 }

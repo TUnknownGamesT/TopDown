@@ -80,8 +80,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7da9b623aac7fd64db135fff973ff92d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyDrop: 2
   damage: 3
   vfx: {fileID: 6813729718040723974}
+  spread: 0
   fireRate: 320
   reloadTime: 3
   magSize: 40
@@ -92,7 +94,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 4554020830683859374, guid: 9307afa9b3a1b244ebed89b1babc2b7f,
     type: 3}
   soundComponent: {fileID: 3168756248671283767}
-  shootSound: {fileID: 8300000, guid: 38e31fe8409cf3a45a9fe3d143057f95, type: 3}
+  shootSound: {fileID: 8300000, guid: 3f0c66060815f3241a0d1a94b4fffc51, type: 3}
   meshRenderers:
   - {fileID: 3707359164106746236}
   - {fileID: 7479083468174941602}
