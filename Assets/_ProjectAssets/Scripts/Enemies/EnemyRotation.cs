@@ -1,7 +1,6 @@
 using System;
 using System.Threading;
 using Cysharp.Threading.Tasks;
-using MoreMountains.FeedbacksForThirdParty;
 using UnityEngine;
 
 public class EnemyRotation : MonoBehaviour
