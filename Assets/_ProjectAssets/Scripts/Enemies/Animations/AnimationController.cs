@@ -60,6 +60,11 @@ public class AnimationController : MonoBehaviour
         _oldPosition = _transform.position;
     }
     
+    public void ThrowGrenade()
+    {
+        animator.SetTrigger("grenade");
+    }
+    
     public virtual void Die()
     {
         SetRagdollEnabled(true);

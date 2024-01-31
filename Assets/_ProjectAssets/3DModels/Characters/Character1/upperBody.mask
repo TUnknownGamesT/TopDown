@@ -25,25 +25,33 @@ AvatarMask:
     m_Weight: 1
   - m_Path: Armature/base/body/lefthand2/lefthand1
     m_Weight: 1
-  - m_Path: Armature/base/body/lefthand2/lefthand1/lefthand1_end
+  - m_Path: Armature/base/body/lefthand2/lefthand1/lefthand1.001
+    m_Weight: 1
+  - m_Path: Armature/base/body/lefthand2/lefthand1/lefthand1.001/lefthand1.001_end
     m_Weight: 1
   - m_Path: Armature/base/body/righthand2
     m_Weight: 1
   - m_Path: Armature/base/body/righthand2/righthand1
     m_Weight: 1
-  - m_Path: Armature/base/body/righthand2/righthand1/righthand1_end
+  - m_Path: Armature/base/body/righthand2/righthand1/righthand1.001
+    m_Weight: 1
+  - m_Path: Armature/base/body/righthand2/righthand1/righthand1.001/righthand1.001_end
     m_Weight: 1
   - m_Path: Armature/base/leftleg1
     m_Weight: 1
   - m_Path: Armature/base/leftleg1/leftleg2
     m_Weight: 1
-  - m_Path: Armature/base/leftleg1/leftleg2/leftleg2_end
+  - m_Path: Armature/base/leftleg1/leftleg2/leftleg2.001
+    m_Weight: 1
+  - m_Path: Armature/base/leftleg1/leftleg2/leftleg2.001/leftleg2.001_end
     m_Weight: 1
   - m_Path: Armature/base/rightleg2
     m_Weight: 1
   - m_Path: Armature/base/rightleg2/rightleg1
     m_Weight: 1
-  - m_Path: Armature/base/rightleg2/rightleg1/rightleg1_end
+  - m_Path: Armature/base/rightleg2/rightleg1/rightleg1.001
+    m_Weight: 1
+  - m_Path: Armature/base/rightleg2/rightleg1/rightleg1.001/rightleg1.001_end
     m_Weight: 1
   - m_Path: Armature/elbowlefthand
     m_Weight: 1

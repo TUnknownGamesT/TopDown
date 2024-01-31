@@ -7,10 +7,8 @@ public class WeaponAnimations
     protected AnimationController _daddy;
     protected int handsOnWeapon;
     
-    private static readonly int IsShooting = Animator.StringToHash("isShooting");
     private static readonly int weaponType = Animator.StringToHash("weaponType");
     private static readonly int Reload = Animator.StringToHash("reload");
-    private static readonly int Shoot1 = Animator.StringToHash("shoot");
     private static readonly int Property = Animator.StringToHash("reload 0");
 
     public WeaponAnimations(AnimationController controller)
