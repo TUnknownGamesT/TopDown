@@ -38,4 +38,16 @@ public class EnemyAnimations : AnimationController
             WeaponType = (int)enemyType;
         }
     }
+
+    public void Smoke(bool value)
+    {
+        animator.SetBool("smoke", value);
+    }
+    
+    
+    
+    public void ThrowUp(bool value)
+    {
+        animator.SetBool("throwUp", value);
+    }
 }
