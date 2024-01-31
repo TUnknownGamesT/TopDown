@@ -22,6 +22,7 @@ public class EnemyInitiator : MonoBehaviour
     public List<EnemyType> enemyTypes;
     public List<GameObject> enemyLootArms;
     public GameObject alertPrefab;
+    public GameObject knife;
 
     public EnemyType GetEnemyStats(Constants.EnemyType enemy)
     {
@@ -30,37 +31,23 @@ public class EnemyInitiator : MonoBehaviour
 
     public void InstantiateArm(Constants.EnemyType enemy, Vector3 position)
     {
+        GameObject arm = enemyLootArms.Find(x => x.GetComponent<Gunn>().enemyDrop == enemy);
+        Instantiate(arm, position, Quaternion.identity);
+    }
 
-        //TODO:nici nu vreau sa comentez
-        switch (enemy)
-        {
-            case Constants.EnemyType.Male:
-            {
-                // don't need to instantiate enything
-                break;
-            }
-            case Constants.EnemyType.Pistol:
-            {
-                GameObject arm = enemyLootArms.Find(x => x.name == "pistol 1");
-                Instantiate(arm, position, Quaternion.identity);
-                break;
-            }
-            case Constants.EnemyType.AKA47:
-            {
-                GameObject arm = enemyLootArms.Find(x => x.name == "AKA47");
-                Instantiate(arm, position, Quaternion.identity);
-                break;
-            }
-
-            case Constants.EnemyType.Sniper:
-            {
-                GameObject arm = enemyLootArms.Find(x => x.name == "AKA47");
-                Instantiate(arm, position, Quaternion.identity);
-                break;
-            }
-            
-        }
-
+    public GameObject GetArm(Constants.EnemyType enemy)
+    {
+        GameObject arm = enemyLootArms.Find(x => x.GetComponent<Gunn>().enemyDrop == enemy);
+        
+        if (arm == null)
+            return enemyLootArms[2];
+        
+        return arm;
+    }
+    
+    public GameObject GetKnife()
+    {
+        return knife;
     }
     
     public void InstantiateAlert(Vector3 position)

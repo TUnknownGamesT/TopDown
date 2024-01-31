@@ -1,6 +1,5 @@
 using System;
 using Cinemachine;
-using MoreMountains.TopDownEngine;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -28,14 +27,14 @@ public class CameraController : MonoBehaviour
 
     private void OnDisable()
     {
-        UserInputController._QButton.started -= LookForward;
-        UserInputController._QButton.canceled -= LookAtPlayer;
+        UserInputController._rightClick.started -= LookForward;
+        UserInputController._rightClick.canceled -= LookAtPlayer;
     }
 
     private void Start()
     {
-        UserInputController._QButton.started += LookForward;
-        UserInputController._QButton.canceled += LookAtPlayer;
+        UserInputController._rightClick.started += LookForward;
+        UserInputController._rightClick.canceled += LookAtPlayer;
     }
 
     private void Update()

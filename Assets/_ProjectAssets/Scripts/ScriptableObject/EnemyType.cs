@@ -9,6 +9,7 @@ public class EnemyType : ScriptableObject
     [Header("Shooting")]
     public float timeBetweenShoots;
     public int damage;
+    public int numberOfBulletsPerShoot = 1;
     [Header("Reloading")]
     public float fireRate;
     public float reloadTime;

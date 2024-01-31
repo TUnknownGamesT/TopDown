@@ -28,7 +28,7 @@ public class Constants : MonoBehaviour
       Pistol=1,
       AKA47=2,
       Sniper=3,
-      
+      ShotGun=4,
    }
 
    public static int PistolEnemyHealth = 2;

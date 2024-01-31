@@ -13,6 +13,8 @@ public abstract class Gunn : MonoBehaviour,IInteractable
     public static Action<int> onReload;
     public static Action<int,int> onPickUpNewWeapon;
 
+
+    public Constants.EnemyType enemyDrop;
     [Header("Shooting")]
     public float damage;
     public ParticleSystem vfx;

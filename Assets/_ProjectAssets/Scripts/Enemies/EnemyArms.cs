@@ -15,6 +15,7 @@ public abstract class EnemyArms : MonoBehaviour
     protected int damage;
     [Range(0,0.3f)]
     public float spread;
+    private int numberOfBulletsPerShoot = 1;
     [Header("Reloading")] 
     private float fireRate;
     private float reloadTime;
@@ -59,6 +60,7 @@ public abstract class EnemyArms : MonoBehaviour
         timeBetweenShoots = enemyType.timeBetweenShoots;
         bulletPrefab = enemyType.bulletPrefab;
         shootSound = enemyType.shootSound;
+        numberOfBulletsPerShoot = enemyType.numberOfBulletsPerShoot;
         
         armPrefab = Instantiate(enemyType.armPrefab, armSpawnPoint.position, Quaternion.identity, armSpawnPoint.transform);
         armPrefab.transform.localPosition = Vector3.zero;
@@ -77,13 +79,16 @@ public abstract class EnemyArms : MonoBehaviour
             {
                 if (currentAmo > 0 && CanShoot())
                 {
-                    float xSpread = UnityEngine.Random.Range(-spread, spread);
-                    float YSpread = UnityEngine.Random.Range(-spread, spread);
+                    for (int i = 0; i < numberOfBulletsPerShoot; i++)
+                    {
+                        float xSpread = UnityEngine.Random.Range(-spread, spread);
+                        float YSpread = UnityEngine.Random.Range(-spread, spread);
                     
-                    Rigidbody rb = Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation)
-                        .GetComponent<Rigidbody>();
-                    rb.AddRelativeForce((Vector3.forward +new Vector3(xSpread,YSpread,0) )* bulletSpeed, ForceMode.Impulse);
-
+                        Rigidbody rb = Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation)
+                            .GetComponent<Rigidbody>();
+                        rb.AddRelativeForce((Vector3.forward +new Vector3(xSpread,YSpread,0) )* bulletSpeed, ForceMode.Impulse);
+ 
+                    }
                     currentAmo--;
                     timeSinceLastShot = 0;
                     soundComponent.PlaySound(shootSound);
@@ -120,7 +125,7 @@ public abstract class EnemyArms : MonoBehaviour
         currentAmo = magSize;
     }
 
-    public void DropArm()
+    public virtual void DropArm()
     {
         Destroy(armPrefab);
         EnemyInitiator.instance.InstantiateArm(enemyType,transform.position);
