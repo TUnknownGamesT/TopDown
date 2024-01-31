@@ -8,7 +8,7 @@ using UnityEngine;
 [RequireComponent(typeof(BoxCollider))]
 public class DestroyablOobject : MonoBehaviour
 {
-   
+   private bool alreadyDestroyd;
    
    public void DesTroy(Vector3 direction)
    {
@@ -18,7 +18,11 @@ public class DestroyablOobject : MonoBehaviour
          meshCollider.convex = true;
          Rigidbody _rb =  children.AddComponent<Rigidbody>();
          _rb.AddForce(direction.normalized * 100, ForceMode.Impulse);
-         
+      }
+
+      foreach (Transform children in transform)
+      {
+         children.SetParent(null);
       }
 
       UniTask.Void(async () =>
@@ -27,12 +31,5 @@ public class DestroyablOobject : MonoBehaviour
          gameObject.GetComponent<BoxCollider>().enabled = false;
       });
    }
-
-   private void OnCollisionEnter(Collision collision)
-   {
-      if (collision.gameObject.CompareTag("Bullet"))
-      {
-         DesTroy(collision.contacts[0].normal);
-      }
-   }
+   
 }

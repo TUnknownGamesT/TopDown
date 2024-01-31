@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        Cursor.visible = false; 
         playerRef =  GameObject.FindGameObjectWithTag("Player").transform;
     }
 }

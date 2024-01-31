@@ -10,21 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 80efef4e5200bdb45817fc5a3fb2c43f, type: 3}
-  m_Name: AKA
+  m_Name: ShotGun
   m_EditorClassIdentifier: 
-  armPrefab: {fileID: 5350970468327829429, guid: b47f1ed230e63cf4ab26e23c68d900dc,
+  armPrefab: {fileID: 2585101835882494515, guid: ffef6971765645845806f47e7eb6e7df,
     type: 3}
-  enemyType: 2
-  timeBetweenShoots: 0.2
+  enemyType: 4
+  timeBetweenShoots: 3
   damage: 2
-  numberOfBulletsPerShoot: 1
-  fireRate: 320
+  numberOfBulletsPerShoot: 5
+  fireRate: 200
   reloadTime: 3
-  magSize: 40
-  totalAmmunition: 120
-  bulletSpeed: 25
+  magSize: 2
+  totalAmmunition: 7
+  bulletSpeed: 10
   reloading: 0
-  bulletPrefab: {fileID: 4554020830683859374, guid: 2687b04bd1f5c1b48b717b353962c100,
+  bulletPrefab: {fileID: 4554020830683859374, guid: 9307afa9b3a1b244ebed89b1babc2b7f,
     type: 3}
   stoppingDistance: 10
-  shootSound: {fileID: 8300000, guid: 3f0c66060815f3241a0d1a94b4fffc51, type: 3}
+  shootSound: {fileID: 8300000, guid: d1b770e5b045a5c4b88ac7302b602a41, type: 3}
