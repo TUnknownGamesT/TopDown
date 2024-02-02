@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: 2675533608288173930}
   - component: {fileID: 8664526203426508338}
   - component: {fileID: 3168756248671283767}
-  m_Layer: 0
+  m_Layer: 27
   m_Name: AKA47
-  m_TagString: Untagged
+  m_TagString: Gun
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -93,7 +93,6 @@ MonoBehaviour:
   bulletSpawnPoint: {fileID: 9194641389020858947}
   bulletPrefab: {fileID: 4554020830683859374, guid: 9307afa9b3a1b244ebed89b1babc2b7f,
     type: 3}
-  soundComponent: {fileID: 3168756248671283767}
   shootSound: {fileID: 8300000, guid: 3f0c66060815f3241a0d1a94b4fffc51, type: 3}
   meshRenderers:
   - {fileID: 3707359164106746236}
@@ -215,7 +214,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9194641389020858947}
-  m_Layer: 0
+  m_Layer: 27
   m_Name: BulletSpawnPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -314,15 +313,60 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8391222552659086748, guid: ce798258965a29c4cb95c61b8a4d8b15,
+        type: 3}
+      propertyPath: m_Layer
+      value: 27
+      objectReference: {fileID: 0}
+    - target: {fileID: -7146521406498821007, guid: ce798258965a29c4cb95c61b8a4d8b15,
+        type: 3}
+      propertyPath: m_Layer
+      value: 27
+      objectReference: {fileID: 0}
+    - target: {fileID: -6733177361254619370, guid: ce798258965a29c4cb95c61b8a4d8b15,
+        type: 3}
+      propertyPath: m_Layer
+      value: 27
+      objectReference: {fileID: 0}
+    - target: {fileID: -5568371526223589888, guid: ce798258965a29c4cb95c61b8a4d8b15,
+        type: 3}
+      propertyPath: m_Layer
+      value: 27
+      objectReference: {fileID: 0}
     - target: {fileID: -4683669308469848369, guid: ce798258965a29c4cb95c61b8a4d8b15,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 7e270afe542d5ea4b8e3dac85cd01fe7, type: 2}
+    - target: {fileID: -516098083770646512, guid: ce798258965a29c4cb95c61b8a4d8b15,
+        type: 3}
+      propertyPath: m_Layer
+      value: 27
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: ce798258965a29c4cb95c61b8a4d8b15,
         type: 3}
       propertyPath: m_Name
       value: AK
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ce798258965a29c4cb95c61b8a4d8b15,
+        type: 3}
+      propertyPath: m_Layer
+      value: 27
+      objectReference: {fileID: 0}
+    - target: {fileID: 8416272007918961125, guid: ce798258965a29c4cb95c61b8a4d8b15,
+        type: 3}
+      propertyPath: m_Layer
+      value: 27
+      objectReference: {fileID: 0}
+    - target: {fileID: 8513859187771203891, guid: ce798258965a29c4cb95c61b8a4d8b15,
+        type: 3}
+      propertyPath: m_Layer
+      value: 27
+      objectReference: {fileID: 0}
+    - target: {fileID: 8821623529969584324, guid: ce798258965a29c4cb95c61b8a4d8b15,
+        type: 3}
+      propertyPath: m_Layer
+      value: 27
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ce798258965a29c4cb95c61b8a4d8b15, type: 3}
@@ -351,10 +395,50 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5931049148562129669}
     m_Modifications:
+    - target: {fileID: 656435789711592038, guid: ffa5dd660c8272f42a8584298ea4b684,
+        type: 3}
+      propertyPath: m_Layer
+      value: 27
+      objectReference: {fileID: 0}
+    - target: {fileID: 2023030032528171424, guid: ffa5dd660c8272f42a8584298ea4b684,
+        type: 3}
+      propertyPath: m_Layer
+      value: 27
+      objectReference: {fileID: 0}
+    - target: {fileID: 3152564444221579870, guid: ffa5dd660c8272f42a8584298ea4b684,
+        type: 3}
+      propertyPath: m_Layer
+      value: 27
+      objectReference: {fileID: 0}
+    - target: {fileID: 3254450598904374824, guid: ffa5dd660c8272f42a8584298ea4b684,
+        type: 3}
+      propertyPath: m_Layer
+      value: 27
+      objectReference: {fileID: 0}
+    - target: {fileID: 4304011736184975680, guid: ffa5dd660c8272f42a8584298ea4b684,
+        type: 3}
+      propertyPath: m_Layer
+      value: 27
+      objectReference: {fileID: 0}
+    - target: {fileID: 4398977996460298385, guid: ffa5dd660c8272f42a8584298ea4b684,
+        type: 3}
+      propertyPath: m_Layer
+      value: 27
+      objectReference: {fileID: 0}
     - target: {fileID: 6060251442689822443, guid: ffa5dd660c8272f42a8584298ea4b684,
         type: 3}
       propertyPath: m_Name
       value: MuzzleFlare
+      objectReference: {fileID: 0}
+    - target: {fileID: 6060251442689822443, guid: ffa5dd660c8272f42a8584298ea4b684,
+        type: 3}
+      propertyPath: m_Layer
+      value: 27
+      objectReference: {fileID: 0}
+    - target: {fileID: 7755627851366233505, guid: ffa5dd660c8272f42a8584298ea4b684,
+        type: 3}
+      propertyPath: m_Layer
+      value: 27
       objectReference: {fileID: 0}
     - target: {fileID: 8706080261236547451, guid: ffa5dd660c8272f42a8584298ea4b684,
         type: 3}
