@@ -14,9 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   armPrefab: {fileID: 4425058160933306881, guid: 4c9353ee21afc6e4f892c4644a0a395e,
     type: 3}
-  enemyType: 3
+  enemyType: 4
   timeBetweenShoots: 4
   damage: 10
+  numberOfBulletsPerShoot: 1
   fireRate: 700
   reloadTime: 2
   magSize: 10

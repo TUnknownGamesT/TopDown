@@ -5,13 +5,14 @@ using UnityEngine;
 public class ShotGunn : Gunn
 {
     public float numberOfBulletsPerShoot;
+    public MeshRenderer meshRenderer;
 
     public override void Shoot()
     {
-        if (currentAmunition > 0 && CanShoot())
+        if (CurrentAmunition > 0 && CanShoot())
         {
             
-            // _armHandler.animation.Shoot();
+             _armHandler.animation.Shoot();
             for (int i = 0; i < numberOfBulletsPerShoot; i++)
             {
                 float xSpread = UnityEngine.Random.Range(-spread, spread);
@@ -24,19 +25,29 @@ public class ShotGunn : Gunn
             }
 
             vfx.Play();
-            currentAmunition--;
-            timeSinceLasrShot = 0;
+            CurrentAmunition--;
+            TimeSinceLasrShot = 0;
             CameraController.ShakeCamera();
             onShoot?.Invoke();
-            soundComponent.PlaySound(shootSound);
-            //_armHandler.animation.StopShooting();
+            _soundComponent.PlaySound(shootSound);
+            _armHandler.animation.StopShooting();
         }
-        else if (currentAmunition <= 0 && totalAmunition > 0)
+        else if (CurrentAmunition <= 0 && totalAmunition > 0)
         {
             if (!reloading)
             {
                 Reload();
             }
         }
+    }
+    
+    public override void HighLight()
+    {
+        meshRenderer.material = Constants.instance.highLightInteractable;
+    }
+    
+    public override void UnHighLight()
+    {
+        meshRenderer.material = Constants.instance.unhighlightInteractable;
     }
 }

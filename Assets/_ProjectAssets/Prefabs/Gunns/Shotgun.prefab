@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 675206132545349504}
-  m_Layer: 0
+  m_Layer: 27
   m_Name: BulletSpawnPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 3681230468174185228}
   - component: {fileID: 5398419624494855570}
   - component: {fileID: 4606346652958009677}
-  m_Layer: 0
+  m_Layer: 27
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -128,7 +128,7 @@ GameObject:
   - component: {fileID: 533673297441921134}
   - component: {fileID: 533673297441921135}
   - component: {fileID: 533673297441921128}
-  m_Layer: 0
+  m_Layer: 27
   m_Name: Shotgun
   m_TagString: Gun
   m_Icon: {fileID: 0}
@@ -305,7 +305,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd2c91331a1b45e4f87ab7cb4d78e7fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyDrop: 4
+  enemyDrop: 3
   damage: 1
   vfx: {fileID: 1243723930294177354}
   spread: 0.3
@@ -318,9 +318,9 @@ MonoBehaviour:
   bulletSpawnPoint: {fileID: 675206132545349504}
   bulletPrefab: {fileID: 4554020830683859374, guid: 9307afa9b3a1b244ebed89b1babc2b7f,
     type: 3}
-  soundComponent: {fileID: 0}
   shootSound: {fileID: 8300000, guid: d6654b23983ce73439bcc32434698d3c, type: 3}
   numberOfBulletsPerShoot: 10
+  meshRenderer: {fileID: 4606346652958009677}
 --- !u!1 &2478025056985880724
 GameObject:
   m_ObjectHideFlags: 0
@@ -332,7 +332,7 @@ GameObject:
   - component: {fileID: 3379132708531611694}
   - component: {fileID: 9176070389241987961}
   - component: {fileID: 7847603008052044665}
-  m_Layer: 0
+  m_Layer: 27
   m_Name: Cylinder.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -415,7 +415,7 @@ GameObject:
   - component: {fileID: 6690081845471176115}
   - component: {fileID: 5374247803568785351}
   - component: {fileID: 7142392137944910173}
-  m_Layer: 0
+  m_Layer: 27
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -498,7 +498,7 @@ GameObject:
   - component: {fileID: 6732473524179578195}
   - component: {fileID: 4173365967206952851}
   - component: {fileID: 7119248959292086072}
-  m_Layer: 0
+  m_Layer: 27
   m_Name: Cylinder.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -577,6 +577,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 533673297441921129}
     m_Modifications:
+    - target: {fileID: 656435789711592038, guid: ffa5dd660c8272f42a8584298ea4b684,
+        type: 3}
+      propertyPath: m_Layer
+      value: 27
+      objectReference: {fileID: 0}
     - target: {fileID: 1737342950560376318, guid: ffa5dd660c8272f42a8584298ea4b684,
         type: 3}
       propertyPath: NoiseModule.enabled
@@ -591,6 +596,11 @@ PrefabInstance:
         type: 3}
       propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.minMaxState
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2023030032528171424, guid: ffa5dd660c8272f42a8584298ea4b684,
+        type: 3}
+      propertyPath: m_Layer
+      value: 27
       objectReference: {fileID: 0}
     - target: {fileID: 2251901839534880342, guid: ffa5dd660c8272f42a8584298ea4b684,
         type: 3}
@@ -617,10 +627,40 @@ PrefabInstance:
       propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.scalar
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 3152564444221579870, guid: ffa5dd660c8272f42a8584298ea4b684,
+        type: 3}
+      propertyPath: m_Layer
+      value: 27
+      objectReference: {fileID: 0}
+    - target: {fileID: 3254450598904374824, guid: ffa5dd660c8272f42a8584298ea4b684,
+        type: 3}
+      propertyPath: m_Layer
+      value: 27
+      objectReference: {fileID: 0}
+    - target: {fileID: 4304011736184975680, guid: ffa5dd660c8272f42a8584298ea4b684,
+        type: 3}
+      propertyPath: m_Layer
+      value: 27
+      objectReference: {fileID: 0}
+    - target: {fileID: 4398977996460298385, guid: ffa5dd660c8272f42a8584298ea4b684,
+        type: 3}
+      propertyPath: m_Layer
+      value: 27
+      objectReference: {fileID: 0}
     - target: {fileID: 6060251442689822443, guid: ffa5dd660c8272f42a8584298ea4b684,
         type: 3}
       propertyPath: m_Name
       value: MuzzleFlare
+      objectReference: {fileID: 0}
+    - target: {fileID: 6060251442689822443, guid: ffa5dd660c8272f42a8584298ea4b684,
+        type: 3}
+      propertyPath: m_Layer
+      value: 27
+      objectReference: {fileID: 0}
+    - target: {fileID: 7755627851366233505, guid: ffa5dd660c8272f42a8584298ea4b684,
+        type: 3}
+      propertyPath: m_Layer
+      value: 27
       objectReference: {fileID: 0}
     - target: {fileID: 8706080261236547451, guid: ffa5dd660c8272f42a8584298ea4b684,
         type: 3}

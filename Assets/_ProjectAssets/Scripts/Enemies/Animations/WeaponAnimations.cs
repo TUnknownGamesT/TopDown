@@ -18,9 +18,6 @@ public class WeaponAnimations
 
     public void SetWeaponType(int type)
     {
-        //make this more modular
-        if (type >= 2)
-            type = 2;
         handsOnWeapon = type;
         _daddy.animator.SetInteger(weaponType, type);
     }
