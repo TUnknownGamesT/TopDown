@@ -1,16 +1,18 @@
+using System;
+using Cysharp.Threading.Tasks;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerArmHandler : MonoBehaviour
 {
-
     #region Singleton
 
     public static PlayerArmHandler instance;
+
     private void Awake()
     {
-       // Init();
+        // Init();
 
         instance = FindObjectOfType<PlayerArmHandler>();
         if (instance == null)
@@ -20,44 +22,44 @@ public class PlayerArmHandler : MonoBehaviour
     }
 
     #endregion
-    
+
     public PlayerAnimation animation;
     private Transform grooundArmChecker;
     public Transform armSpawnPoint;
     public Gunn currentArm;
-    public GameObject grenade;
-    public Transform throwGrenadePoint;
+    public GameObject leftHandEnd;
 
-    private bool shoot;
-    private bool haveGrenade = false;
+
+    public GameObject _grenade;
+    private bool _shoot;
+    private bool _haveGrenade = false;
 
     [ContextMenu("Init PlayerArmHandler")]
-    private void  Init()
+    private void Init()
     {
         foreach (Transform child in transform)
         {
-            if(child.transform.name == "GroundArmChecker")
+            if (child.transform.name == "GroundArmChecker")
                 grooundArmChecker = child;
-            
-            if(child.transform.name == "ArmSpawnPoint")
+
+            if (child.transform.name == "ArmSpawnPoint")
                 armSpawnPoint = child;
         }
-        
+
 
         if (grooundArmChecker == null)
         {
             grooundArmChecker = new GameObject("GroundArmChecker").transform;
             grooundArmChecker.transform.parent = transform;
-            grooundArmChecker.transform.localPosition = Vector3.zero + new Vector3(0,-0.982f,0);
-            
-            SphereCollider sphereCollider =  grooundArmChecker.AddComponent<SphereCollider>();
+            grooundArmChecker.transform.localPosition = Vector3.zero + new Vector3(0, -0.982f, 0);
+
+            SphereCollider sphereCollider = grooundArmChecker.AddComponent<SphereCollider>();
             sphereCollider.isTrigger = true;
             sphereCollider.radius = 0.83f;
         }
-
     }
 
-   
+
     protected void OnDisable()
     {
         InteractableChecker.onGrenadePickUp -= PickUpGrenade;
@@ -76,26 +78,25 @@ public class PlayerArmHandler : MonoBehaviour
         UserInputController._reload.started += Reload;
         UserInputController._throwGrenade.started += ThrowGrenade;
         animation = GetComponent<PlayerAnimation>();
-        UIManager.instance.SetAmoUI(currentArm.magSize,currentArm.totalAmunition);
+        UIManager.instance.SetAmoUI(currentArm.magSize, currentArm.totalAmunition);
         currentArm.SetArmHandler(this);
     }
 
     private void StartShooting(InputAction.CallbackContext obj)
     {
-        shoot = true;
+        _shoot = true;
     }
-    
+
     private void StopShooting(InputAction.CallbackContext obj)
     {
-        shoot = false;
+        _shoot = false;
     }
 
     private void Update()
     {
-        if(currentArm!=null&&shoot)
+        if (currentArm != null && _shoot)
             currentArm.Shoot();
     }
-
 
 
     private void Reload(InputAction.CallbackContext obj)
@@ -103,32 +104,42 @@ public class PlayerArmHandler : MonoBehaviour
         if (currentArm != null)
         {
             currentArm.Reload();
-        }  
+        }
     }
 
-    
+
     private void ThrowGrenade(InputAction.CallbackContext obj)
     {
-        if (haveGrenade)
+        if (_haveGrenade)
         {
-            haveGrenade = false;
-            GameObject newGrenade = Instantiate(grenade,armSpawnPoint.position,Quaternion.identity);
-            newGrenade.tag = "Untagged";
-            newGrenade.GetComponent<Rigidbody>().AddForce(armSpawnPoint.forward*30,ForceMode.Impulse);
-            newGrenade.GetComponent<Grenade>().Throw();
+            _haveGrenade = false;
+            UniTask.Void(async () =>
+            {
+                UIManager.instance.NoGrenade();
+                _grenade.SetActive(true);
+                
+                animation.ThrowGrenade();
+                await UniTask.Delay(TimeSpan.FromSeconds(0.5f));
+                GameObject newGrenade = Instantiate(_grenade, leftHandEnd.transform.position, Quaternion.identity);
+                newGrenade.transform.parent = null;
+                newGrenade.tag = "Untagged";
+                newGrenade.GetComponent<Rigidbody>().AddForce(armSpawnPoint.forward * 90, ForceMode.Impulse);
+                newGrenade.GetComponent<Grenade>().Throw();
+            });
             
         }
     }
 
     private void PickUpGrenade(GameObject grenade)
     {
-        if (!haveGrenade)
+        if (!_haveGrenade)
         {
-            haveGrenade = true;
+            UIManager.instance.HasGrenade();
+            _haveGrenade = true;
             Destroy(grenade);
         }
     }
-    
+
     public void Die()
     {
         enabled = false;
@@ -140,23 +151,12 @@ public class PlayerArmHandler : MonoBehaviour
 
         currentArm = arm.GetComponent<Gunn>();
         currentArm.GetComponent<Rigidbody>().isKinematic = true;
-        currentArm.GetComponent<BoxCollider>().enabled= false;
+        currentArm.GetComponent<BoxCollider>().enabled = false;
         currentArm.transform.parent = armSpawnPoint;
         currentArm.transform.localPosition = Vector3.zero;
         currentArm.transform.localRotation = Quaternion.identity;
-        if (currentArm.GetType() == typeof(Pistol))
-        {
-            animation?.ChangeWeapon(1);
-            UIManager.instance.SetImage(1);
-        }else if (currentArm.GetType() ==typeof(AKA47))
-        {
-            animation?.ChangeWeapon(2);
-            UIManager.instance.SetImage(2);
-        }
+        animation?.ChangeWeapon((int)currentArm.enemyDrop);
+        UIManager.instance.SetImage((int)currentArm.enemyDrop);
         currentArm.SetArmHandler(this);
-
     }
-    
-
-
 }

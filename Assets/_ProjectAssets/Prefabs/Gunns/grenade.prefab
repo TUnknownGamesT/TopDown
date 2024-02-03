@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2503257490155037556}
   - component: {fileID: 5812877605811764044}
   - component: {fileID: 3205422437686622455}
-  m_Layer: 0
+  m_Layer: 26
   m_Name: Icosphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -61,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -6478536213147159724, guid: 3c3e5da7af9bc7342a2c44c5bfc715a3, type: 3}
+  - {fileID: 2100000, guid: 7e270afe542d5ea4b8e3dac85cd01fe7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 4886792967581441291}
   - component: {fileID: 4191780057079671701}
   - component: {fileID: 5704438034566526794}
-  m_Layer: 0
+  m_Layer: 26
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -178,7 +178,7 @@ GameObject:
   - component: {fileID: 8082412940561838042}
   - component: {fileID: 8082412940561838043}
   - component: {fileID: 8082412940561838044}
-  m_Layer: 0
+  m_Layer: 26
   m_Name: grenade
   m_TagString: Grenade
   m_Icon: {fileID: 0}
@@ -210,9 +210,9 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9001312944597556436}
   serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_Mass: 3
+  m_Drag: 0.43
+  m_AngularDrag: 0.01
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -225,7 +225,7 @@ SphereCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9001312944597556436}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 1b21e3e641235e1488d8b89cdfbd4232, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -248,6 +248,6 @@ MonoBehaviour:
     type: 3}
   soundPrefab: {fileID: 2048613672732525356, guid: 63ec08eeb2d953f45abec005c0dff25e,
     type: 3}
-  explosionForce: 10
-  explosionRadius: 5
+  explosionForce: 100
+  explosionRadius: 11.29
   dmg: 10

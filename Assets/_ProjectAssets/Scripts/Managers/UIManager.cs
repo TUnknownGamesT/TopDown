@@ -34,7 +34,8 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI rezAmoText;
 
     [Header("Weapon UI")] 
-    public Image image;
+    
+    public Image armIcon,grenade;
     public Sprite pistol, AK;
     
     private void OnDisable()
@@ -58,10 +59,13 @@ public class UIManager : MonoBehaviour
         switch (type)
         {
             case 1:
-                image.sprite = pistol;
+                armIcon.sprite = pistol;
                 break;
             case 2:
-                image.sprite = AK;
+                armIcon.sprite = AK;
+                break;
+            case 3:
+                armIcon.sprite = null;
                 break;
         }
     }
@@ -126,5 +130,19 @@ public class UIManager : MonoBehaviour
     public void Menu()
     {
         SceneManager.LoadScene(0);
+    }
+
+    public void HasGrenade()
+    {
+        Color c = grenade.color;
+        c.a = 1;
+        grenade.color=c;
+    }
+    
+    public void NoGrenade()
+    {
+        Color c = grenade.color;
+        c.a = 0.2f;
+        grenade.color=c;
     }
 }

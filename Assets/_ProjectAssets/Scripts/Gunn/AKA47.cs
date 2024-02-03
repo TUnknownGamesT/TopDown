@@ -9,7 +9,7 @@ public class AKA47 : Gunn
     public MeshRenderer[] meshRenderers;
     
     
-    protected override bool CanShoot() => !reloading && timeSinceLasrShot > 1f / (fireRate / 60f);
+    protected override bool CanShoot() => !reloading && TimeSinceLasrShot > 1f / (fireRate / 60f);
 
     public override void HighLight()
     {
