@@ -34,7 +34,6 @@ public class PlayerAnimation : AnimationController
     }
     public void StopShooting()
     {
-        _myWeapon.StopShooting();
     }
 
     public void Reload()

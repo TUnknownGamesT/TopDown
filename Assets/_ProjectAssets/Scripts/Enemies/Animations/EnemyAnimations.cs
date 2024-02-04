@@ -39,9 +39,7 @@ public class EnemyAnimations : AnimationController
     {
         animator.SetBool("smoke", value);
     }
-    
-    
-    
+
     public void ThrowUp(bool value)
     {
         animator.SetBool("throwUp", value);
