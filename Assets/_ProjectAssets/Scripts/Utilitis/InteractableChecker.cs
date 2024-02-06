@@ -15,16 +15,16 @@ public class InteractableChecker : MonoBehaviour
     
     private void OnDisable()
     {
-        UserInputController._spaceAction.started -= InteractWithLatsObject;
-        UserInputController._spaceAction.performed-= HoldInteract;
-        UserInputController._spaceAction.canceled -= StopInteraction;
+        UserInputController._EAction.started -= InteractWithLatsObject;
+        UserInputController._EAction.performed-= HoldInteract;
+        UserInputController._EAction.canceled -= StopInteraction;
     }
 
     private void Start()
     {
-        UserInputController._spaceAction.started += InteractWithLatsObject;
-        UserInputController._spaceAction.performed += HoldInteract;
-        UserInputController._spaceAction.canceled += StopInteraction;
+        UserInputController._EAction.started += InteractWithLatsObject;
+        UserInputController._EAction.performed += HoldInteract;
+        UserInputController._EAction.canceled += StopInteraction;
     }
     
     private void InteractWithLatsObject(InputAction.CallbackContext obj)

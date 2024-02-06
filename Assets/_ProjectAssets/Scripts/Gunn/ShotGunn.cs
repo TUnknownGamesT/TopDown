@@ -9,7 +9,7 @@ public class ShotGunn : Gunn
 
     public override void Shoot()
     {
-        if (CurrentAmunition > 0 && CanShoot())
+        if (currentAmunition > 0 && CanShoot())
         {
             
              _armHandler.animation.Shoot();
@@ -25,14 +25,14 @@ public class ShotGunn : Gunn
             }
 
             vfx.Play();
-            CurrentAmunition--;
-            TimeSinceLasrShot = 0;
+            currentAmunition--;
+            TimeSinceLastShot = 0;
             CameraController.ShakeCamera();
             onShoot?.Invoke();
             _soundComponent.PlaySound(shootSound);
             _armHandler.animation.StopShooting();
         }
-        else if (CurrentAmunition <= 0 && totalAmunition > 0)
+        else if (currentAmunition <= 0 && totalAmunition > 0)
         {
             if (!reloading)
             {

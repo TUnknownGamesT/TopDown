@@ -78,8 +78,8 @@ public class PlayerArmHandler : MonoBehaviour
         UserInputController._reload.started += Reload;
         UserInputController._throwGrenade.started += ThrowGrenade;
         animation = GetComponent<PlayerAnimation>();
-        UIManager.instance.SetAmoUI(currentArm.magSize, currentArm.totalAmunition);
-        currentArm.SetArmHandler(this);
+        /*UIManager.instance.SetAmoUI(currentArm.magSize, currentArm.totalAmunition);
+        currentArm.SetArmHandler(this);*/
     }
 
     private void StartShooting(InputAction.CallbackContext obj)
@@ -147,7 +147,8 @@ public class PlayerArmHandler : MonoBehaviour
 
     public void ChangeArm(GameObject arm)
     {
-        Destroy(currentArm.gameObject);
+        if(currentArm!=null)
+            Destroy(currentArm.gameObject);
 
         currentArm = arm.GetComponent<Gunn>();
         currentArm.GetComponent<Rigidbody>().isKinematic = true;

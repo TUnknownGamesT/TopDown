@@ -36,7 +36,8 @@ public class UIManager : MonoBehaviour
     [Header("Weapon UI")] 
     
     public Image armIcon,grenade;
-    public Sprite pistol, AK;
+
+    public Sprite pistol, ak, shotgun;
     
     private void OnDisable()
     {
@@ -62,10 +63,10 @@ public class UIManager : MonoBehaviour
                 armIcon.sprite = pistol;
                 break;
             case 2:
-                armIcon.sprite = AK;
+                armIcon.sprite = ak;
                 break;
             case 3:
-                armIcon.sprite = null;
+                armIcon.sprite = shotgun;
                 break;
         }
     }
@@ -118,6 +119,7 @@ public class UIManager : MonoBehaviour
 
     public void Die()
     {
+        Cursor.visible = true;
         canvases[2].SetActive(true);
     }
 
