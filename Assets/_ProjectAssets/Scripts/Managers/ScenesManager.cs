@@ -74,4 +74,10 @@ public class ScenesManager : MonoBehaviour
         if(other.CompareTag("Player"))
             LoadNextScene();
     }
+
+    public void ExitApplication()
+    {
+        Application.Quit();
+    }
+    
 }
