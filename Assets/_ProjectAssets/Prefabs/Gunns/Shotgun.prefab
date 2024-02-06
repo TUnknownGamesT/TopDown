@@ -305,6 +305,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd2c91331a1b45e4f87ab7cb4d78e7fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canvasPrefab: {fileID: 9190050355403509561, guid: 8fc3e7840f958a04b84e184fb1135966,
+    type: 3}
   enemyDrop: 3
   damage: 1
   vfx: {fileID: 1243723930294177354}

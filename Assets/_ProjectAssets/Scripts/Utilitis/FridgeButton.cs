@@ -1,9 +1,10 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class FridgeButton : MonoBehaviour, IInteractable
 {
-
+    public List<GameObject> interactions;
     public CustomBoxCollider customBoxCollider;
     public ParticleSystem snow;
     public GameObject interactableCanvas;
@@ -18,7 +19,11 @@ public class FridgeButton : MonoBehaviour, IInteractable
     public void QuickPressInteract()
     {
         snow.Play();
-        customBoxCollider.KillAllEnemies();
+        foreach (var obj in interactions)
+        {
+            obj.GetComponent<ISpecialInteraction>()?.Interact();
+        }
+        //customBoxCollider.KillAllEnemies();
     }
 
     public void HighLight()

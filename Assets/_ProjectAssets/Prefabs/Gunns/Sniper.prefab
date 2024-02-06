@@ -211,6 +211,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48ad989982adc2a42ba748ec8ad2a958, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canvasPrefab: {fileID: 9190050355403509561, guid: 8fc3e7840f958a04b84e184fb1135966,
+    type: 3}
   enemyDrop: 3
   damage: 0
   vfx: {fileID: 0}
@@ -223,7 +225,6 @@ MonoBehaviour:
   reloading: 0
   bulletSpawnPoint: {fileID: 0}
   bulletPrefab: {fileID: 0}
-  soundComponent: {fileID: 0}
   shootSound: {fileID: 0}
 --- !u!1 &9149149334100337380
 GameObject:

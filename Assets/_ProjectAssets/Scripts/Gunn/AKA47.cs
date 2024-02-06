@@ -13,6 +13,7 @@ public class AKA47 : Gunn
 
     public override void HighLight()
     {
+        base.HighLight();
         foreach (var mesh in meshRenderers)
         {
             mesh.material = Constants.instance.highLightInteractable;
@@ -21,6 +22,7 @@ public class AKA47 : Gunn
     
     public override void UnHighLight()
     {
+        base.UnHighLight();
         foreach (var mesh in meshRenderers)
         {
             mesh.material = Constants.instance.unhighlightInteractable;

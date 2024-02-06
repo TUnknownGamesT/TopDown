@@ -8,7 +8,6 @@ using UnityEngine.InputSystem;
 public abstract class Gunn : MonoBehaviour,IInteractable
 {
     
-    
     public static Action onShoot;
     public static Action<int> onReload;
     public static Action<int,int> onPickUpNewWeapon;
@@ -37,7 +36,7 @@ public abstract class Gunn : MonoBehaviour,IInteractable
 
     protected SoundComponent _soundComponent;
     protected float TimeSinceLasrShot;
-    private MeshRenderer _renderer;
+    protected MeshRenderer _renderer;
     protected int CurrentAmunition;
 
     protected PlayerArmHandler _armHandler;
@@ -47,7 +46,6 @@ public abstract class Gunn : MonoBehaviour,IInteractable
         CurrentAmunition = magSize;
         _renderer = GetComponent<MeshRenderer>();
         _soundComponent = GetComponent<SoundComponent>();
-        
     }
 
     public void SetArmHandler(PlayerArmHandler arm)
@@ -128,12 +126,16 @@ public abstract class Gunn : MonoBehaviour,IInteractable
 
     public virtual void HighLight()
     {
-        _renderer.material = Constants.instance.highLightInteractable;
+        Constants.instance.pressECanvas.SetActive(true);
+        Constants.instance.pressECanvas.transform.position = new Vector3(transform.position.x,
+            Constants.instance.pressECanvas.transform.position.y, transform.position.z);
+       
     }
 
     public virtual void UnHighLight()
     {
-        _renderer.material = Constants.instance.unhighlightInteractable;
+        Constants.instance.pressECanvas.transform.position = new Vector3(100000,
+            Constants.instance.pressECanvas.transform.position.y, 10000);
     }
 
 
