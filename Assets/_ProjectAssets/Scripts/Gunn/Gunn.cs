@@ -8,7 +8,6 @@ using UnityEngine.InputSystem;
 public abstract class Gunn : MonoBehaviour,IInteractable
 {
     
-    
     public static Action onShoot;
     public static Action<int> onReload;
     public static Action<int,int> onPickUpNewWeapon;
@@ -36,18 +35,17 @@ public abstract class Gunn : MonoBehaviour,IInteractable
     public Event animation = new Event();
 
     protected SoundComponent _soundComponent;
-    protected float TimeSinceLastShot;
-    private MeshRenderer _renderer;
-    protected int currentAmunition;
+    protected float TimeSinceLasrShot;
+    protected MeshRenderer _renderer;
+    protected int CurrentAmunition;
 
     protected PlayerArmHandler _armHandler;
 
     private void Awake()
     {
-        currentAmunition = magSize;
+        CurrentAmunition = magSize;
         _renderer = GetComponent<MeshRenderer>();
         _soundComponent = GetComponent<SoundComponent>();
-        
     }
 
     public void SetArmHandler(PlayerArmHandler arm)
@@ -57,15 +55,15 @@ public abstract class Gunn : MonoBehaviour,IInteractable
 
     protected void Update()
     {
-        TimeSinceLastShot += Time.deltaTime;
+        TimeSinceLasrShot += Time.deltaTime;
     }
 
-    protected virtual bool CanShoot() => !reloading && TimeSinceLastShot > 1f / (fireRate / 60f);
+    protected virtual bool CanShoot() => !reloading && TimeSinceLasrShot > 1f / (fireRate / 60f);
     
     public virtual void Shoot()
     {
 
-        if(currentAmunition>0&& CanShoot())
+        if(CurrentAmunition>0&& CanShoot())
         {
             
             float xSpread = UnityEngine.Random.Range(-spread, spread);
@@ -76,14 +74,14 @@ public abstract class Gunn : MonoBehaviour,IInteractable
             Rigidbody rb =  Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation).GetComponent<Rigidbody>();
             rb.AddRelativeForce((Vector3.forward + new Vector3(xSpread,YSpread,0)) * bulletSpeed, ForceMode.Impulse);
             vfx.Play();
-            currentAmunition--;
-            TimeSinceLastShot = 0;
+            CurrentAmunition--;
+            TimeSinceLasrShot = 0;
             CameraController.ShakeCamera();
             onShoot?.Invoke();
             _soundComponent.PlaySound(shootSound);
             _armHandler.animation.StopShooting();
         }
-        else if(currentAmunition<=0 && totalAmunition>0)
+        else if(CurrentAmunition<=0 && totalAmunition>0)
         {
             if (!reloading)
             {
@@ -102,19 +100,19 @@ public abstract class Gunn : MonoBehaviour,IInteractable
             reloading = false;
             _armHandler.animation.ReloadComplete();
             
-            int difference = magSize - currentAmunition;
+            int difference = magSize - CurrentAmunition;
             if ( totalAmunition - difference >= 0)
             {
-                currentAmunition += difference;
+                CurrentAmunition += difference;
                 totalAmunition -= difference;
             }
             else
             {
-                currentAmunition = totalAmunition;
+                CurrentAmunition = totalAmunition;
                 totalAmunition = 0;
             }
             
-            onPickUpNewWeapon?.Invoke(currentAmunition,totalAmunition);
+            onPickUpNewWeapon?.Invoke(CurrentAmunition,totalAmunition);
         });
     }
 
@@ -122,18 +120,22 @@ public abstract class Gunn : MonoBehaviour,IInteractable
     {
         UnHighLight();
         PlayerArmHandler.instance.ChangeArm(gameObject);
-        currentAmunition = magSize;
-        onPickUpNewWeapon?.Invoke(currentAmunition,totalAmunition);
+        CurrentAmunition = magSize;
+        onPickUpNewWeapon?.Invoke(CurrentAmunition,totalAmunition);
     }
 
     public virtual void HighLight()
     {
-        _renderer.material = Constants.instance.highLightInteractable;
+        Constants.instance.pressECanvas.SetActive(true);
+        Constants.instance.pressECanvas.transform.position = new Vector3(transform.position.x,
+            Constants.instance.pressECanvas.transform.position.y, transform.position.z);
+       
     }
 
     public virtual void UnHighLight()
     {
-        _renderer.material = Constants.instance.unhighlightInteractable;
+        Constants.instance.pressECanvas.transform.position = new Vector3(100000,
+            Constants.instance.pressECanvas.transform.position.y, 10000);
     }
 
 

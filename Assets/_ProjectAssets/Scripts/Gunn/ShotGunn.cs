@@ -43,11 +43,13 @@ public class ShotGunn : Gunn
     
     public override void HighLight()
     {
+        base.HighLight();
         meshRenderer.material = Constants.instance.highLightInteractable;
     }
     
     public override void UnHighLight()
     {
+        base.UnHighLight();
         meshRenderer.material = Constants.instance.unhighlightInteractable;
     }
 }

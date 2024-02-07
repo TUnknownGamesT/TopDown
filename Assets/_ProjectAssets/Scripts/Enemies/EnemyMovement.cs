@@ -49,6 +49,9 @@ public class EnemyMovement : MonoBehaviour
 
     public void PlayerInView()
     {
+        //TODO: e un cacat GetComponent-u ista
+        GetComponent<EnemyAnimations>()?.Smoke(false);
+        GetComponent<EnemyAnimations>()?.ThrowUp(false);
         _cts.Cancel();
         _cts = new CancellationTokenSource();
         if(travelPoints.Contains(GameManager.playerRef))

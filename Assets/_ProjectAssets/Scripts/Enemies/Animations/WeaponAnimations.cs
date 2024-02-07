@@ -9,7 +9,6 @@ public class WeaponAnimations
     
     private static readonly int weaponType = Animator.StringToHash("weaponType");
     private static readonly int Reload = Animator.StringToHash("reload");
-    private static readonly int Property = Animator.StringToHash("reload 0");
 
     public WeaponAnimations(AnimationController controller)
     {
@@ -32,18 +31,12 @@ public class WeaponAnimations
         {
             _daddy.animator.Play("2handShoot",0,0);
         }
-        
-        //_daddy.animator.SetTrigger(Shoot1);
     }
-
-    public void StopShooting()
-    {
-        //_daddy.animator.SetBool(IsShooting, false);
-    }
+    
 
     public void StartReload()
     {
-        _daddy.animator.SetTrigger(Property);
+        _daddy.animator.SetTrigger(Reload);
     }
 
     public void ReloadComplete()

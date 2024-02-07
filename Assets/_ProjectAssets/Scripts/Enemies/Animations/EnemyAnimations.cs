@@ -3,7 +3,7 @@ using UnityEngine;
 public class EnemyAnimations : AnimationController
 {
     public WeaponAnimations myWeapon;
-    
+    public bool throwUp = false;
     
     private int WeaponType;
 
@@ -12,7 +12,16 @@ public class EnemyAnimations : AnimationController
     {
         base.Start();
         animator = transform.GetChild(0).GetComponent<Animator>();
-        
+        //TODO: set the movement somewhere
+        EnemyMovement movement = gameObject.GetComponent<EnemyMovement>();
+        if (throwUp)
+        {
+            ThrowUp(true);
+        }else
+        if (movement != null && movement.travelPoints.Count == 0) 
+        {
+            Smoke(true);
+        }
     }
 
     private void Update()
@@ -39,11 +48,10 @@ public class EnemyAnimations : AnimationController
     {
         animator.SetBool("smoke", value);
     }
-    
-    
-    
+
     public void ThrowUp(bool value)
     {
         animator.SetBool("throwUp", value);
     }
+    
 }

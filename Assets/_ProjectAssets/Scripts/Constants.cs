@@ -37,6 +37,7 @@ public class Constants : MonoBehaviour
 
    public static float meleEnemyAttackDistace = 1.8f;
    public static float rangeStoppingDistance = 6;
+   public GameObject pressECanvas;
 
    public AudioClip openDoorSound;
 
