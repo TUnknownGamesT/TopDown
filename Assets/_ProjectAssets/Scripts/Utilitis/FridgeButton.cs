@@ -6,7 +6,7 @@ public class FridgeButton : MonoBehaviour, IInteractable
 {
     public List<GameObject> interactions;
     public CustomBoxCollider customBoxCollider;
-    public ParticleSystem snow;
+    public List<ParticleSystem> particles;
     public GameObject interactableCanvas;
     private MeshRenderer _renderer;
     
@@ -18,7 +18,10 @@ public class FridgeButton : MonoBehaviour, IInteractable
 
     public void QuickPressInteract()
     {
-        snow.Play();
+        foreach (var particleSystem in particles)
+        {
+            particleSystem.Play();
+        }
         foreach (var obj in interactions)
         {
             obj.GetComponent<ISpecialInteraction>()?.Interact();
