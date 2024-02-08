@@ -35,15 +35,15 @@ public abstract class Gunn : MonoBehaviour,IInteractable
     public Event animation = new Event();
 
     protected SoundComponent _soundComponent;
-    protected float TimeSinceLasrShot;
+    protected float TimeSinceLastShot;
     protected MeshRenderer _renderer;
-    protected int CurrentAmunition;
+    protected int currentAmunition;
 
     protected PlayerArmHandler _armHandler;
 
     private void Awake()
     {
-        CurrentAmunition = magSize;
+        currentAmunition = magSize;
         _renderer = GetComponent<MeshRenderer>();
         _soundComponent = GetComponent<SoundComponent>();
     }
@@ -55,15 +55,15 @@ public abstract class Gunn : MonoBehaviour,IInteractable
 
     protected void Update()
     {
-        TimeSinceLasrShot += Time.deltaTime;
+        TimeSinceLastShot += Time.deltaTime;
     }
 
-    protected virtual bool CanShoot() => !reloading && TimeSinceLasrShot > 1f / (fireRate / 60f);
+    protected virtual bool CanShoot() => !reloading && TimeSinceLastShot > 1f / (fireRate / 60f);
     
     public virtual void Shoot()
     {
 
-        if(CurrentAmunition>0&& CanShoot())
+        if(currentAmunition>0&& CanShoot())
         {
             
             float xSpread = UnityEngine.Random.Range(-spread, spread);
@@ -74,14 +74,14 @@ public abstract class Gunn : MonoBehaviour,IInteractable
             Rigidbody rb =  Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation).GetComponent<Rigidbody>();
             rb.AddRelativeForce((Vector3.forward + new Vector3(xSpread,YSpread,0)) * bulletSpeed, ForceMode.Impulse);
             vfx.Play();
-            CurrentAmunition--;
-            TimeSinceLasrShot = 0;
+            currentAmunition--;
+            TimeSinceLastShot = 0;
             CameraController.ShakeCamera();
             onShoot?.Invoke();
             _soundComponent.PlaySound(shootSound);
             _armHandler.animation.StopShooting();
         }
-        else if(CurrentAmunition<=0 && totalAmunition>0)
+        else if(currentAmunition<=0 && totalAmunition>0)
         {
             if (!reloading)
             {
@@ -100,19 +100,19 @@ public abstract class Gunn : MonoBehaviour,IInteractable
             reloading = false;
             _armHandler.animation.ReloadComplete();
             
-            int difference = magSize - CurrentAmunition;
+            int difference = magSize - currentAmunition;
             if ( totalAmunition - difference >= 0)
             {
-                CurrentAmunition += difference;
+                currentAmunition += difference;
                 totalAmunition -= difference;
             }
             else
             {
-                CurrentAmunition = totalAmunition;
+                currentAmunition = totalAmunition;
                 totalAmunition = 0;
             }
             
-            onPickUpNewWeapon?.Invoke(CurrentAmunition,totalAmunition);
+            onPickUpNewWeapon?.Invoke(currentAmunition,totalAmunition);
         });
     }
 
@@ -120,8 +120,8 @@ public abstract class Gunn : MonoBehaviour,IInteractable
     {
         UnHighLight();
         PlayerArmHandler.instance.ChangeArm(gameObject);
-        CurrentAmunition = magSize;
-        onPickUpNewWeapon?.Invoke(CurrentAmunition,totalAmunition);
+        currentAmunition = magSize;
+        onPickUpNewWeapon?.Invoke(currentAmunition,totalAmunition);
     }
 
     public virtual void HighLight()
