@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 577300680698666899}
   - component: {fileID: 577300680698666908}
   - component: {fileID: 577300680698666898}
+  - component: {fileID: 1209477274}
   m_Layer: 0
   m_Name: ScenesManager
   m_TagString: Untagged
@@ -74,3 +75,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   transitionTemplate: {fileID: 5276914992623515724, guid: 616d511151a6c554caddf1c754e4f91d,
     type: 3}
+--- !u!65 &1209477274
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 577300680698666909}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 7.124717, z: 5.711344}
+  m_Center: {x: 0, y: 3.0623586, z: 0.5685072}

@@ -89,6 +89,7 @@ public class EnemyBrain : MonoBehaviour
     {
         if (dead)
             return;
+        Notice();
         dead = true;
         _capsuleCollider.enabled = false;
         _soundComponent.PlaySound(deathSound);
