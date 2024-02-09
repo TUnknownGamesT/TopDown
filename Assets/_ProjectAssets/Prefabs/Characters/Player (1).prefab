@@ -32,7 +32,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 108946589343556290}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -68.9, y: -0.7000139, z: -11.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -145,8 +145,9 @@ MonoBehaviour:
   animation: {fileID: 108946589343556315}
   armSpawnPoint: {fileID: 1673707424339115712}
   currentArm: {fileID: 0}
-  leftHandEnd: {fileID: 0}
-  _grenade: {fileID: 0}
+  leftHandEnd: {fileID: 7634334607351481843}
+  _grenade: {fileID: 9001312944597556436, guid: 94d642ef4e84bc443a295a4b53628761,
+    type: 3}
 --- !u!114 &108946589343556315
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -533,6 +534,12 @@ Transform:
 --- !u!4 &5541559395503619045 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6619630508905388079, guid: 524132c3a6eb19947931d753a4eabb8d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1673707423792915402}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7634334607351481843 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9135744158709081657, guid: 524132c3a6eb19947931d753a4eabb8d,
     type: 3}
   m_PrefabInstance: {fileID: 1673707423792915402}
   m_PrefabAsset: {fileID: 0}

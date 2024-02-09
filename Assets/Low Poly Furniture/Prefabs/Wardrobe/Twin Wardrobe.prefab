@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 8770056661593549166}
   - component: {fileID: 5627911307389560523}
   - component: {fileID: 7637732017929130497}
-  - component: {fileID: 1048388346605285124}
-  m_Layer: 0
+  - component: {fileID: 2325007229642355096}
+  m_Layer: 23
   m_Name: Twin Wardrobe
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -84,8 +84,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &1048388346605285124
-MeshCollider:
+--- !u!65 &2325007229642355096
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -94,7 +94,6 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -5065699697328459519, guid: 2e478b462dd4cdd47ac83b5a69d74ec2, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 6.8055525, y: 5.136534, z: 2.2408433}
+  m_Center: {x: 0, y: 0, z: 0}

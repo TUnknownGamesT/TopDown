@@ -15,7 +15,8 @@ public class Grenade : MonoBehaviour
     public float explosionRadius = 5f;
     public int dmg = 10;
 
-
+ 
+    [ContextMenu("Destroy")]
     public void Throw()
     {
         UniTask.Void(async () =>

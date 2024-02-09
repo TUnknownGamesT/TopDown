@@ -305,8 +305,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd2c91331a1b45e4f87ab7cb4d78e7fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvasPrefab: {fileID: 9190050355403509561, guid: 8fc3e7840f958a04b84e184fb1135966,
-    type: 3}
   enemyDrop: 3
   damage: 1
   vfx: {fileID: 1243723930294177354}
@@ -320,7 +318,7 @@ MonoBehaviour:
   bulletSpawnPoint: {fileID: 675206132545349504}
   bulletPrefab: {fileID: 4554020830683859374, guid: 9307afa9b3a1b244ebed89b1babc2b7f,
     type: 3}
-  shootSound: {fileID: 8300000, guid: d6654b23983ce73439bcc32434698d3c, type: 3}
+  shootSound: {fileID: 8300000, guid: d1b770e5b045a5c4b88ac7302b602a41, type: 3}
   numberOfBulletsPerShoot: 10
   meshRenderer: {fileID: 4606346652958009677}
 --- !u!1 &2478025056985880724
