@@ -14,7 +14,6 @@ public class RingBellBehaviour : MonoBehaviour
         if (collision.gameObject.CompareTag("Bullet"))
         {
             customBoxCollider.NotticeEenemies(destination);
-            doorBehaviour.OpenDoor();
         }
     }
 }

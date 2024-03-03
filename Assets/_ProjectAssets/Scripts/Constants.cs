@@ -21,6 +21,14 @@ public class Constants : MonoBehaviour
    }
 
    #endregion
+
+
+   public enum Tags
+   {
+      Player,
+      Walls,
+      Blocks
+   }
    
    public enum EnemyType
    {
@@ -34,6 +42,8 @@ public class Constants : MonoBehaviour
    public static int PistolEnemyHealth = 2;
    public static int Ak47EnemyHealth = 1;
    public static int MaleEnemyHealth = 1;
+   public static float wallPeacesMass = 1f;
+   public static float doorPeacesMass = 1;
 
    public static float meleEnemyAttackDistace = 1.8f;
    public static float rangeStoppingDistance = 6;

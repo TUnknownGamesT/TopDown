@@ -1,41 +1,52 @@
 using System;
 using Cinemachine;
+using Cysharp.Threading.Tasks.Triggers;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class CameraController : MonoBehaviour
 {
-    
-    [Header("Shaking")]
-    public static  CinemachineVirtualCamera virtualCamera;
-    public static  float shakeDuration = 0.2f;
-    public static float shakeAmplitude = 1.2f;
-    public Transform forwardPosition;
-    
-    private static float shakeTimeRemain;
-    private static Transform _cameraTransform;
-    private static CinemachineCameraOffset _cinemachineCameraOffset;
-    private  CinemachineVirtualCamera _cinemachineVirtualCamera;
 
+    #region Singleton  
+    
+    public static CameraController instance;
+    
+    
     private void Awake()
     {
+
+        instance = FindObjectOfType<CameraController>();
+        if (instance == null)
+        {
+            instance = this;
+        }
+        
         _cameraTransform = gameObject.transform;
         _cinemachineVirtualCamera = GetComponent<CinemachineVirtualCamera>();
         _cinemachineCameraOffset = GetComponent<CinemachineCameraOffset>();
         virtualCamera = GetComponent<CinemachineVirtualCamera>();
     }
+    
 
-    private void OnDisable()
-    {
-        UserInputController._rightClick.started -= LookForward;
-        UserInputController._rightClick.canceled -= LookAtPlayer;
-    }
+    #endregion
+    
+    [Header("Shaking")]
+    public static  CinemachineVirtualCamera virtualCamera;
+    public static  float shakeDuration = 0.3f;
+    public static float shakeAmplitude = 2f;
+    public RawImage whiteEdge;
+    public RawImage bloodyEdge;
+    public Transform cameraTarget;
+    public float smoothTime = 0.3f;
 
-    private void Start()
-    {
-        UserInputController._rightClick.started += LookForward;
-        UserInputController._rightClick.canceled += LookAtPlayer;
-    }
+    private static float shakeTimeRemain;
+    private static Transform _cameraTransform;
+    private static CinemachineCameraOffset _cinemachineCameraOffset;
+    private  CinemachineVirtualCamera _cinemachineVirtualCamera;
+    private Vector3 velocity;
+
+
 
     private void Update()
     {
@@ -49,9 +60,31 @@ public class CameraController : MonoBehaviour
                 cinemachineBasicMultiChannelPerlin.m_AmplitudeGain = 0;
             }
         }
+        
+        
+    }
+
+    private void LateUpdate()
+    {
+         MoveCamera();
+    }
+
+    private void MoveCamera()
+    {
+        Vector3 newPosition = GetCenterPosition().center;
+        cameraTarget.position = Vector3.SmoothDamp(cameraTarget.position,newPosition,ref velocity,smoothTime);
     }
     
-    public static void ShakeCamera()
+    
+    private Bounds GetCenterPosition()
+    {
+        Bounds  bounds = new Bounds(GameManager.playerRef.position, Vector3.zero);
+        bounds.Encapsulate(GameManager.crossHair.position);
+
+        return bounds;
+    }
+    
+    public static void ShakeCamera(float shakeDuration, float shakeAmplitude)
     {
         CinemachineBasicMultiChannelPerlin cinemachineBasicMultiChannelPerlin =
             virtualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
@@ -79,15 +112,39 @@ public class CameraController : MonoBehaviour
         }).setEaseInQuad();
     }
 
-    private  void LookForward(InputAction.CallbackContext callbackContext)
+    public void KillEffect()
     {
-        _cinemachineVirtualCamera.LookAt = forwardPosition;
-        _cinemachineVirtualCamera.Follow = forwardPosition;
+        LeanTween.value(0,0.3f , 0.1f).setOnUpdate((float value) =>
+        {
+            Color c = whiteEdge.color;
+            c.a = value;
+            whiteEdge.color = c;    
+        }).setEaseInQuad().setOnComplete(() =>
+        {
+            LeanTween.value(0.3f, 0, 0.1f).setOnUpdate((float value) =>
+            {
+                Color c = whiteEdge.color;
+                c.a = value;
+                whiteEdge.color = c;
+            }).setEaseInQuad();
+        });
     }
-    
-    private void LookAtPlayer(InputAction.CallbackContext callbackContext)
+
+    public void TakeDamageEffect()
     {
-        _cinemachineVirtualCamera.Follow = GameManager.playerRef;
-        _cinemachineVirtualCamera.LookAt = GameManager.playerRef;
+        LeanTween.value(0,0.3f , 0.1f).setOnUpdate((float value) =>
+        {
+            Color c = bloodyEdge.color;
+            c.a = value;
+            bloodyEdge.color = c;    
+        }).setEaseInQuad().setOnComplete(() =>
+        {
+            LeanTween.value(0.3f, 0, 0.1f).setOnUpdate((float value) =>
+            {
+                Color c = bloodyEdge.color;
+                c.a = value;
+                bloodyEdge.color = c;
+            }).setEaseInQuad();
+        });
     }
 }

@@ -36,7 +36,7 @@ public class WeaponAnimations
 
     public void StartReload()
     {
-        _daddy.animator.SetTrigger(Reload);
+        _daddy.animator.SetBool(Reload, true);
     }
 
     public void ReloadComplete()

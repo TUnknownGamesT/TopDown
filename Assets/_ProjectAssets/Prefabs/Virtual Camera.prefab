@@ -26,7 +26,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7666109415412052721}
-  m_LocalRotation: {x: 0.7009092, y: 0.0003044134, z: -0.00029914622, w: 0.7132504}
+  m_LocalRotation: {x: 0.7009092, y: 0.0003049812, z: -0.00029970417, w: 0.7132504}
   m_LocalPosition: {x: -170.1, y: 16.869997, z: -18.47}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -35,7 +35,7 @@ Transform:
   - {fileID: 7666109417449806489}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 89, y: 0.049, z: 0}
 --- !u!114 &7666109415412052722
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -86,7 +86,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3088f5c4e469644eb5aee557b609b87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  forwardPosition: {fileID: 0}
+  whiteEdge: {fileID: 0}
+  bloodyEdge: {fileID: 0}
+  cameraTarget: {fileID: 0}
+  smoothTime: 0.3
 --- !u!114 &7666109415412052725
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -291,6 +294,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Plane
+      objectReference: {fileID: 0}
+    - target: {fileID: 7231702965595636223, guid: 04a4102dcbbc0454db0e1181cad64cab,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 04a4102dcbbc0454db0e1181cad64cab, type: 3}

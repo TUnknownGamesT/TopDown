@@ -26,8 +26,10 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private List<GameObject> canvases;
     public Slider playerHealthBar;
+    public Image lifeBar;
     public Gradient lifeBarColor;
     public bool isPaused = false;
+    public OptionMenuBehaviour optionsMenuBehaviour;
 
     [Header("Amo UI")] 
     public TextMeshProUGUI currentAmoText;
@@ -44,6 +46,7 @@ public class UIManager : MonoBehaviour
         Gunn.onShoot -= SetCurrentAmoUI;
         Gunn.onPickUpNewWeapon -= SetAmoUI;
         PlayerHealth.onPlayerGetDamage -= DecreaseHealthBarValue;
+        UserInputController._pause.started -= Pause;
     }
 
     private void Start()
@@ -77,12 +80,10 @@ public class UIManager : MonoBehaviour
     {
         playerHealthBar.maxValue = value;
         playerHealthBar.value = value;
-        var current = playerHealthBar.colors;
-        current.normalColor = lifeBarColor.Evaluate((float)(playerHealthBar.value/10));
-        playerHealthBar.colors = current;
+        lifeBar.color = lifeBarColor.Evaluate((playerHealthBar.normalizedValue));
     }
 
-    public void SetAmoUI(int currentAmo, int maxAmo)
+    private void SetAmoUI(int currentAmo, int maxAmo)
     {
         currentAmoText.text = currentAmo.ToString();
         rezAmoText.text = maxAmo.ToString();
@@ -94,16 +95,20 @@ public class UIManager : MonoBehaviour
         amo--;
         currentAmoText.text = amo.ToString();
     }
-    
-    public void DecreaseHealthBarValue(int value)
+
+    private void DecreaseHealthBarValue(int value)
     {
         playerHealthBar.value -= value;
-        var current = playerHealthBar.colors;
-        current.normalColor = lifeBarColor.Evaluate((float)(playerHealthBar.value/10));
-        playerHealthBar.colors = current;
-        
+        lifeBar.color = lifeBarColor.Evaluate((playerHealthBar.normalizedValue));
     }
 
+    public void RestartGame()
+    {
+        canvases[0].SetActive(false);
+        canvases[1].SetActive(false);
+        ScenesManager.instance.ReloadCurrentScene();
+    }
+    
     public void UnPause()
     {
         Pause(new InputAction.CallbackContext());
@@ -111,22 +116,34 @@ public class UIManager : MonoBehaviour
 
     public void Pause(InputAction.CallbackContext obj)
     {
+        Cursor.visible = !Cursor.visible;
         isPaused = !isPaused;
         canvases[0].SetActive(!isPaused);
         canvases[1].SetActive(isPaused);
         Time.timeScale = isPaused ? 0f : 1f;
     }
 
+    public void EnableOptionsMenu()
+    {
+        Cursor.visible = true;
+        optionsMenuBehaviour.EnableMainMenu();
+        canvases[1].GetComponent<Canvas>().enabled = false;
+        canvases[1].gameObject.GetComponent<GraphicRaycaster>().enabled = false;
+    }
+
+    public void CloseOptionMenu()
+    {
+        Cursor.visible = true;
+        optionsMenuBehaviour.DisableMainMenu();
+        canvases[1].GetComponent<Canvas>().enabled = true;
+        canvases[1].gameObject.GetComponent<GraphicRaycaster>().enabled = true;
+    }
+    
+
     public void Die()
     {
         Cursor.visible = true;
         canvases[2].SetActive(true);
-    }
-
-    public void RestartGame()
-    {
-        ScenesManager.instance.ReloadCurrentScene();
-        
     }
 
     public void Menu()

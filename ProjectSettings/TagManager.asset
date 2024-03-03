@@ -13,6 +13,9 @@ TagManager:
   - Gun
   - Wall
   - Grenade
+  - Ground
+  - CrossHair
+  - Blocks
   layers:
   - Default
   - TransparentFX

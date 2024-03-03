@@ -28,11 +28,15 @@ public class PlayerArmHandler : MonoBehaviour
     public Transform armSpawnPoint;
     public Gunn currentArm;
     public GameObject leftHandEnd;
+    public Canvas grenadeUICanvas;
 
 
     public GameObject _grenade;
     private bool _shoot;
     private bool _haveGrenade = false;
+    private float throwForce = 0;
+    private float time;
+    private bool chargeGrenade;
 
     [ContextMenu("Init PlayerArmHandler")]
     private void Init()
@@ -66,7 +70,9 @@ public class PlayerArmHandler : MonoBehaviour
         UserInputController._leftClick.started -= StartShooting;
         UserInputController._leftClick.canceled -= StopShooting;
         UserInputController._reload.started -= Reload;
-        UserInputController._throwGrenade.started -= ThrowGrenade;
+      //  UserInputController._throwGrenade.started -= ThrowGrenade;
+        UserInputController._throwGrenade.performed -= ChargeGrenadePower;
+        UserInputController._throwGrenade.canceled -= ThrowGrenade;
     }
 
 
@@ -76,10 +82,10 @@ public class PlayerArmHandler : MonoBehaviour
         UserInputController._leftClick.started += StartShooting;
         UserInputController._leftClick.canceled += StopShooting;
         UserInputController._reload.started += Reload;
-        UserInputController._throwGrenade.started += ThrowGrenade;
+      //  UserInputController._throwGrenade.started += ThrowGrenade;
+        UserInputController._throwGrenade.performed += ChargeGrenadePower;
+        UserInputController._throwGrenade.canceled += ThrowGrenade;
         animation = GetComponent<PlayerAnimation>();
-        /*UIManager.instance.SetAmoUI(currentArm.magSize, currentArm.totalAmunition);
-        currentArm.SetArmHandler(this);*/
     }
 
     private void StartShooting(InputAction.CallbackContext obj)
@@ -96,6 +102,9 @@ public class PlayerArmHandler : MonoBehaviour
     {
         if (currentArm != null && _shoot)
             currentArm.Shoot();
+        
+        if(chargeGrenade)
+            throwForce = Mathf.Abs(Mathf.Sin(Time.time-time))*90;
     }
 
 
@@ -106,27 +115,37 @@ public class PlayerArmHandler : MonoBehaviour
             currentArm.Reload();
         }
     }
-
-
-    private void ThrowGrenade(InputAction.CallbackContext obj)
+    
+    private void ChargeGrenadePower(InputAction.CallbackContext callbackContext)
     {
         if (_haveGrenade)
         {
+            grenadeUICanvas.enabled = true;
+            chargeGrenade = true;
+            time = Time.time;
+        }
+    }
+
+    private void ThrowGrenade(InputAction.CallbackContext callbackContext)
+    {
+        if (_haveGrenade)
+        {
+            grenadeUICanvas.enabled = false;
+            chargeGrenade = false;
             _haveGrenade = false;
             UniTask.Void(async () =>
             {
                 UIManager.instance.NoGrenade();
                 _grenade.SetActive(true);
-                
                 animation.ThrowGrenade();
                 await UniTask.Delay(TimeSpan.FromSeconds(0.5f));
                 GameObject newGrenade = Instantiate(_grenade, leftHandEnd.transform.position, Quaternion.identity);
                 newGrenade.transform.parent = null;
                 newGrenade.tag = "Untagged";
-                newGrenade.GetComponent<Rigidbody>().AddForce(armSpawnPoint.forward * 90, ForceMode.Impulse);
+                newGrenade.GetComponent<Rigidbody>().AddForce(armSpawnPoint.forward * throwForce, ForceMode.Impulse);
                 newGrenade.GetComponent<Grenade>().Throw();
+                throwForce = 0;
             });
-            
         }
     }
 
@@ -147,8 +166,12 @@ public class PlayerArmHandler : MonoBehaviour
 
     public void ChangeArm(GameObject arm)
     {
-        if(currentArm!=null)
-            Destroy(currentArm.gameObject);
+        if (currentArm != null)
+        {
+            currentArm.gameObject.transform.SetParent(null);
+            currentArm.GetComponent<Rigidbody>().isKinematic = false;
+            currentArm.GetComponent<BoxCollider>().enabled = true;
+        }
 
         currentArm = arm.GetComponent<Gunn>();
         currentArm.GetComponent<Rigidbody>().isKinematic = true;
