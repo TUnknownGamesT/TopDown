@@ -14,7 +14,7 @@ public class EnemyType : ScriptableObject
     public float fireRate;
     public float reloadTime;
     public int magSize;
-    public float totalAmmunition;
+    public int totalAmmunition;
     public float bulletSpeed;
     public bool reloading;
     [Header("References")]

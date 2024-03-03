@@ -24,6 +24,7 @@ public class Grenade : MonoBehaviour
             await UniTask.Delay(TimeSpan.FromSeconds(timeVBeforeExplosion));
             PlayVFX();
             FindRigidBodies();
+            CameraController.ShakeCamera(0.5f,50);
             Instantiate(soundPrefab, transform.position, Quaternion.identity);
             Destroy(gameObject);
         });
@@ -53,7 +54,7 @@ public class Grenade : MonoBehaviour
             var player = collider.GetComponent<PlayerHealth>();
             var enemy = collider.GetComponent<EnemyHealth>();
             Rigidbody rb = collider.GetComponent<Rigidbody>();
-            DestroyablOobject destroyablOobject = collider.GetComponent<DestroyablOobject>();
+            Destroyable destroyable = collider.GetComponent<Destroyable>();
             if (player!=null)
             {
                 player.TakeDamage(dmg);
@@ -81,9 +82,9 @@ public class Grenade : MonoBehaviour
             {
                 ApplyForce(rb);
             }
-            else if (destroyablOobject != null)
+            else if (destroyable != null)
             {
-                destroyablOobject.DesTroy(transform.forward);
+                destroyable.DesTroy(transform.forward);
             }
             
         }

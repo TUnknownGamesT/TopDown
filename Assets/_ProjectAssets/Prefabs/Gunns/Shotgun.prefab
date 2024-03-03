@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 675206132545349505}
   m_LocalRotation: {x: -0, y: -0, z: -0.04660353, w: 0.99891347}
-  m_LocalPosition: {x: -0.4263306, y: 0.322, z: 1.488}
+  m_LocalPosition: {x: 0, y: 0, z: -0.113}
   m_LocalScale: {x: 0.87447506, y: 0.6254838, z: 4.106845}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -308,7 +308,7 @@ MonoBehaviour:
   enemyDrop: 3
   damage: 1
   vfx: {fileID: 1243723930294177354}
-  spread: 0.3
+  spread: 0.182
   fireRate: 100
   reloadTime: 2
   magSize: 2

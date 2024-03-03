@@ -28,14 +28,12 @@ public abstract class EnemyArms : MonoBehaviour
     private GameObject armPrefab;
     private SoundComponent soundComponent;
     private AudioClip shootSound;
+    private int totalAmunition;
 
 
     private float timeSinceLastShot;
     protected FieldOfView _fieldOfView;
-
-
-    protected virtual bool CanShoot() => !reloading && timeSinceLastShot > 1f / (fireRate / 60f);
-
+    
     public virtual void Awake()
     {
         soundComponent = GetComponent<SoundComponent>();
@@ -61,6 +59,7 @@ public abstract class EnemyArms : MonoBehaviour
         bulletPrefab = enemyType.bulletPrefab;
         shootSound = enemyType.shootSound;
         numberOfBulletsPerShoot = enemyType.numberOfBulletsPerShoot;
+        totalAmunition = enemyType.totalAmmunition;
         
         armPrefab = Instantiate(enemyType.armPrefab, armSpawnPoint.position, Quaternion.identity, armSpawnPoint.transform);
         armPrefab.transform.localPosition = Vector3.zero;
@@ -70,6 +69,8 @@ public abstract class EnemyArms : MonoBehaviour
             bulletSpawnPoint = armPrefab.transform.GetChild(0);
     }
 
+    
+    
 
     public virtual void Shoot()
     {
@@ -100,7 +101,7 @@ public abstract class EnemyArms : MonoBehaviour
                     if (!reloading)
                     {
                         reloading = true;
-                        await UniTask.WaitUntil(()=> reloading == false);
+                        await Reload();
                     }
                 }
 
@@ -116,13 +117,38 @@ public abstract class EnemyArms : MonoBehaviour
             }
         });
     }
+    
+    protected virtual bool CanShoot() => !reloading && CheckAngle() && timeSinceLastShot > 1f / (fireRate / 60f);
+
+    protected virtual bool CheckAngle()
+    {
+        Vector3 direction = GameManager.playerRef.transform.position - transform.position;
+        float angle = Vector3.Angle(transform.forward, direction);
+        if (angle < 10f)
+        {
+            return true;
+        }
+
+        return false;
+    }
 
     private async UniTask Reload()
     {
         GetComponent<EnemyAnimations>()?.myWeapon.StartReload();
         await UniTask.Delay(TimeSpan.FromSeconds(reloadTime));
+        GetComponent<EnemyAnimations>()?.myWeapon.ReloadComplete();
         reloading = false;
-        currentAmo = magSize;
+        int difference = totalAmunition - magSize;
+        if ( totalAmunition - difference >= 0)
+        {
+            currentAmo += difference;
+            totalAmunition -= difference;
+        }
+        else
+        {
+            currentAmo = totalAmunition;
+            totalAmunition = 0;
+        }
     }
 
     public virtual void DropArm()

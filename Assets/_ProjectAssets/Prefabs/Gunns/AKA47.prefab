@@ -80,11 +80,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7da9b623aac7fd64db135fff973ff92d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvas: {fileID: 0}
   enemyDrop: 2
   damage: 3
   vfx: {fileID: 6813729718040723974}
-  spread: 0
+  spread: 0.106
   fireRate: 320
   reloadTime: 3
   magSize: 40
@@ -230,7 +229,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9194641389020858948}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.069, y: 0.242, z: 1.699}
+  m_LocalPosition: {x: 0.011, y: 0.242, z: 0.207}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

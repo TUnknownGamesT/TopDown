@@ -27,7 +27,7 @@ public class ShotGunn : Gunn
             vfx.Play();
             currentAmunition--;
             TimeSinceLastShot = 0;
-            CameraController.ShakeCamera();
+            CameraController.ShakeCamera(0.2f,2);
             onShoot?.Invoke();
             _soundComponent.PlaySound(shootSound);
             _armHandler.animation.StopShooting();

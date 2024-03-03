@@ -76,7 +76,7 @@ public abstract class Gunn : MonoBehaviour,IInteractable
             vfx.Play();
             currentAmunition--;
             TimeSinceLastShot = 0;
-            CameraController.ShakeCamera();
+            CameraController.ShakeCamera(0.2f,5);
             onShoot?.Invoke();
             _soundComponent.PlaySound(shootSound);
             _armHandler.animation.StopShooting();
@@ -120,7 +120,6 @@ public abstract class Gunn : MonoBehaviour,IInteractable
     {
         UnHighLight();
         PlayerArmHandler.instance.ChangeArm(gameObject);
-        currentAmunition = magSize;
         onPickUpNewWeapon?.Invoke(currentAmunition,totalAmunition);
     }
 

@@ -10,7 +10,6 @@ public class PlayerHealth : MonoBehaviour
     
     public float health;
     
-    
     private void Start()
     {
         UIManager.instance.SetHealthBarMaxLife(health);
@@ -29,14 +28,17 @@ public class PlayerHealth : MonoBehaviour
     public void TakeDamage(int damageReceived)
     {
         health -= damageReceived;
+        CameraController.instance.TakeDamageEffect();
         onPlayerGetDamage?.Invoke(damageReceived);
         if (health<=0)
         {
+            Cursor.visible = true;
             Die();
         }
     }
-
-    [ContextMenu("Die")]
+    
+    
+    
     private void Die()
     {
         GetComponent<PlayerAnimation>()?.Die();

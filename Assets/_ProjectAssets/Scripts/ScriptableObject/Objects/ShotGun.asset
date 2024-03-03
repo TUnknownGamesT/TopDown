@@ -22,7 +22,7 @@ MonoBehaviour:
   reloadTime: 3
   magSize: 2
   totalAmmunition: 7
-  bulletSpeed: 10
+  bulletSpeed: 25
   reloading: 0
   bulletPrefab: {fileID: 4554020830683859374, guid: 9307afa9b3a1b244ebed89b1babc2b7f,
     type: 3}

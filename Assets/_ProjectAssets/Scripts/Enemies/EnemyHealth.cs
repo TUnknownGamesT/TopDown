@@ -47,6 +47,7 @@ public class EnemyHealth : MonoBehaviour
         health-=damage;
         if (health <= 0)
         {
+            CameraController.instance.KillEffect();
             _enemyBrain.Death();
             GetComponent<AnimationController>()?.Die();
             Debug.Log("death");
