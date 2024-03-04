@@ -46,6 +46,7 @@ public class UIManager : MonoBehaviour
         Gunn.onShoot -= SetCurrentAmoUI;
         Gunn.onPickUpNewWeapon -= SetAmoUI;
         PlayerHealth.onPlayerGetDamage -= DecreaseHealthBarValue;
+        PlayerHealth.onPlayerGetHeal -= IncreaseHealthBar;
         UserInputController._pause.started -= Pause;
     }
 
@@ -54,6 +55,7 @@ public class UIManager : MonoBehaviour
         Gunn.onShoot += SetCurrentAmoUI;
         Gunn.onPickUpNewWeapon += SetAmoUI;
         PlayerHealth.onPlayerGetDamage += DecreaseHealthBarValue;
+        PlayerHealth.onPlayerGetHeal += IncreaseHealthBar;
         UserInputController._pause.started += Pause;
         
     }
@@ -99,6 +101,12 @@ public class UIManager : MonoBehaviour
     private void DecreaseHealthBarValue(int value)
     {
         playerHealthBar.value -= value;
+        lifeBar.color = lifeBarColor.Evaluate((playerHealthBar.normalizedValue));
+    }
+
+    private void IncreaseHealthBar(int value)
+    {
+        playerHealthBar.value += value;
         lifeBar.color = lifeBarColor.Evaluate((playerHealthBar.normalizedValue));
     }
 

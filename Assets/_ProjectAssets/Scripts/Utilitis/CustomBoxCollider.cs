@@ -22,7 +22,6 @@ public class CustomBoxCollider : MonoBehaviour
     
     public void AlertEnemies()
     {
-        Debug.Log("Allert enemies");
         Collider[] rangeChecks =
             Physics.OverlapBox(this.transform.position, this.transform.localScale/2,Quaternion.identity , targetMask, QueryTriggerInteraction.Collide);
         foreach (var enemy in rangeChecks)

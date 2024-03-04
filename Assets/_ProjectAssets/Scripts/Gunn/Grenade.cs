@@ -58,7 +58,7 @@ public class Grenade : MonoBehaviour
             if (player!=null)
             {
                 player.TakeDamage(dmg);
-                if (player.health <= 0)
+                if (player.currentHealth <= 0)
                 {
                     var playerAnimation = collider.GetComponent<PlayerAnimation>();
                     foreach (var element in playerAnimation.rigidbodies)

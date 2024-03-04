@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -18,8 +19,13 @@ public class FootStepsSound : MonoBehaviour
     private void Awake()
     {
         audioSource = GetComponent<AudioSource>();
+        // Get the Audio Source component
+    }
+
+    private void Start()
+    {
         audioSource.volume =
-            OptionMenuBehaviour.instance.OptionsMenu.SoundEffectVolume; // Get the Audio Source component
+            OptionMenuBehaviour.instance.OptionsMenu.SoundEffectVolume;
     }
 
     private void OnEnable()
