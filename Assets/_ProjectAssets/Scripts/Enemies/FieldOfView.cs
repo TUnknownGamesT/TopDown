@@ -63,11 +63,13 @@ public class FieldOfView : MonoBehaviour
                             obstructionMask);
                         if (canSeePlayer && !_alreadyInView)
                         {
+                            Debug.LogWarning("Player In View");
                             _enemyBrain.PlayerInView();
                             _alreadyInView = true;
                         }
                         else if(!canSeePlayer && _alreadyInView)
                         {
+                            Debug.LogWarning("Player Out Of View");
                             canSeePlayer = false;
                             _alreadyInView = false;
                             _enemyBrain.PlayerOutOfView();

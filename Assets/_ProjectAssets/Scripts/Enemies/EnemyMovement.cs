@@ -61,11 +61,13 @@ public class EnemyMovement : MonoBehaviour
     
     public void Notice()
     {
-        _cts.Cancel();
-        _cts = new CancellationTokenSource();
-        if(travelPoints.Contains(GameManager.playerRef)==false)
+        if (!travelPoints.Contains(GameManager.playerRef))
+        {
+            _cts.Cancel();
+            _cts = new CancellationTokenSource();
             travelPoints.Add(GameManager.playerRef);
-        Travel();
+            Travel();
+        }
     }
 
 
@@ -130,6 +132,7 @@ public class EnemyMovement : MonoBehaviour
             }
             catch (Exception e)
             {
+                Debug.Log(travelPoints.Count); 
                 Debug.Log("Thread Miss reference",this);
                 Debug.Log(e);
                 _cts.Cancel();

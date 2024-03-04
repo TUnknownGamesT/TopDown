@@ -15,6 +15,11 @@ public class SoundComponent : MonoBehaviour
 
         _audioSource = GetComponent<AudioSource>();
         _audioSource.minDistance = 15.80656f;
+       
+    }
+
+    private void Start()
+    {
         _audioSource.volume = OptionMenuBehaviour.instance.OptionsMenu.AmbientMusicVolume;
     }
 

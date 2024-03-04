@@ -8,6 +8,7 @@ public class EnemyBrain : MonoBehaviour
     
     public Constants.EnemyType enemyType;
     public AudioClip deathSound;
+    public bool _alreadyInView;
     
     private EnemyMovement _enemyMovement;
     private EnemyHealth _enemyHealth;
@@ -50,7 +51,7 @@ public class EnemyBrain : MonoBehaviour
 
     public void PlayerInView()
     {
-        Debug.Log("Player in view Enemy brain");
+        _alreadyInView = true;
         _enemyRotation.PlayerInView();
         _enemyArms.Shoot();
         _enemyMovement?.PlayerInView();
@@ -59,8 +60,9 @@ public class EnemyBrain : MonoBehaviour
 
     public void Notice()
     {
-        if (!noticed)
+        if (!noticed && !_alreadyInView)
         {
+            _alreadyInView = true;
             noticed= true;
             EnemyInitiator.instance.InstantiateAlert(transform.position);
             _enemyRotation.StopLookingAround();
@@ -79,6 +81,7 @@ public class EnemyBrain : MonoBehaviour
 
     public void PlayerOutOfView()
     {
+        _alreadyInView = false;
         Debug.Log("Player out of view Enemy brain");
         _enemyRotation.PlayerOutOfView();
         _enemyMovement?.PlayerOutOfView();

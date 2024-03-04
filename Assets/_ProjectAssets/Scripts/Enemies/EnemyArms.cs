@@ -84,9 +84,11 @@ public abstract class EnemyArms : MonoBehaviour
                     {
                         float xSpread = UnityEngine.Random.Range(-spread, spread);
                         float YSpread = UnityEngine.Random.Range(-spread, spread);
-                    
-                        Rigidbody rb = Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation)
-                            .GetComponent<Rigidbody>();
+
+                        GameObject bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position,
+                            bulletSpawnPoint.rotation);
+                        bullet.GetComponent<BulletBehaviour>().damage= damage;
+                        Rigidbody rb =bullet.GetComponent<Rigidbody>();
                         rb.AddRelativeForce((Vector3.forward +new Vector3(xSpread,YSpread,0) )* bulletSpeed, ForceMode.Impulse);
  
                     }
@@ -126,9 +128,11 @@ public abstract class EnemyArms : MonoBehaviour
         float angle = Vector3.Angle(transform.forward, direction);
         if (angle < 10f)
         {
+            Debug.Log("Angle check true");
             return true;
         }
 
+        Debug.Log("Angle check false");
         return false;
     }
 
