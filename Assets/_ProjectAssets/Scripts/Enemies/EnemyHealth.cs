@@ -25,7 +25,7 @@ public class EnemyHealth : MonoBehaviour
         {
             case Constants.EnemyType.Pistol:
             {
-                //currentHealth = Constants.PistolEnemyHealth;
+                health = Constants.PistolEnemyHealth;
                 break;    
             }
             case Constants.EnemyType.AKA47:
@@ -37,6 +37,11 @@ public class EnemyHealth : MonoBehaviour
             case Constants.EnemyType.Male:
             {
                 health = Constants.MaleEnemyHealth;
+                break;
+            }
+            case Constants.EnemyType.Dracu:
+            {
+                health = Constants.DracuEnemyHealth;
                 break;
             }
         }

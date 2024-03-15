@@ -83,7 +83,7 @@ MonoBehaviour:
   enemyDrop: 2
   damage: 3
   vfx: {fileID: 6813729718040723974}
-  spread: 0.106
+  spread: 0.06
   fireRate: 320
   reloadTime: 3
   magSize: 40
@@ -337,7 +337,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 7e270afe542d5ea4b8e3dac85cd01fe7, type: 2}
+      objectReference: {fileID: 2100000, guid: 3876fcf8bfa921c4a91e03da2c92546a, type: 2}
     - target: {fileID: -516098083770646512, guid: ce798258965a29c4cb95c61b8a4d8b15,
         type: 3}
       propertyPath: m_Layer

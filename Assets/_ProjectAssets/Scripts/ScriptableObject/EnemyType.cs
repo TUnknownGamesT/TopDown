@@ -16,7 +16,7 @@ public class EnemyType : ScriptableObject
     public int magSize;
     public int totalAmmunition;
     public float bulletSpeed;
-    public bool reloading;
+    public float angleBeforeShoot;
     [Header("References")]
     public GameObject bulletPrefab;
     public float stoppingDistance;
