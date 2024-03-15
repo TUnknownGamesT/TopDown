@@ -23,7 +23,7 @@ MonoBehaviour:
   magSize: 40
   totalAmmunition: 120
   bulletSpeed: 25
-  reloading: 0
+  angleBeforeShoot: 10
   bulletPrefab: {fileID: 4554020830683859374, guid: 2687b04bd1f5c1b48b717b353962c100,
     type: 3}
   stoppingDistance: 10

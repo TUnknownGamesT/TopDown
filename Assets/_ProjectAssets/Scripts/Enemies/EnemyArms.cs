@@ -29,6 +29,7 @@ public abstract class EnemyArms : MonoBehaviour
     private SoundComponent soundComponent;
     private AudioClip shootSound;
     private int totalAmunition;
+    private float angleBeforeShoot;
 
 
     private float timeSinceLastShot;
@@ -60,6 +61,7 @@ public abstract class EnemyArms : MonoBehaviour
         shootSound = enemyType.shootSound;
         numberOfBulletsPerShoot = enemyType.numberOfBulletsPerShoot;
         totalAmunition = enemyType.totalAmmunition;
+        angleBeforeShoot = enemyType.angleBeforeShoot;
         
         armPrefab = Instantiate(enemyType.armPrefab, armSpawnPoint.position, Quaternion.identity, armSpawnPoint.transform);
         armPrefab.transform.localPosition = Vector3.zero;
@@ -126,7 +128,7 @@ public abstract class EnemyArms : MonoBehaviour
     {
         Vector3 direction = GameManager.playerRef.transform.position - transform.position;
         float angle = Vector3.Angle(transform.forward, direction);
-        if (angle < 10f)
+        if (angle < angleBeforeShoot)
         {
             Debug.Log("Angle check true");
             return true;

@@ -28,6 +28,5 @@ public class BulletBehaviour : MonoBehaviour
             GameObject blood = Instantiate(bloodEffect, collision.contacts[0].point, Quaternion.LookRotation(transform.forward));
         }
         Destroy(gameObject);
-        
     }
 }

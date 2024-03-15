@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class EnemyInitiator : MonoBehaviour
@@ -31,7 +32,7 @@ public class EnemyInitiator : MonoBehaviour
 
     public void InstantiateArm(Constants.EnemyType enemy, Vector3 position)
     {
-        GameObject arm = enemyLootArms.Find(x => x.GetComponent<Gunn>().enemyDrop == enemy);
+        GameObject arm = enemyLootArms.FirstOrDefault(x => x.GetComponent<Gunn>().enemyDrop == enemy);
         Instantiate(arm, position, Quaternion.identity);
     }
 

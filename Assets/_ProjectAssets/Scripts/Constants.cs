@@ -37,12 +37,14 @@ public class Constants : MonoBehaviour
       AKA47=2,
       ShotGun=3,
       Sniper=4,
+      Dracu = 5,
    }
 
-   public static int PistolEnemyHealth = 2;
+   public static int PistolEnemyHealth = 1;
    public static int Ak47EnemyHealth = 1;
    public static int MaleEnemyHealth = 1;
    public static float wallPeacesMass = 1f;
+   public static int DracuEnemyHealth = 30;
    public static float doorPeacesMass = 1;
 
    public static float meleEnemyAttackDistace = 1.8f;

@@ -48,5 +48,12 @@ public class CustomBoxCollider : MonoBehaviour
         {
             enemy.GetComponent<EnemyHealth>().TakeDmg(1000);
         }
-    }    
+    }  
+    
+    public int GetEnemyNumbers()
+    {
+        Collider[] rangeChecks =
+            Physics.OverlapBox(transform.position, transform.localScale/2,Quaternion.identity, targetMask, QueryTriggerInteraction.Collide);
+        return rangeChecks.Length;
+    }
 }

@@ -484,7 +484,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e07c114114e4240458053e4968cd3c95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10
+  currentHealth: 10
 --- !u!136 &108946589343556295
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -741,7 +741,7 @@ PositionConstraint:
   m_Enabled: 1
   m_Weight: 1
   m_TranslationAtRest: {x: 0.23, y: 2.1, z: 1.05}
-  m_TranslationOffset: {x: 0.014388546, y: 0.034647465, z: 0.11949992}
+  m_TranslationOffset: {x: 0.014393315, y: 0.034647703, z: 0.11950183}
   m_AffectTranslationX: 1
   m_AffectTranslationY: 1
   m_AffectTranslationZ: 1
@@ -779,7 +779,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1673707424586279535}
   - component: {fileID: 1673707424586279534}
-  - component: {fileID: 1673707424586279533}
+  - component: {fileID: 7966454630938328469}
   m_Layer: 0
   m_Name: GroundArmChecker
   m_TagString: Untagged
@@ -795,7 +795,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1673707424586279520}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.60468745, z: 0.35312504}
+  m_LocalPosition: {x: 0, y: 0.34, z: 0}
   m_LocalScale: {x: 0.3125, y: 0.3125, z: 0.3125}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -815,8 +815,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _characterController: {fileID: 108946589343556291}
---- !u!65 &1673707424586279533
-BoxCollider:
+--- !u!136 &7966454630938328469
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -825,9 +825,10 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.54, y: 3, z: 0.31983805}
-  m_Center: {x: 0.024467468, y: -0.7329148, z: -0.16474462}
+  m_Radius: 1.43
+  m_Height: 3.93
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5838775733080048059
 GameObject:
   m_ObjectHideFlags: 0

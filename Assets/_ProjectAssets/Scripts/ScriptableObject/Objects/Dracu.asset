@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80efef4e5200bdb45817fc5a3fb2c43f, type: 3}
+  m_Name: Dracu
+  m_EditorClassIdentifier: 
+  armPrefab: {fileID: 2585101835882494515, guid: ffef6971765645845806f47e7eb6e7df,
+    type: 3}
+  enemyType: 5
+  timeBetweenShoots: 1
+  damage: 3
+  numberOfBulletsPerShoot: 5
+  fireRate: 200
+  reloadTime: 3
+  magSize: 5
+  totalAmmunition: 99999
+  bulletSpeed: 25
+  angleBeforeShoot: 10
+  bulletPrefab: {fileID: 4554020830683859374, guid: 9307afa9b3a1b244ebed89b1babc2b7f,
+    type: 3}
+  stoppingDistance: 0
+  shootSound: {fileID: 8300000, guid: f79de2b80bfc68740b28914b652413bb, type: 3}

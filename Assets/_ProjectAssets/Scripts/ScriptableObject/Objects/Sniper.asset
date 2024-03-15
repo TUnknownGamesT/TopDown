@@ -21,9 +21,9 @@ MonoBehaviour:
   fireRate: 700
   reloadTime: 2
   magSize: 10
-  totalAmmunition: 10
+  totalAmmunition: 200
   bulletSpeed: 400
-  reloading: 0
+  angleBeforeShoot: 2
   bulletPrefab: {fileID: 4554020830683859374, guid: 9307afa9b3a1b244ebed89b1babc2b7f,
     type: 3}
   stoppingDistance: 100

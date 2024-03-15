@@ -6,6 +6,8 @@ using UnityEngine;
 public class EnemyBrain : MonoBehaviour
 {
     
+    public static event Action onEnemyDie;
+    
     public Constants.EnemyType enemyType;
     public AudioClip deathSound;
     public bool _alreadyInView;
@@ -92,6 +94,8 @@ public class EnemyBrain : MonoBehaviour
     {
         if (dead)
             return;
+        gameObject.layer= 0;
+        onEnemyDie?.Invoke();
         Notice();
         dead = true;
         _capsuleCollider.enabled = false;
@@ -99,7 +103,8 @@ public class EnemyBrain : MonoBehaviour
         _fieldOfView.EnemyDeath();
        _enemyMovement?.EnemyDeath();
        _enemyRotation.PlayerDeath();
-       _enemyArms.DropArm();
+       if(enemyType !=Constants.EnemyType.Dracu)
+        _enemyArms.DropArm();
     }
     
     public void FinishMoving()
