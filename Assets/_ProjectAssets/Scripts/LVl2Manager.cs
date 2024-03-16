@@ -8,6 +8,7 @@ public class LVl2Manager : MonoBehaviour
    public GameObject robertoCamera;
    public ScenesManager sceneManager;
    public CustomBoxCollider customBoxCollider;
+   public GameObject video;
 
    private void OnEnable()
    {
@@ -24,7 +25,12 @@ public class LVl2Manager : MonoBehaviour
    {
       if (customBoxCollider.GetEnemyNumbers() == 0)
       {
-         sceneManager.LoadNextScene();
+         UniTask.Void(async () =>
+         {
+            video.SetActive(true);
+            await UniTask.Delay(TimeSpan.FromSeconds(6));
+            sceneManager.LoadNextScene();
+         });
       }
    }
 

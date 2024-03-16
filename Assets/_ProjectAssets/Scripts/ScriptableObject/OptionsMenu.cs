@@ -10,8 +10,8 @@ public class OptionsMenu : ScriptableObject
     public static Action<float> onAmbientVolumeValueChanged;
     public static Action<float> onSoundEffectVolumeValueChanged;
     
-    private  float _ambientMusicVolume;
-    private  float _soundEffectVolume;
+    private  float _ambientMusicVolume= 1;
+    private  float _soundEffectVolume=1;
 
     public  float AmbientMusicVolume
     {

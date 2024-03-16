@@ -1,17 +1,21 @@
 using System;
 using Cysharp.Threading.Tasks;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LVL3BossRoom : MonoBehaviour
 {
-
     public CustomBoxCollider customBoxCollider;
     public GameObject skullCamera;
     public GameObject boss;
     public PlayerMovement inputManager;
 
     public GameObject skullDoor;
-    
+    public GameObject final;
+
+    private bool bossDefeated;
+
     private int enemyNumbers;
 
     private void OnEnable()
@@ -30,35 +34,48 @@ public class LVL3BossRoom : MonoBehaviour
     {
         enemyNumbers = customBoxCollider.GetEnemyNumbers();
     }
-    
+
 
     private void OpenBossDoor()
     {
-       
         enemyNumbers--;
+
         if (enemyNumbers <= 0)
         {
-            inputManager.enabled = false;
-            skullCamera.SetActive(true);
-            UniTask.Void(async () =>
+            if (!bossDefeated)
             {
-                await UniTask.Delay(TimeSpan.FromSeconds(2));
+                bossDefeated = true;
+                inputManager.enabled = false;
+                skullCamera.SetActive(true);
+                UniTask.Void(async () =>
+                {
+                    await UniTask.Delay(TimeSpan.FromSeconds(2));
 
-                LeanTween.move(skullDoor,
-                        new Vector3(skullDoor.transform.position.x, skullDoor.transform.position.y + 10,
-                            skullDoor.transform.position.z), 2f)
-                    .setEase(LeanTweenType.easeOutCubic);
+                    LeanTween.move(skullDoor,
+                            new Vector3(skullDoor.transform.position.x, skullDoor.transform.position.y + 10,
+                                skullDoor.transform.position.z), 2f)
+                        .setEase(LeanTweenType.easeOutCubic);
 
-                await UniTask.Delay(TimeSpan.FromSeconds(2));
-                inputManager.enabled = true;
-                skullCamera.SetActive(false);
-            });
+                    await UniTask.Delay(TimeSpan.FromSeconds(2));
+                    inputManager.enabled = true;
+                    skullCamera.SetActive(false);
+                });
+            }
+            else
+            {
+                UniTask.Void(async () =>
+                {
+                    final.SetActive(true);
+                    await UniTask.Delay(TimeSpan.FromSeconds(6));
+                    ScenesManager.instance.LoadScene(0);
+                });
+            }
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("Player"))
+        if (other.CompareTag("Player"))
         {
             inputManager.enabled = false;
             skullCamera.SetActive(true);
@@ -75,8 +92,6 @@ public class LVL3BossRoom : MonoBehaviour
                 boss.SetActive(true);
                 GetComponent<BoxCollider>().enabled = false;
             });
-
         }
-        
     }
 }

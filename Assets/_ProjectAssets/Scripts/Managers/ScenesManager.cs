@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
 using EasyTransition;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -28,6 +29,7 @@ public class ScenesManager : MonoBehaviour
     
     public TransitionSettings[] TransitionSettings;
     public int gameSceneIndex;
+    public GameObject video;
     
     
     [HideInInspector]
@@ -68,11 +70,30 @@ public class ScenesManager : MonoBehaviour
                     ,0);
         }
     }
+    
+    public void LoadScene(int index)
+    {
+        if (!isLoading)
+        {
+            isLoading = !isLoading;
+            TransitionManager.Instance()
+                .Transition(index,TransitionSettings[Random.Range(0,TransitionSettings.Length-1)],0);
+            onSceneNewSceneLoad?.Invoke();
+        }
+    }
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("Player"))
-            LoadNextScene();
+        if (other.CompareTag("Player"))
+        {
+            UniTask.Void(async () =>
+            {
+                video.SetActive(true);
+                await UniTask.Delay(TimeSpan.FromSeconds(7));
+                LoadNextScene();
+            });
+            
+        }
     }
 
     public void ExitApplication()
