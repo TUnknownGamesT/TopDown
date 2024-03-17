@@ -156,6 +156,7 @@ public class UIManager : MonoBehaviour
 
     public void Menu()
     {
+        UnPause();
         SceneManager.LoadScene(0);
     }
 
